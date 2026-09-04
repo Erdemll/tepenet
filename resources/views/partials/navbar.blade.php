@@ -176,7 +176,7 @@
             </li>
 
             <li class="nav-item">
-              <a href="{{ route('online-islemler') }}">Online İşlemler</a>
+              <a style="text-decoration: none;" class="text-danger" href="{{ route('online-islemler') }}">Online İşlemler</a>
             </li>
 
             <li class="nav-item ms-2">
@@ -254,6 +254,10 @@
           <li class="nav-item">
             <a class="nav-link" href="tel:+905555555555"> İletişim </a>
           </li>
+
+          <li class="nav-item">
+              <a style="text-decoration: none;" class="text-danger" href="{{ route('online-islemler') }}">Online İşlemler</a>
+            </li>
         </ul>
 
         <hr />
