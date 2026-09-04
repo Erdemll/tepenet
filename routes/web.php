@@ -22,3 +22,5 @@ Route::view('/urunler-ve-hizmetler', 'urunler_ve_hizmetler')->name('urunler-ve-h
 Route::view('/hakkimizda', 'hakkimizda')->name('hakkimizda.index');
 Route::view('/hakkimizda/yonetim-kurulu', 'yonetim_kurulu')->name('hakkimizda.yonetim-kurulu');
 Route::view('/online-islemler', 'online_islemler')->name('online-islemler');
+Route::view('/e-basvuru-portali', 'e_basvuru')->name('e-basvuru');
+Route::view('/is-ilanlari', 'is_ilanlari')->name('is-ilanlari');

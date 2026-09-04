@@ -18,4 +18,6 @@ it('renders each public page from its named route', function (string $routeName,
     'products and services' => ['urunler-ve-hizmetler.index', 'urunler_ve_hizmetler'],
     'about' => ['hakkimizda.index', 'hakkimizda'],
     'board of directors' => ['hakkimizda.yonetim-kurulu', 'yonetim_kurulu'],
+    'job application portal' => ['e-basvuru', 'e_basvuru'],
+    'job listings' => ['is-ilanlari', 'is_ilanlari'],
 ]);

@@ -73,7 +73,7 @@
           <li><a href="{{ route('ev-guvenligi.index') }}">Ev için</a></li>
           <li><a href="{{ route('is-yeri-guvenligi.index') }}">İş yeri için</a></li>
           <li><a href="{{ route('kurumsal-cozumler.index') }}">Kurumsal çözümler</a></li>
-          <li><a href="#">Ödeme kanalları</a></li>
+          <li><a href="{{ route('online-islemler') }}">Online İşlemler</a></li>
         </ul>
       </div>
       <div class="col-6 col-md-4 col-lg-2">
@@ -81,6 +81,8 @@
         <ul>
           <li><a href="{{ route('hakkimizda.index') }}">Hakkımızda</a></li>
           <li><a href="{{ route('hakkimizda.yonetim-kurulu') }}">Yönetim Kurulu</a></li>
+           <li><a href="{{ route('e-basvuru') }}">E-Başvuru Portalı</a></li>
+          <li><a href="{{ route('is-ilanlari') }}">İş İlanları</a></li>
         </ul>
       </div>
       <div class="col-6 col-md-4 col-lg-2">

@@ -8219,3 +8219,1513 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* E-Başvuru Portalı */
+body.page-e-basvuru {
+  color: var(--tep-ink);
+  background: var(--tep-white);
+}
+
+body.page-e-basvuru main {
+  overflow: hidden;
+}
+
+body.page-e-basvuru .e-application-hero {
+  position: relative;
+  display: flex;
+  min-height: 370px;
+  align-items: center;
+  color: var(--tep-white);
+  background:
+    radial-gradient(circle at 82% 18%, rgba(255, 255, 255, 0.16), transparent 30%),
+    linear-gradient(118deg, #891019 0%, var(--tep-primary) 55%, #e3323d 100%);
+}
+
+body.page-e-basvuru .e-application-hero::after {
+  position: absolute;
+  right: -90px;
+  bottom: -170px;
+  width: 420px;
+  height: 420px;
+  border: 70px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  content: "";
+}
+
+body.page-e-basvuru .e-application-hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+body.page-e-basvuru .e-application-hero .eyebrow {
+  color: var(--tep-white);
+}
+
+body.page-e-basvuru .e-application-hero h1 {
+  max-width: 780px;
+  margin: 0 0 1rem;
+  font-size: clamp(2.65rem, 7vw, 5.35rem);
+  font-weight: 750;
+  letter-spacing: -0.045em;
+  line-height: 1.02;
+}
+
+body.page-e-basvuru .e-application-hero p {
+  max-width: 720px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(1rem, 2vw, 1.24rem);
+  line-height: 1.7;
+}
+
+body.page-e-basvuru .e-application-section {
+  padding: clamp(4rem, 7vw, 6.5rem) 0;
+}
+
+body.page-e-basvuru .e-application-section__heading {
+  max-width: 760px;
+  margin: 0 auto clamp(2.2rem, 4vw, 3.4rem);
+  text-align: center;
+}
+
+body.page-e-basvuru .e-application-section__heading .eyebrow {
+  justify-content: center;
+}
+
+body.page-e-basvuru .e-application-section__heading h2,
+body.page-e-basvuru .e-application-feature h2,
+body.page-e-basvuru .e-recruitment h2 {
+  margin: 0 0 1rem;
+  color: var(--tep-ink);
+  font-size: clamp(2rem, 4vw, 3.15rem);
+  font-weight: 650;
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+}
+
+body.page-e-basvuru .e-application-section__heading p,
+body.page-e-basvuru .e-application-feature p,
+body.page-e-basvuru .e-recruitment__intro p {
+  margin: 0;
+  color: var(--tep-muted);
+  font-size: 1.04rem;
+}
+
+body.page-e-basvuru .e-application-positions {
+  background: var(--tep-surface);
+}
+
+body.page-e-basvuru .e-position-card {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--tep-border);
+  border-radius: 10px;
+  color: var(--tep-ink);
+  background: var(--tep-white);
+  box-shadow: 0 14px 36px rgba(20, 20, 20, 0.06);
+  text-decoration: none;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+body.page-e-basvuru .e-position-card:hover,
+body.page-e-basvuru .e-position-card:focus-visible {
+  color: var(--tep-ink);
+  box-shadow: 0 22px 45px rgba(20, 20, 20, 0.12);
+  transform: translateY(-6px);
+}
+
+body.page-e-basvuru .e-position-card__media,
+body.page-e-basvuru .e-application-media {
+  position: relative;
+  display: grid;
+  min-height: 245px;
+  place-items: center;
+  overflow: hidden;
+  color: #8b8b8b;
+  background:
+    linear-gradient(135deg, rgba(204, 21, 32, 0.045), rgba(34, 30, 31, 0.025)),
+    #ededed;
+}
+
+body.page-e-basvuru .e-position-card__media::before,
+body.page-e-basvuru .e-application-media::before {
+  position: absolute;
+  inset: 16px;
+  border: 1px dashed #c8c8c8;
+  border-radius: 7px;
+  content: "";
+}
+
+body.page-e-basvuru .e-position-card__media span,
+body.page-e-basvuru .e-application-media span {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 0.85rem;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+body.page-e-basvuru .e-position-card__media span i,
+body.page-e-basvuru .e-application-media span i {
+  color: var(--tep-primary);
+  font-size: 1.25rem;
+}
+
+body.page-e-basvuru .e-position-card__media img,
+body.page-e-basvuru .e-application-media img,
+body.page-e-basvuru .e-application-media video {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+body.page-e-basvuru .e-position-card__body {
+  display: flex;
+  min-height: 250px;
+  flex: 1;
+  flex-direction: column;
+  padding: 1.65rem;
+}
+
+body.page-e-basvuru .e-position-card__body h3 {
+  margin: 0 0 0.8rem;
+  font-size: 1.25rem;
+  font-weight: 750;
+}
+
+body.page-e-basvuru .e-position-card__body p {
+  margin: 0 0 1.5rem;
+  color: var(--tep-muted);
+  font-size: 0.94rem;
+  line-height: 1.65;
+}
+
+body.page-e-basvuru .e-position-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: auto;
+  color: var(--tep-primary);
+  font-size: 0.88rem;
+  font-weight: 750;
+}
+
+body.page-e-basvuru .e-position-card__link i,
+body.page-e-basvuru .e-application-text-link i,
+body.page-e-basvuru .e-info-card a i {
+  transition: transform 0.2s ease;
+}
+
+body.page-e-basvuru .e-position-card:hover .e-position-card__link i,
+body.page-e-basvuru .e-application-text-link:hover i,
+body.page-e-basvuru .e-info-card a:hover i {
+  transform: translateX(4px);
+}
+
+body.page-e-basvuru .e-application-feature--muted,
+body.page-e-basvuru .e-application-details {
+  background: var(--tep-surface);
+}
+
+body.page-e-basvuru .e-application-feature .row > div:last-child {
+  padding-right: clamp(0.75rem, 3vw, 3rem);
+  padding-left: clamp(0.75rem, 3vw, 3rem);
+}
+
+body.page-e-basvuru .e-application-media {
+  min-height: 365px;
+  border-radius: 10px;
+  box-shadow: 0 18px 42px rgba(20, 20, 20, 0.08);
+}
+
+body.page-e-basvuru .e-application-media--video span i {
+  display: grid;
+  width: 54px;
+  height: 54px;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--tep-white);
+  background: var(--tep-primary);
+  box-shadow: 0 10px 24px rgba(204, 21, 32, 0.25);
+}
+
+body.page-e-basvuru .e-application-media--portrait {
+  min-height: 390px;
+}
+
+body.page-e-basvuru .e-application-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 1.5rem;
+  color: var(--tep-primary);
+  font-weight: 750;
+  text-decoration: none;
+}
+
+body.page-e-basvuru .e-career-benefits {
+  display: grid;
+  gap: 0.9rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+body.page-e-basvuru .e-career-benefits li {
+  position: relative;
+  padding-left: 1.7rem;
+  color: var(--tep-muted);
+}
+
+body.page-e-basvuru .e-career-benefits li::before {
+  position: absolute;
+  top: 0.61em;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--tep-primary);
+  content: "";
+}
+
+body.page-e-basvuru .e-application-values {
+  color: var(--tep-white);
+  background: #211e1f;
+}
+
+body.page-e-basvuru .e-application-values .eyebrow,
+body.page-e-basvuru .e-application-values h2 {
+  color: var(--tep-white);
+}
+
+body.page-e-basvuru .e-info-card {
+  display: flex;
+  height: 100%;
+  min-height: 330px;
+  flex-direction: column;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+body.page-e-basvuru .e-info-card__icon {
+  display: grid;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 1.5rem;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--tep-white);
+  background: var(--tep-primary);
+  font-size: 1.2rem;
+}
+
+body.page-e-basvuru .e-info-card h3 {
+  margin-bottom: 0.8rem;
+  font-size: 1.35rem;
+  font-weight: 750;
+}
+
+body.page-e-basvuru .e-info-card p {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.94rem;
+}
+
+body.page-e-basvuru .e-info-card a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: auto;
+  color: var(--tep-white);
+  font-size: 0.88rem;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+body.page-e-basvuru .e-recruitment {
+  background: var(--tep-white);
+}
+
+body.page-e-basvuru .e-recruitment__intro {
+  position: sticky;
+  top: 2rem;
+}
+
+body.page-e-basvuru .e-recruitment-steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body.page-e-basvuru .e-recruitment-steps li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 66px minmax(0, 1fr);
+  gap: 1.35rem;
+  padding-bottom: 2.25rem;
+}
+
+body.page-e-basvuru .e-recruitment-steps li:not(:last-child)::before {
+  position: absolute;
+  top: 62px;
+  bottom: 7px;
+  left: 32px;
+  width: 2px;
+  background: #e4e4e4;
+  content: "";
+}
+
+body.page-e-basvuru .e-recruitment-steps__number {
+  display: grid;
+  width: 66px;
+  height: 66px;
+  place-items: center;
+  border: 1px solid rgba(204, 21, 32, 0.22);
+  border-radius: 50%;
+  color: var(--tep-primary);
+  background: #fff4f5;
+  font-size: 0.92rem;
+  font-weight: 800;
+}
+
+body.page-e-basvuru .e-recruitment-steps h3 {
+  margin: 0.25rem 0 0.35rem;
+  font-size: 1.2rem;
+  font-weight: 750;
+}
+
+body.page-e-basvuru .e-recruitment-steps p {
+  margin: 0;
+  color: var(--tep-muted);
+  font-size: 0.94rem;
+}
+
+body.page-e-basvuru .e-application-faq,
+body.page-e-basvuru .e-application-blog {
+  background: var(--tep-white);
+}
+
+body.page-e-basvuru .e-application-accordion {
+  max-width: 940px;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid var(--tep-border);
+  border-radius: 10px;
+  box-shadow: 0 16px 40px rgba(20, 20, 20, 0.06);
+}
+
+body.page-e-basvuru .e-application-accordion .accordion-item {
+  border: 0;
+  border-bottom: 1px solid var(--tep-border);
+}
+
+body.page-e-basvuru .e-application-accordion .accordion-item:last-child {
+  border-bottom: 0;
+}
+
+body.page-e-basvuru .e-application-accordion .accordion-button {
+  padding: 1.35rem 1.5rem;
+  color: var(--tep-ink);
+  background: var(--tep-white);
+  box-shadow: none;
+  font-size: 1rem;
+  font-weight: 750;
+}
+
+body.page-e-basvuru .e-application-accordion .accordion-button:not(.collapsed) {
+  color: var(--tep-primary);
+}
+
+body.page-e-basvuru .e-application-accordion .accordion-button:focus {
+  border-color: transparent;
+  box-shadow: inset 0 0 0 2px rgba(204, 21, 32, 0.25);
+}
+
+body.page-e-basvuru .e-application-accordion .accordion-button::after {
+  filter: grayscale(1);
+}
+
+body.page-e-basvuru .e-application-accordion .accordion-body {
+  padding: 0 1.5rem 1.45rem;
+  color: var(--tep-muted);
+  font-size: 0.96rem;
+  line-height: 1.75;
+}
+
+body.page-e-basvuru .e-application-accordion--plain {
+  max-width: none;
+  border-right: 0;
+  border-left: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+body.page-e-basvuru .e-application-accordion--plain .accordion-button,
+body.page-e-basvuru .e-application-accordion--plain .accordion-body {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+body.page-e-basvuru .e-application-accordion--plain .accordion-button:focus {
+  box-shadow: none;
+}
+
+@media (max-width: 991.98px) {
+  body.page-e-basvuru .e-application-hero {
+    min-height: 330px;
+  }
+
+  body.page-e-basvuru .e-application-feature .row > div:last-child {
+    padding-right: calc(var(--bs-gutter-x) * 0.5);
+    padding-left: calc(var(--bs-gutter-x) * 0.5);
+  }
+
+  body.page-e-basvuru .e-recruitment__intro {
+    position: static;
+  }
+
+  body.page-e-basvuru .e-application-media--portrait {
+    min-height: 320px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  body.page-e-basvuru .e-application-hero {
+    min-height: 300px;
+  }
+
+  body.page-e-basvuru .e-application-hero::after {
+    right: -170px;
+    bottom: -220px;
+  }
+
+  body.page-e-basvuru .e-position-card__media {
+    min-height: 220px;
+  }
+
+  body.page-e-basvuru .e-position-card__body {
+    min-height: 225px;
+  }
+
+  body.page-e-basvuru .e-application-media,
+  body.page-e-basvuru .e-application-media--portrait {
+    min-height: 290px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  body.page-e-basvuru .e-application-hero {
+    min-height: 280px;
+    padding: 3.25rem 0;
+  }
+
+  body.page-e-basvuru .e-application-hero h1 {
+    font-size: clamp(2.45rem, 13vw, 3.2rem);
+  }
+
+  body.page-e-basvuru .e-application-section {
+    padding: 3.75rem 0;
+  }
+
+  body.page-e-basvuru .e-application-section__heading {
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+
+  body.page-e-basvuru .e-application-section__heading .eyebrow {
+    justify-content: flex-start;
+  }
+
+  body.page-e-basvuru .e-position-card__body {
+    min-height: auto;
+    padding: 1.35rem;
+  }
+
+  body.page-e-basvuru .e-application-media,
+  body.page-e-basvuru .e-application-media--portrait {
+    min-height: 230px;
+  }
+
+  body.page-e-basvuru .e-recruitment-steps li {
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  body.page-e-basvuru .e-recruitment-steps__number {
+    width: 52px;
+    height: 52px;
+  }
+
+  body.page-e-basvuru .e-recruitment-steps li:not(:last-child)::before {
+    top: 50px;
+    left: 25px;
+  }
+
+  body.page-e-basvuru .e-application-accordion .accordion-button {
+    padding: 1.15rem 1rem;
+    font-size: 0.94rem;
+  }
+
+  body.page-e-basvuru .e-application-accordion .accordion-body {
+    padding: 0 1rem 1.2rem;
+    font-size: 0.92rem;
+  }
+
+  body.page-e-basvuru .e-application-accordion--plain .accordion-button,
+  body.page-e-basvuru .e-application-accordion--plain .accordion-body {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+/* İş İlanları */
+body.page-is-ilanlari {
+  color: var(--tep-ink);
+  background: #f6f7f9;
+}
+
+body.page-is-ilanlari main {
+  min-height: 70vh;
+}
+
+body.page-is-ilanlari .jobs-hero {
+  padding: clamp(2.75rem, 5vw, 4.5rem) 0;
+  color: var(--tep-white);
+  background:
+    radial-gradient(circle at 88% 15%, rgba(255, 255, 255, 0.13), transparent 25%),
+    linear-gradient(118deg, #211e1f 0%, #3a292b 52%, #6d151b 100%);
+}
+
+body.page-is-ilanlari .jobs-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1.65rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.82rem;
+}
+
+body.page-is-ilanlari .jobs-breadcrumb a {
+  color: rgba(255, 255, 255, 0.82);
+  text-decoration: none;
+}
+
+body.page-is-ilanlari .jobs-breadcrumb a:hover {
+  color: var(--tep-white);
+  text-decoration: underline;
+}
+
+body.page-is-ilanlari .jobs-breadcrumb i {
+  font-size: 0.58rem;
+}
+
+body.page-is-ilanlari .jobs-hero__heading {
+  display: flex;
+  align-items: center;
+  gap: 1.35rem;
+}
+
+body.page-is-ilanlari .jobs-hero__icon {
+  display: grid;
+  width: 64px;
+  height: 64px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 16px;
+  color: var(--tep-white);
+  background: var(--tep-primary);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
+  font-size: 1.45rem;
+}
+
+body.page-is-ilanlari .jobs-hero .eyebrow {
+  margin-bottom: 0.45rem;
+  color: #ffb2b7;
+}
+
+body.page-is-ilanlari .jobs-hero h1 {
+  margin: 0 0 0.35rem;
+  font-size: clamp(2.25rem, 5vw, 3.65rem);
+  font-weight: 750;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+body.page-is-ilanlari .jobs-hero p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.95rem;
+}
+
+body.page-is-ilanlari .jobs-hero p strong {
+  color: var(--tep-white);
+}
+
+body.page-is-ilanlari .jobs-section {
+  padding: clamp(2rem, 4vw, 3.5rem) 0 clamp(4rem, 7vw, 6rem);
+}
+
+body.page-is-ilanlari .jobs-container {
+  max-width: 1540px;
+  padding-right: clamp(1rem, 3vw, 3rem);
+  padding-left: clamp(1rem, 3vw, 3rem);
+}
+
+body.page-is-ilanlari .jobs-layout {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 1.5rem;
+  transition: grid-template-columns 0.25s ease;
+}
+
+body.page-is-ilanlari .jobs-layout.filters-collapsed {
+  grid-template-columns: 0 minmax(0, 1fr);
+}
+
+body.page-is-ilanlari .jobs-filter {
+  position: sticky;
+  top: 1.5rem;
+  align-self: start;
+  overflow: visible;
+  padding: 1.4rem;
+  border: 1px solid var(--tep-border);
+  border-radius: 12px;
+  background: var(--tep-white);
+  box-shadow: 0 10px 28px rgba(22, 22, 22, 0.06);
+  opacity: 1;
+  transition:
+    opacity 0.2s ease,
+    transform 0.25s ease,
+    visibility 0.2s ease;
+}
+
+body.page-is-ilanlari .jobs-layout.filters-collapsed .jobs-filter {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-18px);
+}
+
+body.page-is-ilanlari .jobs-filter__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+}
+
+body.page-is-ilanlari .jobs-filter__eyebrow {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--tep-muted);
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+body.page-is-ilanlari .jobs-filter h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+body.page-is-ilanlari .jobs-filter h2 i {
+  color: var(--tep-primary);
+}
+
+body.page-is-ilanlari .jobs-filter__close {
+  display: none;
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 50%;
+  color: var(--tep-ink);
+  background: #f1f1f1;
+}
+
+body.page-is-ilanlari .jobs-filter__field {
+  margin-bottom: 1.15rem;
+}
+
+body.page-is-ilanlari .jobs-filter__field label,
+body.page-is-ilanlari .jobs-filter__label {
+  display: block;
+  margin-bottom: 0.42rem;
+  color: #353132;
+  font-size: 0.78rem;
+  font-weight: 750;
+}
+
+body.page-is-ilanlari .jobs-filter .form-control,
+body.page-is-ilanlari .jobs-filter .form-select {
+  min-height: 44px;
+  border-color: #dedede;
+  border-radius: 8px;
+  color: var(--tep-ink);
+  background-color: var(--tep-white);
+  font-size: 0.84rem;
+}
+
+body.page-is-ilanlari .jobs-filter .form-control:focus,
+body.page-is-ilanlari .jobs-filter .form-select:focus {
+  border-color: var(--tep-primary);
+  box-shadow: 0 0 0 0.2rem rgba(204, 21, 32, 0.1);
+}
+
+body.page-is-ilanlari .jobs-filter__input-wrap {
+  position: relative;
+}
+
+body.page-is-ilanlari .jobs-filter__input-wrap i {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 0.9rem;
+  color: #9a9a9a;
+  font-size: 0.78rem;
+  transform: translateY(-50%);
+}
+
+body.page-is-ilanlari .jobs-filter__input-wrap .form-control {
+  padding-left: 2.35rem;
+}
+
+body.page-is-ilanlari .jobs-city-filter__toggle {
+  overflow: hidden;
+  padding-right: 2.35rem;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+body.page-is-ilanlari .jobs-city-filter__menu {
+  width: 100%;
+  min-width: 250px;
+  max-height: 370px;
+  padding: 0.75rem;
+  border-color: var(--tep-border);
+  border-radius: 10px;
+  box-shadow: 0 14px 32px rgba(20, 20, 20, 0.13);
+}
+
+body.page-is-ilanlari .jobs-city-filter__search {
+  position: relative;
+  margin: 0 0 0.55rem;
+}
+
+body.page-is-ilanlari .jobs-city-filter__search i {
+  position: absolute;
+  top: 50%;
+  left: 0.7rem;
+  color: #999;
+  font-size: 0.72rem;
+  transform: translateY(-50%);
+}
+
+body.page-is-ilanlari .jobs-city-filter__search input {
+  width: 100%;
+  min-height: 38px;
+  padding: 0.4rem 0.65rem 0.4rem 2rem;
+  border: 1px solid #dedede;
+  border-radius: 7px;
+  outline: 0;
+  font-size: 0.78rem;
+}
+
+body.page-is-ilanlari .jobs-city-filter__search input:focus {
+  border-color: var(--tep-primary);
+}
+
+body.page-is-ilanlari .jobs-city-filter__actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.3rem 0 0.6rem;
+  border-bottom: 1px solid var(--tep-border);
+}
+
+body.page-is-ilanlari .jobs-city-filter__actions button {
+  padding: 0;
+  border: 0;
+  color: var(--tep-primary);
+  background: transparent;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+body.page-is-ilanlari .jobs-city-filter__options {
+  max-height: 240px;
+  overflow-y: auto;
+  padding-top: 0.45rem;
+  scrollbar-width: thin;
+}
+
+body.page-is-ilanlari .jobs-city-filter__option {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0.42rem 0.35rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+body.page-is-ilanlari .jobs-city-filter__option:hover {
+  background: #fff2f3;
+}
+
+body.page-is-ilanlari .jobs-city-filter__option .form-check-input {
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+body.page-is-ilanlari .jobs-city-filter__option .form-check-input:checked {
+  border-color: var(--tep-primary);
+  background-color: var(--tep-primary);
+}
+
+body.page-is-ilanlari .jobs-filter__buttons {
+  display: grid;
+  gap: 0.65rem;
+  padding-top: 0.35rem;
+}
+
+body.page-is-ilanlari .jobs-button {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.65rem 1.1rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 750;
+  line-height: 1.2;
+  text-decoration: none;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+body.page-is-ilanlari .jobs-button--primary,
+body.page-is-ilanlari .jobs-button--apply {
+  color: var(--tep-white);
+  background: var(--tep-primary);
+}
+
+body.page-is-ilanlari .jobs-button--primary:hover,
+body.page-is-ilanlari .jobs-button--apply:hover {
+  color: var(--tep-white);
+  background: var(--tep-primary-dark);
+}
+
+body.page-is-ilanlari .jobs-button--secondary {
+  border-color: #d7d7d7;
+  color: #555;
+  background: var(--tep-white);
+}
+
+body.page-is-ilanlari .jobs-button--secondary:hover {
+  border-color: #a7a7a7;
+  color: var(--tep-ink);
+  background: #f5f5f5;
+}
+
+body.page-is-ilanlari .jobs-content {
+  min-width: 0;
+}
+
+body.page-is-ilanlari .jobs-toolbar {
+  display: flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+body.page-is-ilanlari .jobs-toolbar__left {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 1rem;
+}
+
+body.page-is-ilanlari .jobs-filter-toggle {
+  display: inline-flex;
+  min-height: 38px;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid rgba(204, 21, 32, 0.35);
+  border-radius: 999px;
+  color: var(--tep-primary);
+  background: var(--tep-white);
+  font-size: 0.76rem;
+  font-weight: 750;
+}
+
+body.page-is-ilanlari .jobs-filter-toggle:hover {
+  border-color: var(--tep-primary);
+  background: #fff2f3;
+}
+
+body.page-is-ilanlari .jobs-tabs {
+  display: flex;
+  min-width: 0;
+  overflow-x: auto;
+  border-bottom: 1px solid #dedede;
+  scrollbar-width: none;
+}
+
+body.page-is-ilanlari .jobs-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+body.page-is-ilanlari .jobs-tabs__button {
+  position: relative;
+  flex: 0 0 auto;
+  padding: 0.65rem 0.85rem;
+  border: 0;
+  color: #707070;
+  background: transparent;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+body.page-is-ilanlari .jobs-tabs__button::after {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 3px;
+  border-radius: 3px 3px 0 0;
+  background: var(--tep-primary);
+  content: "";
+  opacity: 0;
+}
+
+body.page-is-ilanlari .jobs-tabs__button:hover,
+body.page-is-ilanlari .jobs-tabs__button.is-active {
+  color: var(--tep-primary);
+}
+
+body.page-is-ilanlari .jobs-tabs__button.is-active {
+  font-weight: 800;
+}
+
+body.page-is-ilanlari .jobs-tabs__button.is-active::after {
+  opacity: 1;
+}
+
+body.page-is-ilanlari .jobs-view-toggle {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 0.2rem;
+  padding: 0.25rem;
+  border-radius: 999px;
+  background: #ececef;
+}
+
+body.page-is-ilanlari .jobs-view-toggle button {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.8rem;
+  border: 0;
+  border-radius: 999px;
+  color: #666;
+  background: transparent;
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+body.page-is-ilanlari .jobs-view-toggle button.is-active {
+  color: var(--tep-white);
+  background: var(--tep-primary);
+  box-shadow: 0 4px 12px rgba(204, 21, 32, 0.2);
+}
+
+body.page-is-ilanlari .jobs-active-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+
+body.page-is-ilanlari .jobs-active-filters:empty {
+  display: none;
+}
+
+body.page-is-ilanlari .jobs-active-filters span {
+  padding: 0.35rem 0.7rem;
+  border: 1px solid #f1c9cc;
+  border-radius: 999px;
+  color: #7e242a;
+  background: #fff3f4;
+  font-size: 0.72rem;
+  font-weight: 650;
+}
+
+body.page-is-ilanlari .jobs-list {
+  display: grid;
+  gap: 0.8rem;
+}
+
+body.page-is-ilanlari .job-card[hidden] {
+  display: none !important;
+}
+
+body.page-is-ilanlari .job-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) auto auto;
+  gap: 1.15rem;
+  align-items: center;
+  min-height: 148px;
+  padding: 1.35rem 1.4rem 1.35rem 1.65rem;
+  overflow: hidden;
+  border: 1px solid #e1e1e1;
+  border-radius: 10px;
+  background: var(--tep-white);
+  box-shadow: 0 5px 18px rgba(20, 20, 20, 0.035);
+  transition:
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    transform 0.22s ease;
+}
+
+body.page-is-ilanlari .job-card:nth-child(even) {
+  background: #fff9fa;
+}
+
+body.page-is-ilanlari .job-card::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 4px;
+  background: var(--tep-primary);
+  content: "";
+}
+
+body.page-is-ilanlari .job-card:hover {
+  border-color: rgba(204, 21, 32, 0.45);
+  box-shadow: 0 12px 28px rgba(90, 20, 25, 0.1);
+  transform: translateY(-2px);
+}
+
+body.page-is-ilanlari .job-card__icon {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border-radius: 12px;
+  color: var(--tep-primary);
+  background: #fff0f1;
+}
+
+body.page-is-ilanlari .job-card__content {
+  min-width: 0;
+}
+
+body.page-is-ilanlari .job-card__content h2 {
+  margin: 0 0 0.35rem;
+  color: #332f30;
+  font-size: 1.02rem;
+  font-weight: 750;
+  line-height: 1.38;
+}
+
+body.page-is-ilanlari .job-card__content p {
+  margin: 0 0 0.5rem;
+  color: #686868;
+  font-size: 0.84rem;
+}
+
+body.page-is-ilanlari .job-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1.1rem;
+  color: #858585;
+  font-size: 0.76rem;
+}
+
+body.page-is-ilanlari .job-card__meta span {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+body.page-is-ilanlari .job-card__meta i {
+  color: var(--tep-primary);
+}
+
+body.page-is-ilanlari .job-card__date {
+  min-width: 96px;
+  text-align: center;
+}
+
+body.page-is-ilanlari .job-card__date span,
+body.page-is-ilanlari .job-card__date strong {
+  display: block;
+}
+
+body.page-is-ilanlari .job-card__date span {
+  margin-bottom: 0.15rem;
+  color: #858585;
+  font-size: 0.67rem;
+}
+
+body.page-is-ilanlari .job-card__date strong {
+  color: var(--tep-primary);
+  font-size: 0.82rem;
+  font-weight: 750;
+}
+
+body.page-is-ilanlari .job-card__date--mobile {
+  display: none;
+}
+
+body.page-is-ilanlari .job-card__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+body.page-is-ilanlari .jobs-button--apply {
+  min-width: 132px;
+}
+
+body.page-is-ilanlari .job-card__share {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid rgba(204, 21, 32, 0.3);
+  border-radius: 50%;
+  color: var(--tep-primary);
+  background: var(--tep-white);
+}
+
+body.page-is-ilanlari .job-card__share:hover {
+  border-color: var(--tep-primary);
+  background: #fff0f1;
+}
+
+body.page-is-ilanlari .jobs-list.is-card-view {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+body.page-is-ilanlari .jobs-list.is-card-view .job-card {
+  display: flex;
+  min-height: 330px;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1rem;
+  padding: 1.45rem;
+}
+
+body.page-is-ilanlari .jobs-list.is-card-view .job-card::before {
+  right: 0;
+  bottom: auto;
+  width: auto;
+  height: 4px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+body.page-is-ilanlari .jobs-list.is-card-view .job-card:hover::before {
+  opacity: 1;
+}
+
+body.page-is-ilanlari .jobs-list.is-card-view .job-card__content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+body.page-is-ilanlari .jobs-list.is-card-view .job-card__content h2 {
+  min-height: 3.8em;
+  margin-top: 0.15rem;
+}
+
+body.page-is-ilanlari .jobs-list.is-card-view .job-card__content p {
+  margin-bottom: 0.8rem;
+}
+
+body.page-is-ilanlari .jobs-list.is-card-view .job-card__meta {
+  display: grid;
+  margin-top: auto;
+}
+
+body.page-is-ilanlari .jobs-list.is-card-view .job-card__date--desktop {
+  position: absolute;
+  top: 1.45rem;
+  right: 1.35rem;
+}
+
+body.page-is-ilanlari .jobs-list.is-card-view .job-card__actions {
+  width: 100%;
+  margin-top: auto;
+}
+
+body.page-is-ilanlari .jobs-list.is-card-view .jobs-button--apply {
+  flex: 1;
+}
+
+body.page-is-ilanlari .jobs-empty {
+  display: grid;
+  min-height: 390px;
+  place-items: center;
+  align-content: center;
+  padding: 2rem;
+  border: 1px dashed #d4d4d4;
+  border-radius: 12px;
+  text-align: center;
+  background: var(--tep-white);
+}
+
+body.page-is-ilanlari .jobs-empty[hidden] {
+  display: none;
+}
+
+body.page-is-ilanlari .jobs-empty > span {
+  display: grid;
+  width: 70px;
+  height: 70px;
+  margin-bottom: 1.15rem;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--tep-primary);
+  background: #fff0f1;
+  font-size: 1.5rem;
+}
+
+body.page-is-ilanlari .jobs-empty h2 {
+  margin: 0 0 0.45rem;
+  font-size: 1.2rem;
+  font-weight: 750;
+}
+
+body.page-is-ilanlari .jobs-empty p {
+  margin: 0 0 1.25rem;
+  color: var(--tep-muted);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 1199.98px) {
+  body.page-is-ilanlari .jobs-list.is-card-view {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body.page-is-ilanlari .job-card {
+    grid-template-columns: 46px minmax(0, 1fr) auto;
+  }
+
+  body.page-is-ilanlari .job-card__date--desktop {
+    display: none;
+  }
+
+  body.page-is-ilanlari .job-card__date--mobile {
+    display: block;
+    float: right;
+    margin: 0 0 0.35rem 1rem;
+  }
+
+  body.page-is-ilanlari .jobs-list.is-card-view .job-card__date--mobile {
+    display: none;
+  }
+
+  body.page-is-ilanlari .jobs-list.is-card-view .job-card__date--desktop {
+    display: block;
+  }
+}
+
+@media (max-width: 991.98px) {
+  body.page-is-ilanlari .jobs-layout,
+  body.page-is-ilanlari .jobs-layout.filters-collapsed {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  body.page-is-ilanlari .jobs-filter,
+  body.page-is-ilanlari .jobs-layout.filters-collapsed .jobs-filter {
+    position: fixed;
+    z-index: 1055;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: min(340px, 88vw);
+    overflow-y: auto;
+    border: 0;
+    border-radius: 0 14px 14px 0;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
+  }
+
+  body.page-is-ilanlari .jobs-filter.is-open,
+  body.page-is-ilanlari .jobs-layout.filters-collapsed .jobs-filter.is-open {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+  }
+
+  body.page-is-ilanlari .jobs-filter__close {
+    display: grid;
+    place-items: center;
+  }
+
+  body.page-is-ilanlari .jobs-toolbar,
+  body.page-is-ilanlari .jobs-toolbar__left {
+    align-items: stretch;
+  }
+
+  body.page-is-ilanlari .jobs-toolbar {
+    flex-direction: column;
+  }
+
+  body.page-is-ilanlari .jobs-toolbar__left {
+    flex-direction: column;
+  }
+
+  body.page-is-ilanlari .jobs-filter-toggle {
+    align-self: flex-start;
+  }
+
+  body.page-is-ilanlari .jobs-tabs {
+    width: 100%;
+  }
+
+  body.page-is-ilanlari .jobs-view-toggle {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 767.98px) {
+  body.page-is-ilanlari .jobs-hero__heading {
+    align-items: flex-start;
+  }
+
+  body.page-is-ilanlari .jobs-hero__icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 13px;
+    font-size: 1.15rem;
+  }
+
+  body.page-is-ilanlari .jobs-list.is-card-view {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  body.page-is-ilanlari .job-card {
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: 0.9rem;
+    padding: 1.15rem 1rem 1.15rem 1.25rem;
+  }
+
+  body.page-is-ilanlari .job-card__icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  body.page-is-ilanlari .job-card__content h2 {
+    font-size: 0.96rem;
+  }
+
+  body.page-is-ilanlari .job-card__actions {
+    grid-column: 1 / -1;
+    justify-content: flex-end;
+  }
+
+  body.page-is-ilanlari .jobs-button--apply {
+    flex: 1;
+  }
+
+  body.page-is-ilanlari .jobs-list.is-card-view .job-card {
+    min-height: 310px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  body.page-is-ilanlari .jobs-hero {
+    padding: 2.5rem 0;
+  }
+
+  body.page-is-ilanlari .jobs-breadcrumb {
+    margin-bottom: 1.25rem;
+  }
+
+  body.page-is-ilanlari .jobs-hero__heading {
+    gap: 0.85rem;
+  }
+
+  body.page-is-ilanlari .jobs-hero__icon {
+    width: 46px;
+    height: 46px;
+  }
+
+  body.page-is-ilanlari .jobs-hero h1 {
+    font-size: 2.15rem;
+  }
+
+  body.page-is-ilanlari .jobs-section {
+    padding-top: 1.5rem;
+  }
+
+  body.page-is-ilanlari .jobs-container {
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+  }
+
+  body.page-is-ilanlari .jobs-tabs__button {
+    padding-right: 0.7rem;
+    padding-left: 0.7rem;
+    font-size: 0.74rem;
+  }
+
+  body.page-is-ilanlari .jobs-view-toggle {
+    align-self: stretch;
+  }
+
+  body.page-is-ilanlari .jobs-view-toggle button {
+    flex: 1;
+  }
+
+  body.page-is-ilanlari .job-card__meta {
+    display: grid;
+    gap: 0.4rem;
+  }
+
+  body.page-is-ilanlari .job-card__date--mobile {
+    min-width: 80px;
+  }
+}
