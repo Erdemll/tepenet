@@ -74,6 +74,7 @@
           <li><a href="{{ route('is-yeri-guvenligi.index') }}">İş yeri için</a></li>
           <li><a href="{{ route('kurumsal-cozumler.index') }}">Kurumsal çözümler</a></li>
           <li><a href="{{ route('online-islemler') }}">Online İşlemler</a></li>
+          <li><a href="{{ route('iletisim') }}">İletişim</a></li>
         </ul>
       </div>
       <div class="col-6 col-md-4 col-lg-2">
@@ -88,8 +89,8 @@
       <div class="col-6 col-md-4 col-lg-2">
         <h4>Ürünler</h4>
         <ul>
-          <li><a href="{{ route('urunler-ve-hizmetler.index') }}#kamera-sistemleri">Kamera Sistemleri</a></li>
-          <li><a href="{{ route('urunler-ve-hizmetler.index') }}#alarm-sistemleri">Alarm Sistemleri</a></li>
+          <li><a href="{{ route('urunler-ve-hizmetler.kamera-sistemleri') }}">Kamera Sistemleri</a></li>
+          <li><a href="{{ route('urunler-ve-hizmetler.alarm-sistemleri') }}">Alarm Sistemleri</a></li>
           <li><a href="{{ route('urunler-ve-hizmetler.index') }}">Hizmetlerimiz</a></li>
         </ul>
       </div>

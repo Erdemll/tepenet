@@ -7913,6 +7913,7 @@
       :is(body.page-urunler-ve-hizmetler) .breadcrumb-list {
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
         gap: 0.55rem;
         margin: 0;
         padding: 0;
@@ -7998,6 +7999,14 @@
         text-decoration: none;
       }
 
+      :is(body.page-urunler-ve-hizmetler) .product-tree__children a[aria-current="page"] {
+        color: var(--tep-primary-dark);
+        font-weight: 750;
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 0.22rem;
+      }
+
       :is(body.page-urunler-ve-hizmetler) .product-tree a:hover,
 :is(body.page-urunler-ve-hizmetler) .product-tree a:focus-visible {
         color: var(--tep-primary-dark);
@@ -8048,7 +8057,9 @@
       }
 
       :is(body.page-urunler-ve-hizmetler) .category-card__visual .image-placeholder {
+        display: grid;
         min-height: 330px;
+        place-items: center;
         color: #858b90;
         background:
           radial-gradient(circle at center, #fff 0 30%, transparent 31%),
@@ -8091,6 +8102,262 @@
         background: var(--tep-primary);
       }
 
+      :is(body.page-urunler-ve-hizmetler) .product-listing-header {
+        margin-bottom: 1.75rem;
+      }
+
+      :is(body.page-urunler-ve-hizmetler) .product-listing-header__eyebrow {
+        display: block;
+        margin-bottom: 0.4rem;
+        color: var(--tep-primary);
+        font-size: 0.78rem;
+        font-weight: 750;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      :is(body.page-urunler-ve-hizmetler) .product-listing-header h2 {
+        margin: 0;
+        color: var(--tep-ink);
+        font-size: clamp(1.65rem, 3vw, 2.25rem);
+        font-weight: 700;
+      }
+
+      :is(body.page-urunler-ve-hizmetler) .product-listing-header p {
+        margin: 0.55rem 0 0;
+        color: var(--tep-muted);
+      }
+
+      :is(body.page-urunler-ve-hizmetler) .product-card {
+        min-height: 500px;
+      }
+
+      :is(body.page-urunler-ve-hizmetler) .product-card__body {
+        min-height: 170px;
+        align-items: flex-start;
+      }
+
+      :is(body.page-urunler-ve-hizmetler) .product-card__code {
+        display: block;
+        margin-bottom: 0.45rem;
+        color: var(--tep-primary);
+        font-size: 0.75rem;
+        font-weight: 750;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      :is(body.page-urunler-ve-hizmetler) .product-card h3 {
+        margin: 0;
+        color: var(--tep-ink);
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+
+      :is(body.page-urunler-ve-hizmetler) .product-card p {
+        margin: 0.65rem 0 0;
+        color: var(--tep-muted);
+        font-size: 0.9rem;
+        line-height: 1.65;
+        white-space: pre-line;
+      }
+
+      :is(body.page-urunler-ve-hizmetler) .product-card__link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        margin-top: 1rem;
+        color: var(--tep-primary);
+        font-size: 0.86rem;
+        font-weight: 750;
+      }
+
+      :is(body.page-urunler-ve-hizmetler) .product-empty {
+        padding: 1.5rem;
+        border: 1px solid var(--tep-border);
+        border-left: 3px solid var(--tep-primary);
+        border-radius: 5px;
+        color: var(--tep-muted);
+        background: var(--tep-white);
+      }
+
+      :is(body.page-urunler-ve-hizmetler) .product-pagination {
+        margin-top: 2rem;
+      }
+
+      :is(body.page-urunler-ve-hizmetler) .product-pagination .page-link {
+        color: var(--tep-primary);
+      }
+
+      :is(body.page-urunler-ve-hizmetler) .product-pagination .active > .page-link {
+        border-color: var(--tep-primary);
+        color: var(--tep-white);
+        background: var(--tep-primary);
+      }
+
+      :is(body.page-urunler-ve-hizmetler) .product-detail-section {
+        padding-block: clamp(3.5rem, 7vw, 6.5rem);
+        background: linear-gradient(180deg, #fff 0%, #f7f7f7 100%);
+      }
+
+      :is(body.page-urunler-ve-hizmetler) .product-detail {
+        overflow: hidden;
+        border: 1px solid var(--tep-border);
+        border-radius: 8px;
+        background: var(--tep-white);
+        box-shadow: 0 20px 50px rgba(31, 35, 40, 0.09);
+      }
+
+      :is(body.page-urunler-ve-hizmetler) .product-detail__visual {
+        display: grid;
+        min-height: 520px;
+        height: 100%;
+        place-items: center;
+        padding: clamp(1.5rem, 4vw, 3.5rem);
+        background: #f7f7f7;
+      }
+
+      :is(body.page-urunler-ve-hizmetler) .product-detail__visual img {
+        width: 100%;
+        height: 430px;
+        object-fit: contain;
+      }
+
+      :is(body.page-urunler-ve-hizmetler) .product-detail__visual .image-placeholder {
+        display: grid;
+        width: 100%;
+        min-height: 430px;
+        place-items: center;
+        color: #858b90;
+        background:
+          radial-gradient(circle at center, #fff 0 30%, transparent 31%),
+          repeating-linear-gradient(-45deg, #fafafa, #fafafa 14px, #f1f2f3 14px, #f1f2f3 28px);
+      }
+
+      :is(body.page-urunler-ve-hizmetler) .product-detail__content {
+        display: flex;
+        min-height: 520px;
+        height: 100%;
+        padding: clamp(2rem, 5vw, 4rem);
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      :is(body.page-urunler-ve-hizmetler) .product-detail__category {
+        margin-bottom: 0.65rem;
+        color: var(--tep-primary);
+        font-size: 0.78rem;
+        font-weight: 750;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      :is(body.page-urunler-ve-hizmetler) .product-detail__content h2 {
+        margin: 0;
+        color: var(--tep-ink);
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 700;
+        letter-spacing: -0.035em;
+      }
+
+      :is(body.page-urunler-ve-hizmetler) .product-detail__meta {
+        margin: 1.5rem 0 0;
+      }
+
+      :is(body.page-urunler-ve-hizmetler) .product-detail__meta > div {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem 1rem;
+        border: 1px solid #f0c6ca;
+        border-radius: 5px;
+        background: #fff7f7;
+      }
+
+      :is(body.page-urunler-ve-hizmetler) .product-detail__meta dt {
+        color: var(--tep-muted);
+        font-size: 0.76rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      :is(body.page-urunler-ve-hizmetler) .product-detail__meta dd {
+        margin: 0;
+        color: var(--tep-primary-dark);
+        font-size: 0.95rem;
+        font-weight: 750;
+      }
+
+      :is(body.page-urunler-ve-hizmetler) .product-detail__description {
+        margin-top: 2rem;
+      }
+
+      :is(body.page-urunler-ve-hizmetler) .product-detail__description h3 {
+        margin: 0 0 0.65rem;
+        color: var(--tep-ink);
+        font-size: 1.05rem;
+        font-weight: 700;
+      }
+
+      :is(body.page-urunler-ve-hizmetler) .product-detail__description p {
+        margin: 0;
+        color: var(--tep-muted);
+        line-height: 1.8;
+        white-space: pre-line;
+      }
+
+      :is(body.page-urunler-ve-hizmetler) .product-detail__actions {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      :is(body.page-urunler-ve-hizmetler) .product-detail__contact {
+        display: inline-flex;
+        width: fit-content;
+        align-items: center;
+        justify-content: center;
+        gap: 0.55rem;
+        padding: 0.85rem 1.2rem;
+        border-radius: 6px;
+        color: #fff;
+        background: var(--tep-primary);
+        box-shadow: 0 10px 22px rgb(207 18 40 / 18%);
+        font-size: 0.95rem;
+        font-weight: 750;
+        text-decoration: none;
+        transition: background-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+      }
+
+      :is(body.page-urunler-ve-hizmetler) .product-detail__contact:hover,
+      :is(body.page-urunler-ve-hizmetler) .product-detail__contact:focus-visible {
+        color: #fff;
+        background: var(--tep-primary-dark);
+        box-shadow: 0 13px 26px rgb(122 13 26 / 23%);
+        transform: translateY(-2px);
+      }
+
+      :is(body.page-urunler-ve-hizmetler) .product-detail__back {
+        display: inline-flex;
+        width: fit-content;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--tep-primary);
+        font-size: 0.9rem;
+        font-weight: 750;
+        text-decoration: none;
+      }
+
+      :is(body.page-urunler-ve-hizmetler) .product-detail__back:hover,
+      :is(body.page-urunler-ve-hizmetler) .product-detail__back:focus-visible {
+        color: var(--tep-primary-dark);
+        text-decoration: underline;
+        text-underline-offset: 0.2rem;
+      }
+
       :is(body.page-urunler-ve-hizmetler) .hierarchy-note {
         margin-top: 2rem;
         padding: 1.2rem 1.35rem;
@@ -8130,6 +8397,32 @@
 
         :is(body.page-urunler-ve-hizmetler) .category-card__body {
           padding: 1.1rem;
+        }
+
+        :is(body.page-urunler-ve-hizmetler) .product-detail__visual,
+        :is(body.page-urunler-ve-hizmetler) .product-detail__content {
+          min-height: auto;
+        }
+
+        :is(body.page-urunler-ve-hizmetler) .product-detail__visual img,
+        :is(body.page-urunler-ve-hizmetler) .product-detail__visual .image-placeholder {
+          min-height: 280px;
+          height: 280px;
+        }
+
+        :is(body.page-urunler-ve-hizmetler) .product-detail__content {
+          padding: 2rem 1.35rem;
+        }
+
+        :is(body.page-urunler-ve-hizmetler) .product-detail__meta > div {
+          width: 100%;
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 0.25rem;
+        }
+
+        :is(body.page-urunler-ve-hizmetler) .product-detail__contact {
+          width: 100%;
         }
       }
 
@@ -9728,4 +10021,418 @@ body.page-is-ilanlari .jobs-empty p {
   body.page-is-ilanlari .job-card__date--mobile {
     min-width: 80px;
   }
+}
+
+/* İletişim sayfası */
+body.page-iletisim .contact-hero {
+  padding: clamp(2.75rem, 6vw, 4.75rem) 0;
+  color: var(--tep-white);
+  background:
+    radial-gradient(circle at 85% 10%, rgba(255, 255, 255, 0.13), transparent 28%),
+    linear-gradient(135deg, #7f1118 0%, var(--tep-primary) 55%, #e02a35 100%);
+}
+
+body.page-iletisim .contact-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0 0 1.6rem;
+  padding: 0;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.86rem;
+  list-style: none;
+}
+
+body.page-iletisim .contact-breadcrumb a {
+  color: inherit;
+  text-decoration: none;
+}
+
+body.page-iletisim .contact-breadcrumb a:hover,
+body.page-iletisim .contact-breadcrumb a:focus-visible {
+  color: var(--tep-white);
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
+}
+
+body.page-iletisim .contact-hero__heading {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+body.page-iletisim .contact-hero__icon {
+  display: grid;
+  width: 68px;
+  height: 68px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 16px 34px rgba(45, 0, 4, 0.2);
+  font-size: 1.65rem;
+}
+
+body.page-iletisim .contact-eyebrow {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--tep-primary);
+  font-size: 0.76rem;
+  font-weight: 750;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+body.page-iletisim .contact-hero .contact-eyebrow {
+  color: #ffc4c8;
+}
+
+body.page-iletisim .contact-hero h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 750;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+body.page-iletisim .contact-hero p {
+  margin: 0.65rem 0 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1rem;
+}
+
+body.page-iletisim .contact-section {
+  padding: clamp(3.5rem, 7vw, 6.5rem) 0;
+  background: linear-gradient(180deg, #fff 0%, #f7f7f7 100%);
+}
+
+body.page-iletisim .contact-info,
+body.page-iletisim .contact-form-card {
+  overflow: hidden;
+  border: 1px solid var(--tep-border);
+  border-radius: 12px;
+  background: var(--tep-white);
+  box-shadow: 0 18px 45px rgba(31, 35, 40, 0.08);
+}
+
+body.page-iletisim .contact-info__visual {
+  position: relative;
+  height: 285px;
+  overflow: hidden;
+  background: #252525;
+}
+
+body.page-iletisim .contact-info__visual::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(22, 10, 11, 0.82) 100%);
+  content: "";
+}
+
+body.page-iletisim .contact-info__visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 34%;
+}
+
+body.page-iletisim .contact-info__visual > span {
+  position: absolute;
+  z-index: 1;
+  right: 1.5rem;
+  bottom: 1.35rem;
+  left: 1.5rem;
+  color: var(--tep-white);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+body.page-iletisim .contact-info__content {
+  padding: clamp(1.5rem, 4vw, 2.4rem);
+}
+
+body.page-iletisim .contact-info__content h2,
+body.page-iletisim .contact-form-card h2 {
+  margin: 0;
+  color: var(--tep-ink);
+  font-size: clamp(1.65rem, 3vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+body.page-iletisim .contact-info__items {
+  display: grid;
+  gap: 1.2rem;
+  margin-top: 1.8rem;
+}
+
+body.page-iletisim .contact-info__item {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  align-items: start;
+  gap: 0.9rem;
+}
+
+body.page-iletisim .contact-info__item-icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--tep-white);
+  background: var(--tep-primary);
+  box-shadow: 0 9px 20px rgba(204, 21, 32, 0.2);
+}
+
+body.page-iletisim .contact-info__item h3 {
+  margin: 0 0 0.25rem;
+  color: var(--tep-ink);
+  font-size: 0.96rem;
+  font-weight: 750;
+}
+
+body.page-iletisim .contact-info__item p {
+  margin: 0;
+  color: var(--tep-muted);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+body.page-iletisim .contact-info__item a {
+  color: var(--tep-ink);
+  text-decoration: none;
+}
+
+body.page-iletisim .contact-info__item a:hover,
+body.page-iletisim .contact-info__item a:focus-visible {
+  color: var(--tep-primary);
+}
+
+body.page-iletisim .contact-info__note {
+  margin: 1.7rem 0 0;
+  padding: 1rem 1.1rem;
+  border-left: 3px solid var(--tep-primary);
+  color: var(--tep-muted);
+  background: #fff7f7;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+body.page-iletisim .contact-form-card {
+  padding: clamp(1.5rem, 4vw, 2.8rem);
+}
+
+body.page-iletisim .contact-form-card__intro {
+  max-width: 720px;
+  margin: 0.8rem 0 1.8rem;
+  color: var(--tep-muted);
+  line-height: 1.7;
+}
+
+body.page-iletisim .contact-form label:not(.form-check-label) {
+  display: block;
+  margin-bottom: 0.45rem;
+  color: var(--tep-ink);
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+body.page-iletisim .contact-form label > span,
+body.page-iletisim .contact-consent__required label > span {
+  color: var(--tep-primary);
+}
+
+body.page-iletisim .contact-form .form-control,
+body.page-iletisim .contact-form .form-select,
+body.page-iletisim .contact-form .input-group-text {
+  min-height: 50px;
+  border-color: #dfe2e5;
+  border-radius: 6px;
+  color: var(--tep-ink);
+  background-color: #fbfbfb;
+  font-size: 0.92rem;
+}
+
+body.page-iletisim .contact-form .input-group > .input-group-text {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  color: var(--tep-primary-dark);
+  font-weight: 750;
+}
+
+body.page-iletisim .contact-form .input-group > .form-control {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+body.page-iletisim .contact-form textarea.form-control {
+  min-height: 145px;
+  resize: vertical;
+}
+
+body.page-iletisim .contact-form .form-control:focus,
+body.page-iletisim .contact-form .form-select:focus,
+body.page-iletisim .contact-form .form-check-input:focus {
+  border-color: var(--tep-primary);
+  box-shadow: 0 0 0 0.2rem rgba(204, 21, 32, 0.12);
+}
+
+body.page-iletisim .contact-form .form-text {
+  color: #777;
+  font-size: 0.76rem;
+}
+
+body.page-iletisim .contact-consent {
+  display: grid;
+  gap: 1.1rem;
+  margin-top: 0.5rem;
+  padding: 1.2rem;
+  border: 1px solid #ebecee;
+  border-radius: 8px;
+  background: #fafafa;
+}
+
+body.page-iletisim .contact-consent .form-check {
+  margin: 0;
+}
+
+body.page-iletisim .contact-consent .form-check-input {
+  margin-top: 0.22rem;
+  border-color: #b8bdc2;
+}
+
+body.page-iletisim .contact-consent .form-check-input:checked {
+  border-color: var(--tep-primary);
+  background-color: var(--tep-primary);
+}
+
+body.page-iletisim .contact-consent .form-check-label {
+  color: #555;
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+body.page-iletisim .contact-consent a {
+  color: var(--tep-primary);
+  font-weight: 700;
+}
+
+body.page-iletisim .contact-preferences {
+  display: grid;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 1rem;
+  border: 1px solid #f0c6ca;
+  border-radius: 7px;
+  background: #fff;
+}
+
+body.page-iletisim .contact-preferences[hidden] {
+  display: none;
+}
+
+body.page-iletisim .contact-preferences legend {
+  float: none;
+  width: auto;
+  margin: 0 0 0.2rem;
+  color: var(--tep-ink);
+  font-size: 0.88rem;
+  font-weight: 750;
+}
+
+body.page-iletisim .contact-consent__required {
+  padding-top: 1rem;
+  border-top: 1px solid #e4e5e7;
+}
+
+body.page-iletisim .contact-submit {
+  min-width: 160px;
+  padding: 0.85rem 1.5rem;
+  border: 0;
+  border-radius: 6px;
+  color: var(--tep-white);
+  background: var(--tep-primary);
+  font-weight: 750;
+  box-shadow: 0 12px 25px rgba(204, 21, 32, 0.2);
+}
+
+body.page-iletisim .contact-submit:hover,
+body.page-iletisim .contact-submit:focus-visible {
+  color: var(--tep-white);
+  background: var(--tep-primary-dark);
+}
+
+body.page-iletisim .contact-form__notice {
+  margin: 0.7rem 0 0;
+  color: #777;
+  font-size: 0.78rem;
+}
+
+@media (max-width: 991.98px) {
+  body.page-iletisim .contact-info__visual {
+    height: 330px;
+  }
+
+  body.page-iletisim .contact-info__visual img {
+    object-position: center 28%;
+  }
+}
+
+@media (max-width: 575.98px) {
+  body.page-iletisim .contact-hero__heading {
+    align-items: flex-start;
+  }
+
+  body.page-iletisim .contact-hero__icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    font-size: 1.25rem;
+  }
+
+  body.page-iletisim .contact-hero p {
+    font-size: 0.9rem;
+  }
+
+  body.page-iletisim .contact-info__visual {
+    height: 270px;
+  }
+
+  body.page-iletisim .contact-form-card,
+  body.page-iletisim .contact-info__content {
+    padding: 1.3rem;
+  }
+
+  body.page-iletisim .contact-submit {
+    width: 100%;
+  }
+}
+
+/* Ortak masaüstü navbar bağlantıları */
+.site-header .site-nav .desktop-navigation .navbar-nav {
+  gap: 0.25rem !important;
+}
+
+.site-header .site-nav .desktop-navigation .desktop-nav-link {
+  display: inline-flex;
+  min-height: 3.4rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.4rem !important;
+  font-size: 0.84rem !important;
+  line-height: 1.12;
+  text-align: center;
+  text-decoration: none;
+  white-space: normal;
+}
+
+.site-header .site-nav .desktop-navigation .desktop-nav-label {
+  display: inline-flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.08rem;
+  white-space: nowrap;
 }

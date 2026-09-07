@@ -31,7 +31,7 @@
           <img src="{{ asset('resimler/urunler/banner3.png') }}" alt="Tepenet alarm ve kamera ürünleri" />
         </div>
         <div class="container">
-          <h1 id="page-title">Tepenet Ürünler</h1>
+          <h1 id="page-title">Tepenet Kamera Sistemleri</h1>
           <nav aria-label="Sayfa yolu">
             <ol class="breadcrumb-list">
               <li><a href="{{ route('home') }}">Ana Sayfa</a></li>
@@ -52,26 +52,26 @@
             <div class="col-12 col-lg-9">
               <div class="category-grid row row-cols-1 row-cols-md-2 g-4">
                 <div class="col">
-                  <a class="category-card" href="{{ route('urunler-ve-hizmetler.alarm-sistemleri') }}" aria-describedby="alarm-alt-kategoriler">
+                  <a class="category-card" href="{{ route('urunler-ve-hizmetler.kategori', ['sistem' => 'kamera-sistemleri', 'urunKategori' => 'hd-kamera-sistemleri']) }}">
                     <div class="category-card__visual">
-                      <img src="{{ asset('resimler/urunler/alarm.png') }}" alt="Alarm sistemleri ürün grubu" />
+                      <img src="{{ asset('resimler/urunler/hd_kamera.png') }}" alt="Alarm sistemleri ürün grubu" />
                     </div>
                     <div class="category-card__body">
                       <div>
-                        <h2>Alarm Sistemleri</h2>
+                        <h2>HD Güvenlik Kamerası Sistemleri</h2>
                       </div>
                       <span class="category-card__arrow" aria-hidden="true">→</span>
                     </div>
                   </a>
                 </div>
                 <div class="col">
-                  <a class="category-card" href="{{ route('urunler-ve-hizmetler.kamera-sistemleri') }}" aria-describedby="kamera-alt-kategoriler">
+                  <a class="category-card" href="{{ route('urunler-ve-hizmetler.kategori', ['sistem' => 'kamera-sistemleri', 'urunKategori' => 'ip-kamera-sistemleri']) }}">
                     <div class="category-card__visual">
-                      <img src="{{ asset('resimler/urunler/kamera.png') }}" alt="Kamera sistemleri ürün grubu" />
+                      <img src="{{ asset('resimler/urunler/ip_kamera.png') }}" alt="Kamera sistemleri ürün grubu" />
                     </div>
                     <div class="category-card__body">
                       <div>
-                        <h2>Kamera Sistemleri</h2>
+                        <h2>IP Kamera Sistemleri</h2>
                       </div>
                       <span class="category-card__arrow" aria-hidden="true">→</span>
                     </div>

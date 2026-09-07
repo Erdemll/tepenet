@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\Admin\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\IsIlaniController as AdminIsIlaniController;
+use App\Http\Controllers\Admin\UrunController as AdminUrunController;
 use App\Http\Controllers\IsIlaniController as PublicIsIlaniController;
+use App\Http\Controllers\UrunController as PublicUrunController;
+use App\Http\Controllers\UrunKategoriController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'index')->name('home');
@@ -21,11 +24,25 @@ Route::prefix('is-yeri-guvenligi')->name('is-yeri-guvenligi.')->group(function (
 
 Route::view('/kurumsal-cozumler', 'kurumsal_cozumler')->name('kurumsal-cozumler.index');
 Route::view('/kendi-sistemini-olustur', 'kendi_sistemini_olustur')->name('kendi-sistemini-olustur.index');
-Route::view('/urunler-ve-hizmetler', 'urunler_ve_hizmetler')->name('urunler-ve-hizmetler.index');
+
+Route::prefix('urunler-ve-hizmetler')->name('urunler-ve-hizmetler.')->group(function (): void {
+    Route::view('/', 'urunler_ve_hizmetler')->name('index');
+    Route::view('/alarm-sistemleri', 'alarm_sistemleri')->name('alarm-sistemleri');
+    Route::view('/kamera-sistemleri', 'kamera_sistemleri')->name('kamera-sistemleri');
+    Route::get('/{sistem}/{urunKategori:slug}', [UrunKategoriController::class, 'show'])
+        ->whereIn('sistem', ['alarm-sistemleri', 'kamera-sistemleri'])
+        ->name('kategori');
+    Route::get('/{sistem}/{urunKategori:slug}/{urun:slug}', [PublicUrunController::class, 'show'])
+        ->whereIn('sistem', ['alarm-sistemleri', 'kamera-sistemleri'])
+        ->scopeBindings()
+        ->name('urun-detay');
+});
+
 Route::view('/hakkimizda', 'hakkimizda')->name('hakkimizda.index');
 Route::view('/hakkimizda/yonetim-kurulu', 'yonetim_kurulu')->name('hakkimizda.yonetim-kurulu');
 Route::view('/online-islemler', 'online_islemler')->name('online-islemler');
 Route::view('/e-basvuru-portali', 'e_basvuru')->name('e-basvuru');
+Route::view('/iletisim', 'iletisim')->name('iletisim');
 Route::get('/is-ilanlari', [PublicIsIlaniController::class, 'index'])->name('is-ilanlari');
 
 Route::prefix('admin')->name('admin.')->group(function (): void {
@@ -40,5 +57,8 @@ Route::prefix('admin')->name('admin.')->group(function (): void {
         Route::resource('is-ilanlari', AdminIsIlaniController::class)
             ->except('show')
             ->parameters(['is-ilanlari' => 'isIlani']);
+        Route::resource('urunler', AdminUrunController::class)
+            ->except('show')
+            ->parameters(['urunler' => 'urun']);
     });
 });

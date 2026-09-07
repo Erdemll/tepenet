@@ -58,6 +58,20 @@
               </svg>
               İş İlanları
             </a>
+
+            <a
+              href="{{ route('admin.urunler.index') }}"
+              @if ($active === 'urunler') aria-current="page" @endif
+              @class([
+                'flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition',
+                'bg-red-700 text-white shadow-lg shadow-red-950/25' => $active === 'urunler',
+                'text-slate-300 hover:bg-white/10 hover:text-white' => $active !== 'urunler',
+              ])>
+              <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 7.5 12 3l8 4.5v9L12 21l-8-4.5v-9ZM4.5 7.75 12 12l7.5-4.25M12 12v8.5" />
+              </svg>
+              Ürünler
+            </a>
           </div>
         </nav>
 

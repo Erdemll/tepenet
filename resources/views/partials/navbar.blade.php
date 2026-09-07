@@ -20,17 +20,21 @@
     <nav class="site-nav navbar navbar-expand-xl">
       <div class="container">
         <!-- Masaüstü Menü -->
-        <div class="d-none d-xl-flex ms-auto">
+        <div class="desktop-navigation d-none d-xl-flex ms-auto">
           <ul class="navbar-nav align-items-center gap-2">
             <li class="nav-item dropdown">
               <a
-                class="fs-6 text-danger nav-link dropdown-toggle"
+                class="desktop-nav-link fs-6 text-danger nav-link dropdown-toggle"
                 href="{{ route('ev-guvenligi.index') }}"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <i class="fa-solid fa-house-lock"></i> Ev Güvenliği
+                <i class="fa-solid fa-house-lock"></i>
+                <span class="desktop-nav-label">
+                  <span>Ev</span>
+                  <span>Güvenliği</span>
+                </span>
               </a>
               <ul class="dropdown-menu bg-danger">
                 <li>
@@ -59,14 +63,17 @@
 
             <li class="nav-item dropdown">
               <a
-                class="fs-6 text-danger nav-link dropdown-toggle"
+                class="desktop-nav-link fs-6 text-danger nav-link dropdown-toggle"
                 href="{{ route('is-yeri-guvenligi.index') }}"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <i class="fa-solid fa-building-shield"></i> İş Yeri
-                Güvenliği
+                <i class="fa-solid fa-building-shield"></i>
+                <span class="desktop-nav-label">
+                  <span>İş Yeri</span>
+                  <span>Güvenliği</span>
+                </span>
               </a>
               <ul class="dropdown-menu bg-danger">
                 <li>
@@ -95,13 +102,17 @@
 
             <li class="nav-item dropdown">
               <a
-                class="fs-6 text-danger nav-link dropdown-toggle"
+                class="desktop-nav-link fs-6 text-danger nav-link dropdown-toggle"
                 href="{{ route('kurumsal-cozumler.index') }}"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <i class="fa-solid fa-users-gear"></i> Kurumsal Çözümler
+                <i class="fa-solid fa-users-gear"></i>
+                <span class="desktop-nav-label">
+                  <span>Kurumsal</span>
+                  <span>Çözümler</span>
+                </span>
               </a>
               <ul class="dropdown-menu bg-danger">
                 <li>
@@ -116,14 +127,17 @@
 
             <li class="nav-item dropdown">
               <a
-                class="fs-6 text-danger nav-link dropdown-toggle"
+                class="desktop-nav-link fs-6 text-danger nav-link dropdown-toggle"
                 href="{{ route('kendi-sistemini-olustur.index') }}"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <i class="fa-solid fa-screwdriver-wrench"></i> Kendi
-                Sisteminizi Oluşturun
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                <span class="desktop-nav-label">
+                  <span>Kendi Sisteminizi</span>
+                  <span>Oluşturun</span>
+                </span>
               </a>
               <ul class="dropdown-menu bg-danger">
                 <li>
@@ -138,23 +152,26 @@
 
             <li class="nav-item dropdown">
               <a
-                class="fs-6 text-danger nav-link dropdown-toggle"
+                class="desktop-nav-link fs-6 text-danger nav-link dropdown-toggle"
                 href="{{ route('urunler-ve-hizmetler.index') }}"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <i class="fa-solid fa-shield-halved"></i> Ürün ve
-                Hizmetlerimiz
+                <i class="fa-solid fa-shield-halved"></i>
+                <span class="desktop-nav-label">
+                  <span>Ürün ve</span>
+                  <span>Hizmetlerimiz</span>
+                </span>
               </a>
               <ul class="dropdown-menu bg-danger">
                 <li>
-                  <a class="fs-6 text-white dropdown-item" href="{{ route('urunler-ve-hizmetler.index') }}#kamera-sistemleri">Kamera Sistemleri</a
+                  <a class="fs-6 text-white dropdown-item" href="{{ route('urunler-ve-hizmetler.kamera-sistemleri') }}">Kamera Sistemleri</a
                   >
                 </li>
 
                 <li>
-                  <a class="fs-6 text-white dropdown-item" href="{{ route('urunler-ve-hizmetler.index') }}#alarm-sistemleri">Alarm Sistemleri</a
+                  <a class="fs-6 text-white dropdown-item" href="{{ route('urunler-ve-hizmetler.alarm-sistemleri') }}">Alarm Sistemleri</a
                   >
                 </li>
 
@@ -176,7 +193,22 @@
             </li>
 
             <li class="nav-item">
-              <a style="text-decoration: none;" class="text-danger" href="{{ route('online-islemler') }}">Online İşlemler</a>
+              <a class="desktop-nav-link text-danger" href="{{ route('online-islemler') }}">
+                <i class="fa-solid fa-globe"></i>
+                <span class="desktop-nav-label">
+                  <span>Online</span>
+                  <span>İşlemler</span>
+                </span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="desktop-nav-link text-primary" href="{{ route('iletisim') }}">
+                <i class="fa-solid fa-phone"></i>
+                <span class="desktop-nav-label">
+                  <span>İletişim</span>
+                </span>
+              </a>
             </li>
 
             <li class="nav-item ms-2">
@@ -252,7 +284,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="tel:+905555555555"> İletişim </a>
+            <a class="nav-link" href="{{ route('iletisim') }}"> İletişim </a>
           </li>
 
           <li class="nav-item">

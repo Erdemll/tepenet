@@ -29,12 +29,12 @@
       <section class="process-hero" aria-labelledby="page-title">
         <div class="process-hero__image">
           <img
-            src="{{ asset('resimler/is_guvenligi/nasil-calisir-is-yeri-icin.png') }}"
+            src="{{ asset('resimler/is_guvenligi/banner.png') }}"
             alt="Ev alarm sistemi kullanan aile"
           />
         </div>
         <div class="container">
-          <h1 id="page-title">İş Yeri Alarm Sistemi Nasıl Çalışır?</h1>
+          <h1 style="font-size: xxx-large;" id="page-title">İş Yeri Alarm Sistemi Nasıl Çalışır?</h1>
           <ol class="breadcrumb-list" aria-label="Sayfa yolu">
             <li><a href="{{ route('home') }}">Ana Sayfa</a></li>
             <li><a href="{{ route('is-yeri-guvenligi.index') }}">İş Yeri Güvenliği</a></li>

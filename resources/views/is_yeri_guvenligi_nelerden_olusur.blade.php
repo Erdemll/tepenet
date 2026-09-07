@@ -28,10 +28,10 @@
     <main>
       <section class="catalog-hero" aria-labelledby="page-title">
         <div class="catalog-hero__image">
-          <img src="{{ asset('resimler/is_guvenligi/20221209_ka_banner.png') }}" alt="İş yeri alarm sistemi bileşenleri ve modern çalışma alanı" />
+          <img src="{{ asset('resimler/is_guvenligi/banner.png') }}" alt="İş yeri alarm sistemi bileşenleri ve modern çalışma alanı" />
         </div>
         <div class="container">
-          <h1 id="page-title">İş Yeri Alarm Sistemleri Nelerden Oluşur?</h1>
+          <h1 style="font-size: xxx-large;" id="page-title">İş Yeri Alarm Sistemleri Nelerden Oluşur?</h1>
         </div>
       </section>
 
