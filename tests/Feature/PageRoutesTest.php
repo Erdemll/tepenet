@@ -1,5 +1,9 @@
 <?php
 
+use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
+
+uses(LazilyRefreshDatabase::class);
+
 it('renders each public page from its named route', function (string $routeName, string $viewName) {
     $response = $this->get(route($routeName));
 

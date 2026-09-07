@@ -47,7 +47,7 @@
           <div class="col-12 col-md-6 col-lg-4">
             <a class="e-position-card" href="{{ route('is-ilanlari') }}">
               <div class="e-position-card__media" data-image-slot="Özel güvenlik görevlisi görseli">
-                <img src="{{ asset('resimler/basvuru/guvenlik_gorevlisi2.jpg') }}" alt="">
+                <img src="{{ asset('resimler/basvuru/guvenlik_personeli.png') }}" alt="">
               </div>
               <div class="e-position-card__body">
                 <h3>Özel güvenlik görevlisi</h3>
@@ -60,7 +60,7 @@
           <div class="col-12 col-md-6 col-lg-4">
             <a class="e-position-card" href="{{ route('is-ilanlari') }}">
               <div class="e-position-card__media" data-image-slot="Özel güvenlik yöneticisi görseli">
-                <img src="{{ asset('resimler/basvuru/guvenlik_amiri2.jpg') }}" alt="">
+                <img src="{{ asset('resimler/basvuru/guvenlik_amiri.png') }}" alt="">
               </div>
               <div class="e-position-card__body">
                 <h3>Özel güvenlik yöneticisi</h3>

@@ -1,6 +1,3 @@
-<div>
-    <!-- I have not failed. I've just found 10,000 ways that won't work. - Thomas Edison -->
-</div>
 <!doctype html>
 <html lang="tr">
 
@@ -25,95 +22,6 @@
 
 <body class="page-is-ilanlari">
   @include('partials.navbar')
-
-  @php
-    $jobs = [
-      [
-        'slug' => 'marmara-avrupa-guvenlik-gorevlisi',
-        'title' => 'Özel Güvenlik Görevlisi - Marmara Avrupa Bölge Müdürlüğü',
-        'summary' => 'Marmara Avrupa Bölgesi özel güvenlik görevlisi genel başvurusu',
-        'type' => 'security-officer',
-        'cities' => ['İstanbul'],
-      ],
-      [
-        'slug' => 'akdeniz-guvenlik-gorevlisi',
-        'title' => 'Özel Güvenlik Görevlisi - Akdeniz Bölge Müdürlüğü',
-        'summary' => 'Akdeniz Bölgesi özel güvenlik görevlisi genel başvurusu',
-        'type' => 'security-officer',
-        'cities' => ['Antalya', 'Burdur', 'Isparta'],
-      ],
-      [
-        'slug' => 'cukurova-guvenlik-gorevlisi',
-        'title' => 'Özel Güvenlik Görevlisi - Çukurova Bölge Müdürlüğü',
-        'summary' => 'Çukurova Bölgesi özel güvenlik görevlisi genel başvurusu',
-        'type' => 'security-officer',
-        'cities' => ['Adana', 'Adıyaman', 'Diyarbakır', 'Elazığ', 'Gaziantep', 'Hakkari', 'Hatay', 'Mersin', 'Malatya', 'Kahramanmaraş', 'Mardin', 'Siirt', 'Şanlıurfa', 'Batman', 'Şırnak', 'Kilis', 'Osmaniye'],
-      ],
-      [
-        'slug' => 'dogu-marmara-guvenlik-gorevlisi',
-        'title' => 'Özel Güvenlik Görevlisi - Doğu Marmara Bölge Müdürlüğü',
-        'summary' => 'Doğu Marmara Bölgesi özel güvenlik görevlisi genel başvurusu',
-        'type' => 'security-officer',
-        'cities' => ['Bolu', 'Kocaeli', 'Sakarya', 'Zonguldak', 'Bartın', 'Karabük', 'Düzce'],
-      ],
-      [
-        'slug' => 'ege-guvenlik-gorevlisi',
-        'title' => 'Özel Güvenlik Görevlisi - Ege Bölge Müdürlüğü',
-        'summary' => 'Ege Bölgesi özel güvenlik görevlisi genel başvurusu',
-        'type' => 'security-officer',
-        'cities' => ['Aydın', 'İzmir', 'Manisa', 'Uşak'],
-      ],
-      [
-        'slug' => 'guney-ege-guvenlik-gorevlisi',
-        'title' => 'Özel Güvenlik Görevlisi - Güney Ege Bölge Müdürlüğü',
-        'summary' => 'Güney Ege Bölgesi özel güvenlik görevlisi genel başvurusu',
-        'type' => 'security-officer',
-        'cities' => ['Denizli', 'Muğla'],
-      ],
-      [
-        'slug' => 'guney-marmara-guvenlik-gorevlisi',
-        'title' => 'Özel Güvenlik Görevlisi - Güney Marmara Bölge Müdürlüğü',
-        'summary' => 'Güney Marmara Bölgesi özel güvenlik görevlisi genel başvurusu',
-        'type' => 'security-officer',
-        'cities' => ['Afyonkarahisar', 'Balıkesir', 'Bilecik', 'Bursa', 'Eskişehir', 'Kütahya', 'Yalova'],
-      ],
-      [
-        'slug' => 'ic-anadolu-guvenlik-gorevlisi',
-        'title' => 'Özel Güvenlik Görevlisi - İç Anadolu Bölge Müdürlüğü',
-        'summary' => 'İç Anadolu Bölgesi özel güvenlik görevlisi genel başvurusu',
-        'type' => 'security-officer',
-        'cities' => ['Ankara', 'Bitlis', 'Çankırı', 'Kayseri', 'Kırşehir', 'Konya', 'Nevşehir', 'Niğde', 'Van', 'Aksaray', 'Karaman', 'Kırıkkale'],
-      ],
-      [
-        'slug' => 'karadeniz-guvenlik-gorevlisi',
-        'title' => 'Özel Güvenlik Görevlisi - Karadeniz Bölge Müdürlüğü',
-        'summary' => 'Karadeniz Bölgesi özel güvenlik görevlisi genel başvurusu',
-        'type' => 'security-officer',
-        'cities' => ['Ağrı', 'Amasya', 'Artvin', 'Bingöl', 'Çorum', 'Erzincan', 'Erzurum', 'Giresun', 'Gümüşhane', 'Kars', 'Kastamonu', 'Muş', 'Ordu', 'Rize', 'Samsun', 'Sinop', 'Sivas', 'Tokat', 'Trabzon', 'Tunceli', 'Yozgat', 'Bayburt', 'Ardahan', 'Iğdır'],
-      ],
-      [
-        'slug' => 'marmara-anadolu-guvenlik-gorevlisi',
-        'title' => 'Özel Güvenlik Görevlisi - Marmara Anadolu Bölge Müdürlüğü',
-        'summary' => 'Marmara Anadolu Bölgesi özel güvenlik görevlisi genel başvurusu',
-        'type' => 'security-officer',
-        'cities' => ['İstanbul'],
-      ],
-      [
-        'slug' => 'trakya-guvenlik-gorevlisi',
-        'title' => 'Özel Güvenlik Görevlisi - Trakya Bölge Müdürlüğü',
-        'summary' => 'Trakya Bölgesi özel güvenlik görevlisi genel başvurusu',
-        'type' => 'security-officer',
-        'cities' => ['Çanakkale', 'Edirne', 'Kırklareli', 'Tekirdağ'],
-      ],
-      [
-        'slug' => 'guvenlik-yoneticisi-genel-basvuru',
-        'title' => 'Güvenlik Yöneticisi Genel Başvuru',
-        'summary' => 'Özel güvenlik yöneticisi genel başvurusu',
-        'type' => 'security-manager',
-        'cities' => ['Ankara', 'Antalya', 'Bursa', 'Çanakkale', 'Denizli', 'Eskişehir', 'Mersin', 'İstanbul', 'İzmir', 'Kocaeli', 'Konya', 'Muğla', 'Samsun', 'Tekirdağ', 'Trabzon', 'Yalova'],
-      ],
-    ];
-  @endphp
 
   <main>
     <section class="jobs-hero" aria-labelledby="jobs-title">
@@ -161,8 +69,9 @@
                 <label for="positionFilter">Pozisyon</label>
                 <select id="positionFilter" class="form-select">
                   <option value="all">Tüm pozisyonlar</option>
-                  <option value="security-officer">Özel Güvenlik Görevlisi</option>
-                  <option value="security-manager">Özel Güvenlik Yöneticisi</option>
+                  @foreach ($jobTypes as $value => $label)
+                    <option value="{{ $value }}">{{ $label }}</option>
+                  @endforeach
                 </select>
               </div>
 
@@ -233,37 +142,37 @@
               @foreach ($jobs as $job)
                 <article
                   class="job-card"
-                  id="{{ $job['slug'] }}"
+                  id="{{ $job->slug }}"
                   data-job-card
-                  data-title="{{ $job['title'] }}"
-                  data-summary="{{ $job['summary'] }}"
-                  data-type="{{ $job['type'] }}"
-                  data-cities="{{ implode('|', $job['cities']) }}">
+                  data-title="{{ $job->title }}"
+                  data-summary="{{ $job->summary }}"
+                  data-type="{{ $job->type }}"
+                  data-cities="{{ implode('|', $job->cities) }}">
                   <div class="job-card__icon" aria-hidden="true"><i class="fa-solid fa-briefcase"></i></div>
                   <div class="job-card__content">
                     <div class="job-card__date job-card__date--mobile">
                       <span>Son Başvuru</span>
-                      <strong>31.10.2026</strong>
+                      <strong>{{ $job->application_deadline?->format('d.m.Y') ?? 'Sürekli' }}</strong>
                     </div>
-                    <h2>{{ $job['title'] }}</h2>
-                    <p>{{ $job['summary'] }}</p>
+                    <h2>{{ $job->title }}</h2>
+                    <p>{{ $job->summary }}</p>
                     <div class="job-card__meta">
-                      <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> {{ implode(', ', $job['cities']) }}</span>
-                      <span><i class="fa-regular fa-clock" aria-hidden="true"></i> Tam zamanlı</span>
+                      <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> {{ implode(', ', $job->cities) }}</span>
+                      <span><i class="fa-regular fa-clock" aria-hidden="true"></i> {{ $job->employment_type }}</span>
                     </div>
                   </div>
                   <div class="job-card__date job-card__date--desktop">
                     <span>Son Başvuru</span>
-                    <strong>31.10.2026</strong>
+                    <strong>{{ $job->application_deadline?->format('d.m.Y') ?? 'Sürekli' }}</strong>
                   </div>
                   <div class="job-card__actions">
                     <a class="jobs-button jobs-button--apply" href="{{ route('e-basvuru') }}#ise-alim-sureci">Hemen Başvur</a>
                     <button
                       class="job-card__share"
                       type="button"
-                      data-share-job="{{ $job['title'] }}"
-                      data-share-anchor="{{ $job['slug'] }}"
-                      aria-label="{{ $job['title'] }} ilanını paylaş">
+                      data-share-job="{{ $job->title }}"
+                      data-share-anchor="{{ $job->slug }}"
+                      aria-label="{{ $job->title }} ilanını paylaş">
                       <i class="fa-solid fa-share-nodes" aria-hidden="true"></i>
                     </button>
                   </div>

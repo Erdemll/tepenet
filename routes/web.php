@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\AuthenticatedSessionController;
+use App\Http\Controllers\Admin\IsIlaniController as AdminIsIlaniController;
+use App\Http\Controllers\IsIlaniController as PublicIsIlaniController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'index')->name('home');
@@ -23,4 +26,19 @@ Route::view('/hakkimizda', 'hakkimizda')->name('hakkimizda.index');
 Route::view('/hakkimizda/yonetim-kurulu', 'yonetim_kurulu')->name('hakkimizda.yonetim-kurulu');
 Route::view('/online-islemler', 'online_islemler')->name('online-islemler');
 Route::view('/e-basvuru-portali', 'e_basvuru')->name('e-basvuru');
-Route::view('/is-ilanlari', 'is_ilanlari')->name('is-ilanlari');
+Route::get('/is-ilanlari', [PublicIsIlaniController::class, 'index'])->name('is-ilanlari');
+
+Route::prefix('admin')->name('admin.')->group(function (): void {
+    Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
+    Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login.store');
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
+        ->middleware('auth')
+        ->name('logout');
+
+    Route::middleware(['auth', 'can:access-admin'])->group(function (): void {
+        Route::view('/', 'admin.dashboard')->name('dashboard');
+        Route::resource('is-ilanlari', AdminIsIlaniController::class)
+            ->except('show')
+            ->parameters(['is-ilanlari' => 'isIlani']);
+    });
+});
