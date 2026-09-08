@@ -115,4 +115,9 @@ return [
         'name' => env('MAIL_FROM_NAME', env('APP_NAME', 'Laravel')),
     ],
 
+    'discovery' => [
+        'to' => env('DISCOVERY_MAIL_TO', 'info@tepenetguvenlik.com'),
+        'test_to' => env('DISCOVERY_TEST_MAIL_TO', 'rdmlale@gmail.com'),
+    ],
+
 ];

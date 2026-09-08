@@ -256,10 +256,11 @@
       id="mobileMenu"
       aria-labelledby="mobileMenuLabel"
     >
-      <!-- Başlık -->
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="mobileMenuLabel">Tepenet</h5>
-
+      <div class="mobile-menu-header offcanvas-header">
+        <a class="mobile-menu-brand" href="{{ route('home') }}" aria-label="Tepenet ana sayfa">
+          <img src="{{ asset('logo.png') }}" alt="" />
+        </a>
+        <h2 class="visually-hidden" id="mobileMenuLabel">Mobil Menü</h2>
         <button
           type="button"
           class="btn-close"
@@ -268,33 +269,114 @@
         ></button>
       </div>
 
-      <!-- Menü -->
-      <div class="offcanvas-body">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" href="{{ route('home') }}"> Ana Sayfa </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('hakkimizda.index') }}"> Hakkımızda </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('urunler-ve-hizmetler.index') }}"> Ürünler </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('iletisim') }}"> İletişim </a>
-          </li>
-
-          <li class="nav-item">
-              <a style="text-decoration: none;" class="text-danger" href="{{ route('online-islemler') }}">Online İşlemler</a>
+      <div class="mobile-navigation offcanvas-body" data-mobile-navigation>
+        <nav id="mobileNavigationAccordion" aria-label="Mobil ana menü">
+          <ul class="navbar-nav">
+            <li class="mobile-nav-item">
+              <a @class(['mobile-nav-link', 'active' => request()->routeIs('home')]) href="{{ route('home') }}">
+                <span>Ana Sayfa</span>
+              </a>
             </li>
-        </ul>
 
-        <hr />
+            <li class="mobile-nav-item">
+              <a @class(['mobile-nav-link', 'active' => request()->routeIs('hakkimizda.*')]) href="{{ route('hakkimizda.index') }}">
+                <span>Hakkımızda</span>
+              </a>
+            </li>
 
-        <a class="quote-button btn btn-primary w-100" href="{{ route('home') }}#ucretsiz-kesif">
+            <li class="mobile-nav-item">
+              <div class="mobile-nav-row">
+                <a @class(['mobile-nav-link', 'active' => request()->routeIs('ev-guvenligi.*')]) href="{{ route('ev-guvenligi.index') }}">
+                  <span>Ev Güvenliği</span>
+                </a>
+                <button class="mobile-nav-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#mobileEvGuvenligiMenu" aria-controls="mobileEvGuvenligiMenu" aria-expanded="{{ request()->routeIs('ev-guvenligi.*') ? 'true' : 'false' }}" aria-label="Ev Güvenliği alt menüsünü aç veya kapat">
+                  <span class="mobile-nav-chevron" aria-hidden="true"></span>
+                </button>
+              </div>
+              <div id="mobileEvGuvenligiMenu" @class(['mobile-submenu collapse', 'show' => request()->routeIs('ev-guvenligi.*')]) data-bs-parent="#mobileNavigationAccordion">
+                <a @class(['mobile-submenu-link', 'active' => request()->routeIs('ev-guvenligi.index')]) href="{{ route('ev-guvenligi.index') }}">Ev Alarm Sistemleri</a>
+                <a @class(['mobile-submenu-link', 'active' => request()->routeIs('ev-guvenligi.nelerden-olusur')]) href="{{ route('ev-guvenligi.nelerden-olusur') }}">Nelerden Oluşur?</a>
+                <a @class(['mobile-submenu-link', 'active' => request()->routeIs('ev-guvenligi.nasil-calisir')]) href="{{ route('ev-guvenligi.nasil-calisir') }}">Nasıl Çalışır?</a>
+              </div>
+            </li>
+
+            <li class="mobile-nav-item">
+              <div class="mobile-nav-row">
+                <a @class(['mobile-nav-link', 'active' => request()->routeIs('is-yeri-guvenligi.*')]) href="{{ route('is-yeri-guvenligi.index') }}">
+                  <span>İş Yeri Güvenliği</span>
+                </a>
+                <button class="mobile-nav-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#mobileIsYeriGuvenligiMenu" aria-controls="mobileIsYeriGuvenligiMenu" aria-expanded="{{ request()->routeIs('is-yeri-guvenligi.*') ? 'true' : 'false' }}" aria-label="İş Yeri Güvenliği alt menüsünü aç veya kapat">
+                  <span class="mobile-nav-chevron" aria-hidden="true"></span>
+                </button>
+              </div>
+              <div id="mobileIsYeriGuvenligiMenu" @class(['mobile-submenu collapse', 'show' => request()->routeIs('is-yeri-guvenligi.*')]) data-bs-parent="#mobileNavigationAccordion">
+                <a @class(['mobile-submenu-link', 'active' => request()->routeIs('is-yeri-guvenligi.index')]) href="{{ route('is-yeri-guvenligi.index') }}">İş Yeri Alarm Sistemleri</a>
+                <a @class(['mobile-submenu-link', 'active' => request()->routeIs('is-yeri-guvenligi.nelerden-olusur')]) href="{{ route('is-yeri-guvenligi.nelerden-olusur') }}">Nelerden Oluşur?</a>
+                <a @class(['mobile-submenu-link', 'active' => request()->routeIs('is-yeri-guvenligi.nasil-calisir')]) href="{{ route('is-yeri-guvenligi.nasil-calisir') }}">Nasıl Çalışır?</a>
+              </div>
+            </li>
+
+            <li class="mobile-nav-item">
+              <div class="mobile-nav-row">
+                <a @class(['mobile-nav-link', 'active' => request()->routeIs('kurumsal-cozumler.*')]) href="{{ route('kurumsal-cozumler.index') }}">
+                  <span>Kurumsal Çözümler</span>
+                </a>
+                <button class="mobile-nav-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#mobileKurumsalCozumlerMenu" aria-controls="mobileKurumsalCozumlerMenu" aria-expanded="{{ request()->routeIs('kurumsal-cozumler.*') ? 'true' : 'false' }}" aria-label="Kurumsal Çözümler alt menüsünü aç veya kapat">
+                  <span class="mobile-nav-chevron" aria-hidden="true"></span>
+                </button>
+              </div>
+              <div id="mobileKurumsalCozumlerMenu" @class(['mobile-submenu collapse', 'show' => request()->routeIs('kurumsal-cozumler.*')]) data-bs-parent="#mobileNavigationAccordion">
+                <a @class(['mobile-submenu-link', 'active' => request()->routeIs('kurumsal-cozumler.index')]) href="{{ route('kurumsal-cozumler.index') }}">Kurumsal Güvenlik Çözümleri</a>
+              </div>
+            </li>
+
+            <li class="mobile-nav-item">
+              <div class="mobile-nav-row">
+                <a @class(['mobile-nav-link', 'active' => request()->routeIs('kendi-sistemini-olustur.*')]) href="{{ route('kendi-sistemini-olustur.index') }}">
+                  <span>Kendi Sisteminizi Oluşturun</span>
+                </a>
+                <button class="mobile-nav-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#mobileKendiSisteminiOlusturMenu" aria-controls="mobileKendiSisteminiOlusturMenu" aria-expanded="{{ request()->routeIs('kendi-sistemini-olustur.*') ? 'true' : 'false' }}" aria-label="Kendi Sisteminizi Oluşturun alt menüsünü aç veya kapat">
+                  <span class="mobile-nav-chevron" aria-hidden="true"></span>
+                </button>
+              </div>
+              <div id="mobileKendiSisteminiOlusturMenu" @class(['mobile-submenu collapse', 'show' => request()->routeIs('kendi-sistemini-olustur.*')]) data-bs-parent="#mobileNavigationAccordion">
+                <a @class(['mobile-submenu-link', 'active' => request()->routeIs('kendi-sistemini-olustur.index')]) href="{{ route('kendi-sistemini-olustur.index') }}">Kurumsal Alarm Çözümleri</a>
+              </div>
+            </li>
+
+            <li class="mobile-nav-item">
+              <div class="mobile-nav-row">
+                <a @class(['mobile-nav-link', 'active' => request()->routeIs('urunler-ve-hizmetler.*')]) href="{{ route('urunler-ve-hizmetler.index') }}">
+                  <span>Ürün ve Hizmetlerimiz</span>
+                </a>
+                <button class="mobile-nav-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#mobileUrunlerMenu" aria-controls="mobileUrunlerMenu" aria-expanded="{{ request()->routeIs('urunler-ve-hizmetler.*') ? 'true' : 'false' }}" aria-label="Ürün ve Hizmetlerimiz alt menüsünü aç veya kapat">
+                  <span class="mobile-nav-chevron" aria-hidden="true"></span>
+                </button>
+              </div>
+              <div id="mobileUrunlerMenu" @class(['mobile-submenu collapse', 'show' => request()->routeIs('urunler-ve-hizmetler.*')]) data-bs-parent="#mobileNavigationAccordion">
+                <a @class(['mobile-submenu-link', 'active' => request()->routeIs('urunler-ve-hizmetler.kamera-sistemleri')]) href="{{ route('urunler-ve-hizmetler.kamera-sistemleri') }}">Kamera Sistemleri</a>
+                <a @class(['mobile-submenu-link', 'active' => request()->routeIs('urunler-ve-hizmetler.alarm-sistemleri')]) href="{{ route('urunler-ve-hizmetler.alarm-sistemleri') }}">Alarm Sistemleri</a>
+                <a class="mobile-submenu-link" href="{{ route('urunler-ve-hizmetler.index') }}">Yenilikçi Ürünler</a>
+                <a class="mobile-submenu-link" href="{{ route('urunler-ve-hizmetler.index') }}">Hizmetlerimiz</a>
+                <a class="mobile-submenu-link" href="{{ route('urunler-ve-hizmetler.index') }}">Termal Kamera Çözümleri</a>
+              </div>
+            </li>
+
+            <li class="mobile-nav-item">
+              <a @class(['mobile-nav-link', 'active' => request()->routeIs('online-islemler')]) href="{{ route('online-islemler') }}">
+                <span>Online İşlemler</span>
+              </a>
+            </li>
+
+            <li class="mobile-nav-item">
+              <a @class(['mobile-nav-link', 'active' => request()->routeIs('iletisim')]) href="{{ route('iletisim') }}">
+                <span>İletişim</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <a class="mobile-quote-button quote-button btn btn-primary w-100" href="{{ route('home') }}#ucretsiz-kesif">
           Teklif Al
         </a>
       </div>

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tepenet Güvenlik</title>
+  <title>Online İşlemler | Tepenet Güvenlik</title>
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
     rel="stylesheet"
@@ -17,148 +17,200 @@
     crossorigin="anonymous"></script>
 </head>
 
-<body class="page-index">
+<body class="page-online-islemler">
   @include('partials.navbar')
 
-  <main>
-    <div class="container d-flex justify-content-center">
-      <div class="col-5 p-5">
-        <div style="background-color: whitesmoke;" class="container-fluid p-4 d-flex flex-column border border-0 rounded-3">
-          <h3>Online İşlemler</h3>
-          <label class="mt-3" for="sinyal_id">Müşteri Numarası</label>
-          <input class="mt-1 form-control" type="text" name="" id="sinyal_id">
-          <label class="mt-3" for="sifre">Şifre</label>
-          <input class="mt-1 form-control" type="text" name="" id="sifre">
-          <div class="d-flex justify-content-between align-items-end mt-3">
-            <button class="btn btn-danger">Giriş Yap</button>
-            <a href="#" class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Şifremi Unuttum</a>
+  <main class="online-page">
+    <section class="online-hero" aria-labelledby="online-page-title">
+      <div class="container">
+        <p class="online-hero__eyebrow">Müşteri İşlem Merkezi</p>
+        <h1 id="online-page-title">Online İşlemler</h1>
+        <p>Hesabınıza giriş yapın veya ilk kullanım için kaydınızı kolayca oluşturun.</p>
+      </div>
+    </section>
+
+    <section class="online-content">
+      <div class="container">
+        <div class="online-layout">
+          <aside class="online-sidebar" aria-label="Online işlemler giriş seçenekleri">
+            <section class="online-card online-login-card" aria-labelledby="online-login-title">
+              <div class="online-card__heading">
+                <span class="online-card__icon" aria-hidden="true"><i class="fa-solid fa-lock"></i></span>
+                <div>
+                  <p>Mevcut Müşteri</p>
+                  <h2 id="online-login-title">Online İşlemler</h2>
+                </div>
+              </div>
+
+              <div class="online-field">
+                <label for="sinyal_id">Müşteri Numarası</label>
+                <input class="form-control" type="text" id="sinyal_id" inputmode="numeric" autocomplete="username" />
+              </div>
+
+              <div class="online-field">
+                <label for="giris_sifre">Şifre</label>
+                <input class="form-control" type="password" id="giris_sifre" autocomplete="current-password" />
+              </div>
+
+              <div class="online-login-actions">
+                <button type="button" class="online-button">Giriş Yap</button>
+                <a href="#">Şifremi Unuttum</a>
+              </div>
+            </section>
+
+            <section class="online-card online-register-summary" aria-labelledby="online-register-summary-title">
+              <div class="online-card__heading">
+                <span class="online-card__icon" aria-hidden="true"><i class="fa-solid fa-user-plus"></i></span>
+                <div>
+                  <p>İlk Kullanım</p>
+                  <h2 id="online-register-summary-title">Yeni Kayıt</h2>
+                </div>
+              </div>
+              <p>Online İşlem Merkezi’ne ilk kez giriş yapacaksanız müşteri numaranızla hızlıca kayıt olabilirsiniz.</p>
+              <button
+                id="registration-toggle"
+                type="button"
+                class="online-button online-button--wide"
+                aria-controls="kart_1 kart_2"
+                aria-expanded="false"
+              >
+                Yeni Kayıt
+              </button>
+            </section>
+          </aside>
+
+          <div class="online-main">
+            <section id="kart_1" class="online-card online-intro-card" aria-labelledby="online-welcome-title">
+              <p class="online-card__eyebrow">Güvenli ve Kolay Yönetim</p>
+              <h2 id="online-welcome-title">Tepenet Güvenlik Online İşlemlere Hoş Geldiniz</h2>
+              <p><strong>Online İşlemler</strong> ile aşağıdaki işlemlerinizin tümünü kolaylıkla ve güvenle yapabilirsiniz.</p>
+              <img
+                src="{{ asset('resimler/online_islemler/detay.png') }}"
+                alt="Online İşlemler üzerinden yapılabilen işlemler"
+              />
+              <div class="online-intro-notes">
+                <p><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Sisteme giriş yapmak için giriş bölümündeki alanları doldurmanız yeterlidir.</p>
+                <p><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Daha önce kayıt olmadıysanız Yeni Kayıt formuyla hızlıca kaydınızı oluşturabilirsiniz.</p>
+              </div>
+            </section>
+
+            <section id="kart_2" class="online-card online-register-card" aria-labelledby="online-register-title" hidden>
+              <p class="online-card__eyebrow">Online İşlem Merkezi</p>
+              <h2 id="online-register-title">Yeni Kayıt</h2>
+              <p><strong>Online İşlemler</strong> bölümüne üye olurken sistemde kayıtlı telefon numaranıza onay kodu gelecektir. Lütfen telefon alanına sistemde kayıtlı numaranızı giriniz.</p>
+
+              <form class="online-register-form" onsubmit="event.preventDefault();" action="#" method="post">
+                @csrf
+
+                <div class="online-field">
+                  <label for="musteri_id">Müşteri Numarası</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="musteri_id"
+                    name="musteri_id"
+                    inputmode="numeric"
+                    pattern="[0-9]+"
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                    required
+                  />
+                </div>
+
+                <div class="online-field">
+                  <label for="tc">TC / VK Numarası</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="tc"
+                    name="tc"
+                    inputmode="numeric"
+                    pattern="[0-9]{10,11}"
+                    minlength="10"
+                    maxlength="11"
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                    required
+                  />
+                </div>
+
+                <div class="online-field">
+                  <label for="mail">E-posta</label>
+                  <input class="form-control" type="email" id="mail" name="mail" autocomplete="email" required />
+                </div>
+
+                <div class="online-field">
+                  <label for="tel">Telefon</label>
+                  <input
+                    class="form-control"
+                    type="tel"
+                    id="tel"
+                    name="tel"
+                    inputmode="tel"
+                    placeholder="05XXXXXXXXX"
+                    pattern="05[0-9]{9}"
+                    minlength="11"
+                    maxlength="11"
+                    autocomplete="tel"
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                    required
+                  />
+                </div>
+
+                <div class="online-field">
+                  <label for="kayit_sifre">Şifre</label>
+                  <input class="form-control" type="password" id="kayit_sifre" name="sifre" minlength="8" autocomplete="new-password" required />
+                </div>
+
+                <div class="online-field">
+                  <label for="sifre_tekrar">Şifre Tekrar</label>
+                  <input class="form-control" type="password" id="sifre_tekrar" name="sifre_tekrar" minlength="8" autocomplete="new-password" required />
+                </div>
+
+                <p class="online-register-form__notice">Yeni kullanıcı olmadan önce lütfen <a href="#">Aydınlatma Metni</a>’ni okuyunuz. Metne sitedeki bağlantıdan veya mobil uygulamadan her zaman ulaşabilirsiniz.</p>
+
+                <div class="online-consent">
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="kullanim_sozlesmesi" required />
+                    <label class="form-check-label" for="kullanim_sozlesmesi"><a href="#">Kullanım Sözleşmesi</a>’ni okudum ve onaylıyorum.</label>
+                  </div>
+
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="ticari_ileti" required />
+                    <label class="form-check-label" for="ticari_ileti">Tarafıma şirketiniz tarafından ticari elektronik ileti gönderilmesi için <a href="#">burada belirtilen</a> iznim vardır.</label>
+                  </div>
+                </div>
+
+                <input type="submit" value="Kayıt Ol" class="online-button online-button--wide" />
+              </form>
+            </section>
           </div>
         </div>
-        <div style="background-color: whitesmoke;" class="container-fluid p-4 d-flex flex-column border border-0 rounded-3 mt-5">
-          <h3>Yeni Kayıt</h3>
-          <p>Online İşlem Merkezi’ne ilk kez giriş yapacaksanız, aşağıdaki ‘Yeni Kayıt’ butonuna tıklayarak ‘Müşteri numaranız’ ile online işlemler merkezine kayıt olabilirsiniz.</p>
-          <button onclick="kart_degistir()" class="btn btn-danger">Yeni Kayıt</button>
-        </div>
       </div>
-      <div class="col-7 p-5">
-
-        <div id="kart_1" style="background-color: whitesmoke;" class="container-fluid p-4 d-flex flex-column border border-0 rounded-3">
-          <h3>Tepenet Güvenlik Online İşlemlere Hoş Geldiniz</h3>
-          <h6 class="mt-3"><strong>Online İşlemler</strong> ile aşağıdaki işlemlerinizin tümünü kolaylıkla ve güvenle yapabilirsiniz.</h6>
-          <img src="{{ asset('resimler/online_islemler/detay.png') }}" class="img-fluid my-5" alt="">
-          <span>Sisteme giriş yapabilmek için; ‘Online İşlemlere Giriş’ bölümündeki alanları doldurmanız yeterlidir.</span>
-          <span>Daha önce kayıt olmadıysanız ‘Yeni Kayıt’ sekmesindeki formu doldurarak hızlıca kaydınızı oluşturabilirsiniz.</span>
-        </div>
-
-        <div id="kart_2" style="background-color: whitesmoke;" class="d-none container-fluid p-4 d-flex flex-column border border-0 rounded-3">
-          <h3>Yeni Kayıt</h3>
-          <span class="mt-4"><strong>Online İşlemler</strong> bölümüne üye olurken sistemde kayıtlı telefon numaranıza onay kodu gelecektir.
-            Lütfen <strong>‘Telefon’</strong> bilgisi bölümüne sistemde kayıtlı olan numaranızı giriniz.</span>
-          <form onsubmit="event.preventDefault();" action="#" method="post">
-            @csrf
-            <label class="mt-3" for="musteri_id">Müşteri Numarası</label>
-            <input
-              class="mt-1 form-control"
-              type="text"
-              id="musteri_id"
-              name="musteri_id"
-              inputmode="numeric"
-              pattern="[0-9]+"
-              oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-              required />
-
-            <label class="mt-3" for="tc">TC / VK Numarası</label>
-            <input
-              class="mt-1 form-control"
-              type="text"
-              id="tc"
-              name="tc"
-              inputmode="numeric"
-              pattern="[0-9]{10,11}"
-              minlength="10"
-              oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-              maxlength="11"
-              required />
-
-            <label class="mt-3" for="mail">E-mail</label>
-            <input
-              class="mt-1 form-control"
-              type="email"
-              id="mail"
-              name="mail"
-              autocomplete="email"
-              required />
-
-            <label class="mt-3" for="tel">Telefon</label>
-            <input
-              class="mt-1 form-control"
-              type="tel"
-              id="tel"
-              name="tel"
-              inputmode="tel"
-              placeholder="05XXXXXXXXX"
-              pattern="05[0-9]{9}"
-              minlength="11"
-              maxlength="11"
-              autocomplete="tel"
-              oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-              required />
-
-            <label class="mt-3" for="sifre">Şifre</label>
-            <input
-              class="mt-1 form-control"
-              type="password"
-              id="sifre"
-              name="sifre"
-              minlength="8"
-              autocomplete="new-password"
-              required />
-
-            <label class="mt-3" for="sifre_tekrar">Şifre Tekrar</label>
-            <input
-              class="mt-1 form-control"
-              type="password"
-              id="sifre_tekrar"
-              name="sifre_tekrar"
-              minlength="8"
-              autocomplete="new-password"
-              required />
-
-            <span class="mt-5 fw-light">Yeni Kullanıcı/üye olmadan önce lütfen <a style="text-decoration: none;" class="text-danger" href="#">Aydınlatma Metni</a> 'ni okuyunuz. Aydınlatma Metni’ne her zaman sitedeki bu linkten veya Securitas Alarm Mobil Uygulaması üzerinden ulaşabilirsiniz.</span>
-
-            <div class="mt-5 form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
-              <label class="form-check-label fst-italic" for="exampleCheck1"><a style="text-decoration: none;" class="text-danger" href="#">Kullanım Sözleşmesi</a> 'ni okudum, onaylıyorum.</label>
-            </div>
-
-            <div class="mb-3 mt-5 form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
-
-              <label class="form-check-label fst-italic" for="exampleCheck1">Tarafıma şirketiniz tarafından ticari elektronik ileti gönderilmesi için <a style="text-decoration: none;" class="text-danger" href="#">burada da belirtilen</a> iznim vardır.</label>
-            </div>
-
-            <input type="submit" value="Kayıt Ol" class="btn btn-danger">
-          </form>
-        </div>
-      </div>
-    </div>
+    </section>
   </main>
 
-  <a class="floating-discovery" href="#ucretsiz-kesif">
+  <a class="floating-discovery" href="{{ route('home') }}#ucretsiz-kesif">
     <span aria-hidden="true">✓</span> Ücretsiz Keşif
   </a>
 
   @include('partials.footer')
 
   <script>
-    const kart_1 = document.getElementById('kart_1');
-    const kart_2 = document.getElementById('kart_2');
+    const registrationToggle = document.getElementById('registration-toggle');
+    const welcomePanel = document.getElementById('kart_1');
+    const registrationPanel = document.getElementById('kart_2');
 
-    function kart_degistir()
-    {
-      kart_1.classList.toggle('d-none');
-      kart_2.classList.toggle('d-none');
-    }
+    registrationToggle.addEventListener('click', () => {
+      const isOpeningRegistration = registrationPanel.hidden;
+
+      welcomePanel.hidden = isOpeningRegistration;
+      registrationPanel.hidden = !isOpeningRegistration;
+      registrationToggle.setAttribute('aria-expanded', String(isOpeningRegistration));
+      registrationToggle.textContent = isOpeningRegistration ? 'Tanıtıma Dön' : 'Yeni Kayıt';
+
+      if (isOpeningRegistration) {
+        registrationPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
   </script>
 
   <script

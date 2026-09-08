@@ -23,6 +23,7 @@ it('renders each public page from its named route', function (string $routeName,
     'about' => ['hakkimizda.index', 'hakkimizda'],
     'board of directors' => ['hakkimizda.yonetim-kurulu', 'yonetim_kurulu'],
     'job application portal' => ['e-basvuru', 'e_basvuru'],
+    'online operations' => ['online-islemler', 'online_islemler'],
     'contact' => ['iletisim', 'iletisim'],
     'job listings' => ['is-ilanlari', 'is_ilanlari'],
 ]);
