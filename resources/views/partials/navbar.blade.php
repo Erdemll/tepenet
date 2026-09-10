@@ -5,9 +5,9 @@
       <a class="partner-link" href="{{ route('iletisim') }}">İş Ortağımız Olmak İster Misiniz?</a>
       <span class="topbar-divider mx-2">|</span>
       <i class="contact-icon fa-solid fa-headset"></i>
-      <span>Hemen Ara</span>
+      <span class="topbar-call-label">Hemen Ara</span>
       <a href="tel:+905555555555">+0908505329670</a>
-      <span class="topbar-divider mx-2">|</span> <span>🇹🇷 Türkçe</span>
+      <span class="topbar-divider mx-2">|</span> <span class="topbar-language">🇹🇷 Türkçe</span>
     </div>
   </div>
 

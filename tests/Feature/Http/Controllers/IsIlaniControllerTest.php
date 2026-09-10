@@ -45,3 +45,16 @@ it('escapes job content rendered on the public page', function () {
         ->assertDontSee('<img src=x onerror=alert(1)>', false)
         ->assertDontSee('<script>Konya</script>', false);
 });
+
+it('renders an accessible mobile filter dialog contract', function () {
+    IsIlani::factory()->create();
+
+    $response = $this->get(route('is-ilanlari'));
+
+    $response
+        ->assertSee('id="jobsFilter" role="region"', false)
+        ->assertSee('id="jobsFilterBackdrop"', false)
+        ->assertSee('jobs-filter-open', false)
+        ->assertSee("isMobile ? 'dialog' : 'region'", false)
+        ->assertSee("event.key === 'Escape'", false);
+});

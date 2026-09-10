@@ -24,7 +24,7 @@
     ></script>
   </head>
 
-  <body class="page-ev-guvenligi-nasil-calisir">
+  <body class="page-hakkimizda process-page">
     @include('partials.navbar')
 
     <main>
@@ -48,7 +48,7 @@
         <div class="container">
           <div class="row g-4 g-lg-5">
             <div class="col-12 col-lg-3">
-              <nav aria-label="Ev güvenliği sayfaları">
+              <nav aria-label="Hakkımızda sayfaları">
                 <ul class="process-navigation">
                   <li>
                     <a class="active" aria-current="page" href="{{ route('hakkimizda.index') }}"

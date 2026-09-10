@@ -11,4 +11,4 @@ Before planning or editing, find the row whose globs match the file's path and r
 | app/Support/BlogHtmlSanitizer.php,app/Http/Requests/Admin/SaveBlogRequest.php | .ai/rules/requests-admin.md |
 | app/Http/Requests/StoreDiscoveryRequest.php, app/Http/Requests/StoreContactRequest.php | .ai/rules/requests.md |
 | resources/views/admin/**/*.blade.php | .ai/rules/views-admin.md |
-| resources/views/**/*.blade.php | .ai/rules/views.md |
+| resources/views/**/*.blade.php, resources/views/iletisim.blade.php, resources/views/is_ilanlari.blade.php | .ai/rules/views.md |

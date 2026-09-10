@@ -41,6 +41,7 @@
           <div
             class="builder-progress-wrap"
             aria-label="Sistem oluşturma ilerlemesi">
+            <p class="builder-progress__summary" aria-live="polite">Adım 1 / 9</p>
             <ol class="builder-progress">
               <li class="is-current" data-progress-step="1">
                 <span class="builder-progress__marker">1</span><span class="visually-hidden">Başlangıç</span>
@@ -638,6 +639,7 @@
     const progressItems = [
       ...document.querySelectorAll("[data-progress-step]"),
     ];
+    const progressSummary = document.querySelector(".builder-progress__summary");
     const contactForm = document.querySelector(".builder-form");
     const riskCountInput = document.getElementById("riskli-nokta-sayisi");
     let currentStep = 1;
@@ -761,6 +763,7 @@
           item.setAttribute("aria-current", "step");
         else item.removeAttribute("aria-current");
       });
+      progressSummary.textContent = `Adım ${stepNumber} / 9`;
 
       if ([6, 7, 8].includes(stepNumber)) updateRecommendation();
 

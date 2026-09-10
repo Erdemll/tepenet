@@ -1,5 +1,9 @@
 <?php
 
+use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
+
+uses(LazilyRefreshDatabase::class);
+
 it('renders contact details and the complete contact form without a map', function () {
     $response = $this->get(route('iletisim'));
 
@@ -20,6 +24,9 @@ it('renders contact details and the complete contact form without a map', functi
         ->assertSee('name="telefon"', false)
         ->assertSee('name="il"', false)
         ->assertSee('name="ilce"', false)
+        ->assertSee('<label for="iletisim-il">İl</label>', false)
+        ->assertSee('id="iletisim-il"', false)
+        ->assertSee('id="iletisim-ilce"', false)
         ->assertSee('name="konu"', false)
         ->assertSee('name="mesaj"', false)
         ->assertSee('name="kampanya_izni"', false)

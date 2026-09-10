@@ -43,7 +43,7 @@
     <section class="jobs-section" aria-label="Açık iş ilanları">
       <div class="container-fluid jobs-container">
         <div class="jobs-layout" id="jobsLayout">
-          <aside class="jobs-filter" id="jobsFilter" aria-labelledby="filter-title">
+          <aside class="jobs-filter" id="jobsFilter" role="region" aria-modal="false" aria-hidden="false" aria-labelledby="filter-title">
             <div class="jobs-filter__header">
               <div>
                 <span class="jobs-filter__eyebrow">Aramanızı daraltın</span>
@@ -108,11 +108,12 @@
               </div>
             </form>
           </aside>
+          <div class="jobs-filter-backdrop" id="jobsFilterBackdrop" aria-hidden="true"></div>
 
           <div class="jobs-content">
             <div class="jobs-toolbar">
               <div class="jobs-toolbar__left">
-                <button class="jobs-filter-toggle" id="toggleFilters" type="button" aria-controls="jobsFilter" aria-expanded="true">
+                <button class="jobs-filter-toggle" id="toggleFilters" type="button" aria-controls="jobsFilter" aria-expanded="false">
                   <i class="fa-solid fa-filter" aria-hidden="true"></i>
                   <span>Filtreleri Gizle</span>
                 </button>
@@ -215,6 +216,7 @@
       const activeFilters = document.getElementById('activeFilters');
       const toggleFilters = document.getElementById('toggleFilters');
       const closeFilters = document.getElementById('closeFilters');
+      const jobsFilterBackdrop = document.getElementById('jobsFilterBackdrop');
       const clearFilters = document.getElementById('clearFilters');
       const emptyClearFilters = document.getElementById('emptyClearFilters');
       const selectAllCities = document.getElementById('selectAllCities');
@@ -333,11 +335,31 @@
         applyFilters();
       };
 
-      const setFiltersOpen = (isOpen) => {
-        jobsLayout.classList.toggle('filters-collapsed', !isOpen);
-        jobsFilter.classList.toggle('is-open', isOpen);
-        toggleFilters.setAttribute('aria-expanded', isOpen.toString());
-        toggleFilters.querySelector('span').textContent = isOpen ? 'Filtreleri Gizle' : 'Filtreleri Göster';
+      const mobileFilters = window.matchMedia('(max-width: 991.98px)');
+      let filtersTrigger = null;
+
+      const setFiltersOpen = (isOpen, { restoreFocus = false } = {}) => {
+        const isMobile = mobileFilters.matches;
+        const shouldOpen = isOpen;
+
+        jobsLayout.classList.toggle('filters-collapsed', !shouldOpen);
+        jobsFilter.classList.toggle('is-open', shouldOpen && isMobile);
+        jobsFilterBackdrop.classList.toggle('is-visible', shouldOpen && isMobile);
+        document.body.classList.toggle('jobs-filter-open', shouldOpen && isMobile);
+        jobsFilter.setAttribute('role', isMobile ? 'dialog' : 'region');
+        jobsFilter.setAttribute('aria-hidden', String(!shouldOpen));
+        jobsFilter.setAttribute('aria-modal', String(isMobile && shouldOpen));
+        toggleFilters.setAttribute('aria-expanded', String(shouldOpen));
+        toggleFilters.querySelector('span').textContent = shouldOpen ? 'Filtreleri Gizle' : 'Filtreleri Göster';
+
+        if (shouldOpen && isMobile) {
+          filtersTrigger = document.activeElement;
+          closeFilters.focus();
+        }
+
+        if (!shouldOpen && isMobile && restoreFocus && filtersTrigger instanceof HTMLElement) {
+          filtersTrigger.focus();
+        }
       };
 
       renderCityOptions();
@@ -370,7 +392,41 @@
         setFiltersOpen(!isOpen);
       });
 
-      closeFilters.addEventListener('click', () => setFiltersOpen(false));
+      closeFilters.addEventListener('click', () => setFiltersOpen(false, { restoreFocus: true }));
+      jobsFilterBackdrop.addEventListener('click', () => setFiltersOpen(false, { restoreFocus: true }));
+
+      mobileFilters.addEventListener('change', (event) => setFiltersOpen(!event.matches));
+
+      document.addEventListener('keydown', (event) => {
+        if (!mobileFilters.matches || !jobsFilter.classList.contains('is-open')) {
+          return;
+        }
+
+        if (event.key === 'Escape') {
+          setFiltersOpen(false, { restoreFocus: true });
+          return;
+        }
+
+        if (event.key !== 'Tab') {
+          return;
+        }
+
+        const focusableElements = [...jobsFilter.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled])')];
+        const firstFocusableElement = focusableElements.at(0);
+        const lastFocusableElement = focusableElements.at(-1);
+
+        if (!firstFocusableElement || !lastFocusableElement) {
+          return;
+        }
+
+        if (event.shiftKey && document.activeElement === firstFocusableElement) {
+          event.preventDefault();
+          lastFocusableElement.focus();
+        } else if (!event.shiftKey && document.activeElement === lastFocusableElement) {
+          event.preventDefault();
+          firstFocusableElement.focus();
+        }
+      });
 
       tabButtons.forEach((button) => {
         button.addEventListener('click', () => {
@@ -384,6 +440,8 @@
           applyFilters();
         });
       });
+
+      setFiltersOpen(!mobileFilters.matches);
 
       viewButtons.forEach((button) => {
         button.addEventListener('click', () => {

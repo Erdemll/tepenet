@@ -41,7 +41,9 @@ it('renders the reusable paginated table for administrators', function () {
     $response
         ->assertOk()
         ->assertViewIs('admin.is-ilanlari.index')
-        ->assertSee('Toplam 12 kaydın');
+        ->assertSee('Toplam 12 kaydın')
+        ->assertSee('Tablonun diğer sütunları için yana kaydırın.')
+        ->assertSee('role="region" aria-label="Kayıt tablosu"', false);
     expect($response->viewData('table')['paginator'])
         ->toHaveCount(10)
         ->total()->toBe(12);

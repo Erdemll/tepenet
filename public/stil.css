@@ -12018,3 +12018,286 @@ body.page-online-islemler .online-consent .form-check-label {
     max-width: none;
   }
 }
+
+/* Mobil dayanıklılık iyileştirmeleri */
+body.process-page {
+  --tep-primary: #cc1520;
+  --tep-primary-dark: #a80f18;
+  --tep-ink: #221e1f;
+  --tep-muted: #6e6e6e;
+  --tep-surface: #f7f7f7;
+  --tep-border: #e8e8e8;
+  --tep-white: #ffffff;
+  --tep-shadow: 0 18px 42px rgba(0, 0, 0, 0.1);
+  color: var(--tep-ink);
+  background: var(--tep-white);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.65;
+}
+
+body.process-page .process-hero {
+  position: relative;
+  min-height: 250px;
+  overflow: hidden;
+  color: var(--tep-white);
+  background: linear-gradient(90deg, rgba(50, 0, 3, 0.9), rgba(24, 24, 24, 0.3)), linear-gradient(135deg, #641017, #575757);
+}
+
+body.process-page .process-hero__image {
+  position: absolute;
+  inset: 0;
+}
+
+body.process-page .process-hero__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+body.process-page .process-hero .container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  min-height: 250px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+body.process-page .process-hero h1 {
+  max-width: 850px;
+  margin: 0 0 0.7rem;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+}
+
+body.process-page .breadcrumb-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.84rem;
+  list-style: none;
+}
+
+body.process-page .breadcrumb-list li + li::before {
+  margin-right: 0.45rem;
+  content: "/";
+}
+
+body.process-page .breadcrumb-list a {
+  color: inherit;
+  text-decoration: none;
+}
+
+body.process-page .process-section {
+  padding-block: clamp(4rem, 7vw, 7rem);
+}
+
+body.process-page .process-navigation {
+  position: sticky;
+  top: 1.5rem;
+  margin: 0;
+  padding: 0 1.75rem 0 0;
+  border-right: 1px solid var(--tep-border);
+  list-style: none;
+}
+
+body.process-page .process-navigation li + li {
+  margin-top: 0.35rem;
+}
+
+body.process-page .process-navigation a {
+  position: relative;
+  display: block;
+  padding: 0.8rem 0.9rem;
+  border-radius: 4px;
+  color: var(--tep-ink);
+  font-size: 0.94rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+body.process-page .process-navigation a:hover,
+body.process-page .process-navigation a.active {
+  color: var(--tep-primary);
+  background: #fff4f5;
+}
+
+body.process-page .process-navigation a.active::after {
+  position: absolute;
+  top: 0;
+  right: -1.8rem;
+  width: 3px;
+  height: 100%;
+  background: var(--tep-primary);
+  content: "";
+}
+
+body.process-page .process-content h2 {
+  margin: 2.5rem 0 1.5rem;
+  color: var(--tep-primary);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 500;
+}
+
+body.jobs-filter-open {
+  overflow: hidden;
+}
+
+body.page-is-ilanlari .jobs-filter-backdrop {
+  display: none;
+}
+
+body.page-is-ilanlari .jobs-tabs {
+  position: relative;
+}
+
+body.page-is-ilanlari .jobs-tabs::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 1.5rem;
+  background: linear-gradient(90deg, transparent, var(--tep-white));
+  content: "";
+  pointer-events: none;
+}
+
+.site-footer__location,
+.site-footer__location a {
+  overflow-wrap: anywhere;
+}
+
+.floating-discovery {
+  bottom: max(1rem, env(safe-area-inset-bottom)) !important;
+  z-index: 1030 !important;
+}
+
+@media (max-width: 991.98px) {
+  body.page-is-ilanlari .jobs-filter-backdrop {
+    position: fixed;
+    z-index: 1054;
+    inset: 0;
+    display: block;
+    visibility: hidden;
+    background: rgba(19, 17, 18, 0.48);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+  }
+
+  body.page-is-ilanlari .jobs-filter-backdrop.is-visible {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  body.process-page .process-navigation {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    padding: 0 0 1rem;
+    border-right: 0;
+    border-bottom: 1px solid var(--tep-border);
+  }
+
+  body.process-page .process-navigation li + li {
+    margin-top: 0;
+  }
+
+  body.process-page .process-navigation a {
+    height: 100%;
+    text-align: center;
+  }
+
+  body.process-page .process-navigation a.active::after {
+    top: auto;
+    right: 0;
+    bottom: -1.05rem;
+    width: 100%;
+    height: 3px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .topbar .container {
+    white-space: normal !important;
+  }
+
+  .topbar .topbar-call-label,
+  .topbar .topbar-language {
+    white-space: nowrap;
+  }
+
+  body.process-page .process-hero,
+  body.process-page .process-hero .container {
+    min-height: 240px;
+  }
+
+  body.process-page .process-hero h1 {
+    font-size: 2rem;
+    line-height: 1.15;
+  }
+
+  body.process-page .process-navigation {
+    grid-template-columns: 1fr;
+  }
+
+  body.process-page .process-navigation a {
+    text-align: left;
+  }
+
+  body.process-page .process-navigation a.active::after {
+    display: none;
+  }
+
+  body.page-kendi-sistemini-olustur .builder-progress-wrap {
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  body.page-kendi-sistemini-olustur .builder-progress__summary {
+    display: block;
+    margin: 0;
+    color: var(--tep-primary);
+    font-size: 0.82rem;
+    font-weight: 800;
+  }
+
+  body.page-kendi-sistemini-olustur .builder-progress {
+    display: none;
+  }
+}
+
+@media (min-width: 576px) {
+  body.page-kendi-sistemini-olustur .builder-progress__summary {
+    display: none;
+  }
+}
+
+@media (max-width: 359.98px) {
+  .topbar .topbar-call-label {
+    display: none;
+  }
+}
+
+.row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+@media (max-width: 767.98px) {
+    .hero__image img,
+    .catalog-hero__image img,
+    .process-hero__image img,
+    .products-banner__image img {
+        object-fit: cover;
+        object-position: 15% center !important;
+    }
+}

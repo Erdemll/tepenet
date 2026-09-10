@@ -24,7 +24,7 @@
     ></script>
   </head>
 
-  <body class="page-ev-guvenligi-nasil-calisir">
+  <body class="page-yonetim-kurulu process-page">
     @include('partials.navbar')
 
     <main>
@@ -36,7 +36,7 @@
           />
         </div>
         <div class="container">
-          <h1 id="page-title">Hakkımızda</h1>
+          <h1 id="page-title">Yönetim Kurulu</h1>
           <ol class="breadcrumb-list" aria-label="Sayfa yolu">
             <li><a href="{{ route('home') }}">Ana Sayfa</a></li>
             <li><a href="{{ route('hakkimizda.yonetim-kurulu') }}">Yönetim Kurulu</a></li>
@@ -48,7 +48,7 @@
         <div class="container">
           <div class="row g-4 g-lg-5">
             <div class="col-12 col-lg-3">
-              <nav aria-label="Ev güvenliği sayfaları">
+              <nav aria-label="Hakkımızda sayfaları">
                 <ul class="process-navigation">
                   <li>
                     <a href="{{ route('hakkimizda.index') }}"
@@ -62,11 +62,11 @@
 
             <div class="col-12 col-lg-9 process-content">
               <section>
-                <div class="container-fluid d-flex align-items-center">
-                  <div class="col-6">
+                <div class="row align-items-center g-4">
+                  <div class="col-12 col-md-6">
                     <h2>GÜRKAN BURAK KARA</h2>
                   </div>
-                  <div class="col-6">
+                  <div class="col-12 col-md-6">
                     <img class="img-fluid" src="{{ asset('resimler/hakkimizda/kurucu.jpeg') }}" alt="">
                   </div>
                 </div>

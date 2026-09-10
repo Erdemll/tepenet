@@ -201,7 +201,7 @@
                     <label for="iletisim-il">İl</label>
                     <select
                       class="form-select @error('il') is-invalid @enderror"
-                      id="kurumsal-il"
+                      id="iletisim-il"
                       name="il"
                       required>
                       <option value="" @selected(!old('il')) disabled>
@@ -215,6 +215,22 @@
                       @endforeach
                     </select>
                     @error('il')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                  </div>
+
+                  <div class="col-12 col-md-6">
+                    <label for="iletisim-ilce">İlçe</label>
+                    <input
+                      class="form-control @error('ilce') is-invalid @enderror"
+                      id="iletisim-ilce"
+                      name="ilce"
+                      type="text"
+                      autocomplete="address-level2"
+                      maxlength="100"
+                      placeholder="İlçenizi yazın"
+                      value="{{ old('ilce') }}" />
+                    @error('ilce')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                   </div>
@@ -321,14 +337,6 @@
   <script>
     const kampanyaIzni = document.getElementById("iletisim-kampanya");
     const iletisimTercihleri = document.getElementById("iletisim-tercihleri");
-    const ilSecimi = document.getElementById("iletisim-il");
-    const ilceSecimi = document.getElementById("iletisim-ilce");
-    const oncekiIlce = @json(old('ilce'));
-    const ilceler = {
-      bursa: ["İnegöl", "Nilüfer", "Osmangazi"],
-      istanbul: ["Ataşehir", "Şişli"],
-      ankara: ["Çankaya", "Yenimahalle"],
-    };
 
     kampanyaIzni.addEventListener("change", () => {
       const tercihlerAcik = kampanyaIzni.checked;
@@ -343,19 +351,6 @@
       }
     });
 
-    const ilceSecenekleriniGuncelle = (secilenIlce = "") => {
-      const secilenIlceler = ilceler[ilSecimi.value] ?? [];
-
-      ilceSecimi.replaceChildren(new Option("İlçe Seçiniz", ""));
-      secilenIlceler.forEach((ilce) => {
-        const ilceDegeri = ilce.toLocaleLowerCase("tr-TR");
-        ilceSecimi.add(new Option(ilce, ilceDegeri, false, ilceDegeri === secilenIlce));
-      });
-      ilceSecimi.disabled = secilenIlceler.length === 0;
-    };
-
-    ilSecimi.addEventListener("change", () => ilceSecenekleriniGuncelle());
-    ilceSecenekleriniGuncelle(oncekiIlce ?? "");
   </script>
   <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"

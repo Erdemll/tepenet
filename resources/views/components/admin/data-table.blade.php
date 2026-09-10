@@ -31,8 +31,9 @@
   </div>
 
   @if ($paginator->count() > 0)
-    <div class="overflow-x-auto">
-      <table class="min-w-full divide-y divide-slate-200 text-left text-sm">
+    <p id="admin-table-scroll-hint" class="mb-2 px-4 text-xs font-medium text-slate-500 sm:hidden">Tablonun diğer sütunları için yana kaydırın.</p>
+    <div class="overflow-x-auto" role="region" aria-label="Kayıt tablosu" tabindex="0">
+      <table class="min-w-full divide-y divide-slate-200 text-left text-sm" aria-describedby="admin-table-scroll-hint">
         <thead class="bg-slate-50 text-xs font-semibold uppercase tracking-wide text-slate-500">
           <tr>{{ $head }}</tr>
         </thead>

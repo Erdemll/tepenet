@@ -28,3 +28,15 @@ it('renders each public page from its named route', function (string $routeName,
     'job listings' => ['is-ilanlari', 'is_ilanlari'],
     'blogs' => ['bloglar.index', 'bloglar.index'],
 ]);
+
+it('renders dedicated responsive structures for about and system builder pages', function () {
+    $this->get(route('hakkimizda.index'))
+        ->assertSee('class="page-hakkimizda process-page"', false);
+
+    $this->get(route('hakkimizda.yonetim-kurulu'))
+        ->assertSee('class="page-yonetim-kurulu process-page"', false)
+        ->assertSee('col-12 col-md-6', false);
+
+    $this->get(route('kendi-sistemini-olustur.index'))
+        ->assertSee('class="builder-progress__summary"', false);
+});
