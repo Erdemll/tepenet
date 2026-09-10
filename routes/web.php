@@ -1,10 +1,14 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthenticatedSessionController;
+use App\Http\Controllers\Admin\BlogController as AdminBlogController;
 use App\Http\Controllers\Admin\IsIlaniController as AdminIsIlaniController;
 use App\Http\Controllers\Admin\UrunController as AdminUrunController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ContactRequestController;
 use App\Http\Controllers\DiscoveryRequestController;
 use App\Http\Controllers\IsIlaniController as PublicIsIlaniController;
+use App\Http\Controllers\SystemBuilderRequestController;
 use App\Http\Controllers\UrunController as PublicUrunController;
 use App\Http\Controllers\UrunKategoriController;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +32,9 @@ Route::prefix('is-yeri-guvenligi')->name('is-yeri-guvenligi.')->group(function (
 
 Route::view('/kurumsal-cozumler', 'kurumsal_cozumler')->name('kurumsal-cozumler.index');
 Route::view('/kendi-sistemini-olustur', 'kendi_sistemini_olustur')->name('kendi-sistemini-olustur.index');
+Route::post('/kendi-sistemini-olustur', SystemBuilderRequestController::class)
+    ->middleware('throttle:3,1')
+    ->name('kendi-sistemini-olustur.store');
 
 Route::prefix('urunler-ve-hizmetler')->name('urunler-ve-hizmetler.')->group(function (): void {
     Route::view('/', 'urunler_ve_hizmetler')->name('index');
@@ -47,7 +54,12 @@ Route::view('/hakkimizda/yonetim-kurulu', 'yonetim_kurulu')->name('hakkimizda.yo
 Route::view('/online-islemler', 'online_islemler')->name('online-islemler');
 Route::view('/e-basvuru-portali', 'e_basvuru')->name('e-basvuru');
 Route::view('/iletisim', 'iletisim')->name('iletisim');
+Route::post('/iletisim', ContactRequestController::class)
+    ->middleware('throttle:3,1')
+    ->name('iletisim.store');
 Route::get('/is-ilanlari', [PublicIsIlaniController::class, 'index'])->name('is-ilanlari');
+//Route::get('/bloglar', [BlogController::class, 'index'])->name('bloglar.index');
+//Route::get('/bloglar/{blog}', [BlogController::class, 'show'])->name('bloglar.show');
 
 Route::prefix('admin')->name('admin.')->group(function (): void {
     Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
@@ -64,5 +76,8 @@ Route::prefix('admin')->name('admin.')->group(function (): void {
         Route::resource('urunler', AdminUrunController::class)
             ->except('show')
             ->parameters(['urunler' => 'urun']);
+        Route::resource('bloglar', AdminBlogController::class)
+            ->except('show')
+            ->parameters(['bloglar' => 'blog']);
     });
 });

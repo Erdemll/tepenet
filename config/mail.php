@@ -120,4 +120,13 @@ return [
         'test_to' => env('DISCOVERY_TEST_MAIL_TO', 'rdmlale@gmail.com'),
     ],
 
+    'system_builder' => [
+        'to' => env('SYSTEM_BUILDER_MAIL_TO', 'info@tepenetguvenlik.com'),
+        'test_to' => env('SYSTEM_BUILDER_TEST_MAIL_TO', 'rdmlale@gmail.com'),
+    ],
+
+    'contact' => [
+        'to' => env('CONTACT_MAIL_TO', 'info@tepenetguvenlik.com'),
+    ],
+
 ];

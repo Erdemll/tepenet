@@ -70,3 +70,50 @@ it('escapes user-provided content in the discovery email', function () {
         ->not->toContain('<img src=x onerror=alert("soyad")>')
         ->not->toContain('<svg onload=alert("telefon")>');
 });
+
+it('renders corporate discovery details in html and text', function () {
+    $mailable = new DiscoveryRequestMail(
+        firstName: 'Ayşe',
+        lastName: 'Yılmaz',
+        phone: '0532 123 45 67',
+        email: 'ayse@example.com',
+        productGroup: 'diger',
+        city: 'izmir',
+        isWorkplace: true,
+        branchCount: 12,
+        campaignConsent: false,
+        companyName: 'Tepenet Test AŞ',
+        organizationType: 'fabrika',
+    );
+
+    $mailable->assertHasSubject('Yeni Kurumsal Ücretsiz Keşif Talebi');
+    $mailable->assertSeeInHtml('Firma Adı');
+    $mailable->assertSeeInHtml('Tepenet Test AŞ');
+    $mailable->assertSeeInHtml('Kurum Türü');
+    $mailable->assertSeeInHtml('Fabrika / Üretim');
+    $mailable->assertSeeInHtml('İzmir');
+    $mailable->assertSeeInHtml('Şube Sayısı');
+    $mailable->assertSeeInText('Firma Adı: Tepenet Test AŞ');
+    $mailable->assertSeeInText('Kurum Türü: Fabrika / Üretim');
+    $mailable->assertSeeInText('İl: İzmir');
+    $mailable->assertDontSeeInHtml('Ürün Grubu');
+});
+
+it('escapes the company name in the corporate discovery email', function () {
+    $mailable = new DiscoveryRequestMail(
+        firstName: 'Ayşe',
+        lastName: 'Yılmaz',
+        phone: '0532 123 45 67',
+        email: null,
+        productGroup: 'diger',
+        city: 'ankara',
+        isWorkplace: true,
+        branchCount: 1,
+        campaignConsent: false,
+        companyName: '<script>alert("firma")</script>',
+        organizationType: 'ofis',
+    );
+
+    expect($mailable->render())
+        ->not->toContain('<script>alert("firma")</script>');
+});

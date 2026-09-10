@@ -1094,7 +1094,7 @@
 
       :is(body.page-ev-guvenligi, body.page-is-yeri-guvenligi) .hero {
         position: relative;
-        min-height: 560px;
+        min-height: 720px;
         overflow: hidden;
         color: var(--tep-white);
         background:
@@ -1172,8 +1172,10 @@
         top: 50%;
         right: max(1rem, calc((100vw - 1320px) / 2));
         z-index: 5;
-        width: min(350px, calc(100% - 2rem));
-        padding: 1.7rem;
+        width: min(450px, calc(100% - 2rem));
+        max-height: calc(100% - 3rem);
+        overflow-y: auto;
+        padding: 1.4rem;
         border-radius: 8px;
         color: var(--tep-ink);
         background: var(--tep-white);
@@ -1189,7 +1191,7 @@
       }
 
       :is(body.page-ev-guvenligi, body.page-is-yeri-guvenligi) .hero-request p {
-        margin-bottom: 1.2rem;
+        margin-bottom: 0.9rem;
         color: var(--tep-muted);
         font-size: 0.88rem;
       }
@@ -1211,6 +1213,27 @@
       :is(body.page-ev-guvenligi, body.page-is-yeri-guvenligi) .form-check-input:checked {
         border-color: var(--tep-primary);
         background-color: var(--tep-primary);
+      }
+
+      :is(body.page-ev-guvenligi, body.page-is-yeri-guvenligi) .hero-discovery-form .form-control,
+:is(body.page-ev-guvenligi, body.page-is-yeri-guvenligi) .hero-discovery-form .form-select {
+        min-height: 46px;
+        font-size: 0.9rem;
+      }
+
+      :is(body.page-ev-guvenligi, body.page-is-yeri-guvenligi) .hero-discovery-form .form-check-label {
+        font-size: 0.78rem;
+        line-height: 1.35;
+      }
+
+      :is(body.page-ev-guvenligi, body.page-is-yeri-guvenligi) .hero-request .alert {
+        margin-bottom: 0.75rem;
+        padding: 0.55rem 0.75rem;
+        font-size: 0.8rem;
+      }
+
+      :is(body.page-ev-guvenligi, body.page-is-yeri-guvenligi) .hero-discovery-form .invalid-feedback {
+        font-size: 0.72rem;
       }
 
       :is(body.page-ev-guvenligi, body.page-is-yeri-guvenligi) .form-check-label {
@@ -1603,7 +1626,17 @@
         }
 
         :is(body.page-ev-guvenligi, body.page-is-yeri-guvenligi) .hero {
+          min-height: auto;
           padding-bottom: 2rem;
+          overflow: visible;
+          background: #f4f6f8;
+        }
+
+        :is(body.page-ev-guvenligi, body.page-is-yeri-guvenligi) .hero__image {
+          position: relative;
+          inset: auto;
+          width: 100%;
+          height: clamp(240px, 58vw, 420px);
         }
 
         :is(body.page-ev-guvenligi, body.page-is-yeri-guvenligi) .hero__content {
@@ -1617,7 +1650,9 @@
           top: auto;
           right: auto;
           width: min(620px, calc(100% - 2rem));
-          margin: 0 auto;
+          max-height: none;
+          overflow: visible;
+          margin: 1.25rem auto 0;
           transform: none;
         }
 
@@ -3218,7 +3253,7 @@
         line-height: 1.5;
       }
 
-      :is(body.page-ev-guvenligi-nelerden-olusur, body.page-is-yeri-guvenligi-nelerden-olusur) .catalog-hero {
+      :is(body.page-ev-guvenligi-nelerden-olusur, body.page-is-yeri-guvenligi-nelerden-olusur, body.page-iletisim) .catalog-hero {
         position: relative;
         min-height: 250px;
         overflow: hidden;
@@ -3228,22 +3263,22 @@
           linear-gradient(135deg, #641017, #575757);
       }
 
-      :is(body.page-ev-guvenligi-nelerden-olusur, body.page-is-yeri-guvenligi-nelerden-olusur) .catalog-hero__image {
+      :is(body.page-ev-guvenligi-nelerden-olusur, body.page-is-yeri-guvenligi-nelerden-olusur, body.page-iletisim) .catalog-hero__image {
         position: absolute;
         inset: 0;
       }
 
-      :is(body.page-ev-guvenligi-nelerden-olusur, body.page-is-yeri-guvenligi-nelerden-olusur) .catalog-hero__image img {
+      :is(body.page-ev-guvenligi-nelerden-olusur, body.page-is-yeri-guvenligi-nelerden-olusur, body.page-iletisim) .catalog-hero__image img {
         width: 100%;
         height: 100%;
         object-fit: cover;
       }
 
-      :is(body.page-ev-guvenligi-nelerden-olusur, body.page-is-yeri-guvenligi-nelerden-olusur) .catalog-hero__image img:not([src=""]) + .image-placeholder {
+      :is(body.page-ev-guvenligi-nelerden-olusur, body.page-is-yeri-guvenligi-nelerden-olusur, body.page-iletisim) .catalog-hero__image img:not([src=""]) + .image-placeholder {
         display: none;
       }
 
-      :is(body.page-ev-guvenligi-nelerden-olusur, body.page-is-yeri-guvenligi-nelerden-olusur) .catalog-hero__image .image-placeholder {
+      :is(body.page-ev-guvenligi-nelerden-olusur, body.page-is-yeri-guvenligi-nelerden-olusur, body.page-iletisim) .catalog-hero__image .image-placeholder {
         display: flex;
         align-items: flex-end;
         justify-content: flex-end;
@@ -3251,7 +3286,7 @@
         color: rgba(255, 255, 255, 0.58);
       }
 
-      :is(body.page-ev-guvenligi-nelerden-olusur, body.page-is-yeri-guvenligi-nelerden-olusur) .catalog-hero .container {
+      :is(body.page-ev-guvenligi-nelerden-olusur, body.page-is-yeri-guvenligi-nelerden-olusur, body.page-iletisim) .catalog-hero .container {
         position: relative;
         z-index: 2;
         display: flex;
@@ -3259,7 +3294,7 @@
         align-items: center;
       }
 
-      :is(body.page-ev-guvenligi-nelerden-olusur, body.page-is-yeri-guvenligi-nelerden-olusur) .catalog-hero h1 {
+      :is(body.page-ev-guvenligi-nelerden-olusur, body.page-is-yeri-guvenligi-nelerden-olusur, body.page-iletisim) .catalog-hero h1 {
         max-width: 850px;
         margin: 0;
         font-size: clamp(2rem, 4vw, 3.5rem);
@@ -3679,12 +3714,12 @@
           padding: 1.35rem;
         }
 
-        :is(body.page-ev-guvenligi-nelerden-olusur, body.page-is-yeri-guvenligi-nelerden-olusur) .catalog-hero,
-:is(body.page-ev-guvenligi-nelerden-olusur, body.page-is-yeri-guvenligi-nelerden-olusur) .catalog-hero .container {
+        :is(body.page-ev-guvenligi-nelerden-olusur, body.page-is-yeri-guvenligi-nelerden-olusur, body.page-iletisim) .catalog-hero,
+:is(body.page-ev-guvenligi-nelerden-olusur, body.page-is-yeri-guvenligi-nelerden-olusur, body.page-iletisim) .catalog-hero .container {
           min-height: 200px;
         }
 
-        :is(body.page-ev-guvenligi-nelerden-olusur, body.page-is-yeri-guvenligi-nelerden-olusur) .catalog-hero h1 {
+        :is(body.page-ev-guvenligi-nelerden-olusur, body.page-is-yeri-guvenligi-nelerden-olusur, body.page-iletisim) .catalog-hero h1 {
           font-size: 2rem;
           line-height: 1.15;
         }
@@ -8511,6 +8546,193 @@
   .site-footer__locations {
     grid-template-columns: 1fr;
   }
+}
+
+/* Public blog pages */
+body.page-bloglar,
+body.page-blog-detay {
+  background: #f8f9fa;
+}
+
+.blog-page-main {
+  min-height: 60vh;
+}
+
+.blog-page-hero {
+  padding: clamp(3.5rem, 8vw, 6.5rem) 0;
+  color: var(--tep-white);
+  background: linear-gradient(120deg, #5f0008, #a30d18);
+}
+
+.blog-page-hero--detail {
+  padding-bottom: clamp(3rem, 7vw, 5rem);
+}
+
+.blog-page-eyebrow {
+  margin-bottom: 0.75rem;
+  color: #ffc7cb;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.blog-page-hero h1 {
+  max-width: 900px;
+  margin-bottom: 1rem;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.blog-page-hero p:last-child {
+  max-width: 680px;
+  margin-bottom: 0;
+  color: #ffe7e9;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.blog-page-back {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.blog-page-back:hover {
+  color: #ffc7cb;
+}
+
+.blog-list-card {
+  border: 1px solid #e4e7eb;
+  border-radius: 0.75rem;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(31, 36, 41, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.blog-list-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(31, 36, 41, 0.11);
+}
+
+.blog-list-card__body {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  padding: 1.5rem;
+}
+
+.blog-list-card__date {
+  margin-bottom: 0.75rem;
+  color: #8d1820;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.blog-list-card h2 {
+  margin-bottom: 0.75rem;
+  color: var(--tep-ink);
+  font-size: 1.25rem;
+  line-height: 1.35;
+}
+
+.blog-list-card__body > p:not(.blog-list-card__date) {
+  margin-bottom: 1.25rem;
+  color: var(--tep-muted);
+  line-height: 1.7;
+}
+
+.blog-list-card__link {
+  margin-top: auto;
+  color: #8d1820;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.blog-list-card__link:hover {
+  color: #5f0008;
+}
+
+.blog-empty-state,
+.blog-article {
+  border: 1px solid #e4e7eb;
+  border-radius: 0.75rem;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(31, 36, 41, 0.06);
+}
+
+.blog-empty-state {
+  padding: 4rem 1.5rem;
+  text-align: center;
+}
+
+.blog-empty-state h2 {
+  color: var(--tep-ink);
+  font-size: 1.5rem;
+}
+
+.blog-empty-state p {
+  margin-bottom: 0;
+  color: var(--tep-muted);
+}
+
+.blog-article {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 4vw, 3.5rem);
+}
+
+.blog-article__content {
+  color: var(--tep-ink);
+  font-size: 1.05rem;
+  line-height: 1.85;
+}
+
+.blog-article__content h2,
+.blog-article__content h3 {
+  margin: 1.75rem 0 0.75rem;
+  color: #5f0008;
+  line-height: 1.3;
+}
+
+.blog-article__content h2:first-child,
+.blog-article__content h3:first-child {
+  margin-top: 0;
+}
+
+.blog-article__content p,
+.blog-article__content ul,
+.blog-article__content ol,
+.blog-article__content blockquote {
+  margin-bottom: 1rem;
+}
+
+.blog-article__content ul,
+.blog-article__content ol {
+  padding-left: 1.5rem;
+}
+
+.blog-article__content ul {
+  list-style: disc;
+}
+
+.blog-article__content ol {
+  list-style: decimal;
+}
+
+.blog-article__content a {
+  color: #8d1820;
+  font-weight: 600;
+}
+
+.blog-article__content blockquote {
+  padding: 1rem 1.25rem;
+  border-left: 4px solid #8d1820;
+  background: #fff3f4;
+  color: #5f0008;
 }
 
 /* E-Başvuru Portalı */

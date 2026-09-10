@@ -8,62 +8,46 @@
 
         <div class="site-footer__locations">
           <p class="site-footer__location">
-            <strong
-              ><i class="fa-solid fa-location-dot"></i> BURSA BÖLGE
-              MÜDÜRLÜĞÜ</strong
-            >
+            <strong><i class="fa-solid fa-location-dot"></i> BURSA BÖLGE
+              MÜDÜRLÜĞÜ</strong>
             <br />
             Yeniceköy Mah. Demokrasi Cad. Orhun Alp. No:20 İnegöl / Bursa
             <br />
             <i class="fa-solid fa-phone"></i> 0224 322 03 70 <br />
-            <a href="mailto:inegol@tepenetguvenlik.com"
-              ><i class="fa-regular fa-envelope"></i>
-              inegol@tepenetguvenlik.com</a
-            >
+            <a href="mailto:inegol@tepenetguvenlik.com"><i class="fa-regular fa-envelope"></i>
+              inegol@tepenetguvenlik.com</a>
           </p>
           <p class="site-footer__location">
-            <strong
-              ><i class="fa-solid fa-location-dot"></i> İSTANBUL LEVENT
-              ŞUBESİ</strong
-            >
+            <strong><i class="fa-solid fa-location-dot"></i> İSTANBUL LEVENT
+              ŞUBESİ</strong>
             <br />
             Esentepe Mah. Talatpaşa Cad. No:5 Şişli / İstanbul
             <br />
             <i class="fa-solid fa-phone"></i> 0850 532 96 70 <br />
-            <a href="mailto:levent@tepenetguvenlik.com"
-              ><i class="fa-regular fa-envelope"></i>
-              levent@tepenetguvenlik.com</a
-            >
+            <a href="mailto:levent@tepenetguvenlik.com"><i class="fa-regular fa-envelope"></i>
+              levent@tepenetguvenlik.com</a>
           </p>
 
           <p class="site-footer__location">
-            <strong
-              ><i class="fa-solid fa-location-dot"></i> İSTANBUL NİDAKULE
-              ŞUBESİ</strong
-            >
+            <strong><i class="fa-solid fa-location-dot"></i> İSTANBUL NİDAKULE
+              ŞUBESİ</strong>
             <br />
             Barbaros Mah. Begonya Sok. No:1 Ataşehir / İstanbul
             <br />
             <i class="fa-solid fa-phone"></i> 0850 532 96 70<br />
-            <a href="mailto:nidakule@tepenetguvenlik.com"
-              ><i class="fa-regular fa-envelope"></i>
-              nidakule@tepenetguvenlik.com</a
-            >
+            <a href="mailto:nidakule@tepenetguvenlik.com"><i class="fa-regular fa-envelope"></i>
+              nidakule@tepenetguvenlik.com</a>
           </p>
 
           <p class="site-footer__location">
-            <strong
-              ><i class="fa-solid fa-location-dot"></i> ANKARA ÇANKAYA
-              ŞUBESİ</strong
-            >
+            <strong><i class="fa-solid fa-location-dot"></i> ANKARA ÇANKAYA
+              ŞUBESİ</strong>
             <br />
             Beştepe Mah. 31. Sok. Yenimahalle / Ankara
             <br />
             <i class="fa-solid fa-phone"></i> 0850 532 96 70<br />
-            <a href="mailto:bestepe@tepenetguvenlik.com"
-              ><i class="fa-regular fa-envelope"></i>
-              bestepe@tepenetguvenlik.com</a
-            >
+            <a href="mailto:bestepe@tepenetguvenlik.com"><i class="fa-regular fa-envelope"></i>
+              bestepe@tepenetguvenlik.com</a>
           </p>
         </div>
       </div>
@@ -74,6 +58,7 @@
           <li><a href="{{ route('is-yeri-guvenligi.index') }}">İş yeri için</a></li>
           <li><a href="{{ route('kurumsal-cozumler.index') }}">Kurumsal çözümler</a></li>
           <li><a href="{{ route('online-islemler') }}">Online İşlemler</a></li>
+          <!-- <li><a href="{{ route('bloglar.index') }}">Bloglar</a></li> -->
           <li><a href="{{ route('iletisim') }}">İletişim</a></li>
         </ul>
       </div>
@@ -82,7 +67,7 @@
         <ul>
           <li><a href="{{ route('hakkimizda.index') }}">Hakkımızda</a></li>
           <li><a href="{{ route('hakkimizda.yonetim-kurulu') }}">Yönetim Kurulu</a></li>
-           <li><a href="{{ route('e-basvuru') }}">E-Başvuru Portalı</a></li>
+          <li><a href="{{ route('e-basvuru') }}">E-Başvuru Portalı</a></li>
           <li><a href="{{ route('is-ilanlari') }}">İş İlanları</a></li>
         </ul>
       </div>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Mail\DiscoveryRequestMail;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Exceptions;
 use Illuminate\Support\Facades\Mail;
 use Symfony\Component\Mailer\Exception\TransportException;
@@ -21,6 +22,20 @@ function validDiscoveryRequestPayload(array $overrides = []): array
     ], $overrides);
 }
 
+function validCorporateDiscoveryRequestPayload(array $overrides = []): array
+{
+    $payload = validDiscoveryRequestPayload();
+    unset($payload['urun_grubu'], $payload['isyeri_talebi']);
+
+    return array_replace($payload, [
+        'source_page' => 'kurumsal-cozumler',
+        'il' => 'izmir',
+        'firma_adi' => 'Tepenet Test AŞ',
+        'kurum_turu' => 'fabrika',
+        'sube_sayisi' => '12',
+    ], $overrides);
+}
+
 it('renders the discovery form with its post endpoint and csrf protection', function () {
     $response = $this->get(route('home'));
 
@@ -29,6 +44,158 @@ it('renders the discovery form with its post endpoint and csrf protection', func
         ->assertSee('action="'.route('discovery.store').'"', false)
         ->assertSee('name="_token"', false)
         ->assertSee('name="kvkk_onayi"', false);
+});
+
+it('renders every discovery field in the security page hero form', function (
+    string $routeName,
+    string $sourcePage,
+    bool $expectsWorkplaceSelected,
+) {
+    $response = $this->get(route($routeName));
+
+    $document = new DOMDocument;
+    libxml_use_internal_errors(true);
+    $document->loadHTML($response->getContent());
+    libxml_clear_errors();
+
+    $xpath = new DOMXPath($document);
+    $form = $xpath->query('//form[@data-hero-discovery-form]')->item(0);
+
+    expect($form)->toBeInstanceOf(DOMElement::class);
+    expect($form->getAttribute('action'))->toBe(route('discovery.store'));
+    expect(strtolower($form->getAttribute('method')))->toBe('post');
+
+    $fieldNames = [];
+
+    foreach ($xpath->query('.//input[@name] | .//select[@name]', $form) as $field) {
+        $fieldNames[] = $field->getAttribute('name');
+    }
+
+    expect($fieldNames)
+        ->toContain('_token')
+        ->toContain('source_page')
+        ->toContain('ad')
+        ->toContain('soyad')
+        ->toContain('telefon')
+        ->toContain('email')
+        ->toContain('urun_grubu')
+        ->toContain('il')
+        ->toContain('isyeri_talebi')
+        ->toContain('sube_sayisi')
+        ->toContain('kampanya_izni')
+        ->toContain('kvkk_onayi');
+
+    $sourceInput = $xpath->query('.//input[@name="source_page"]', $form)->item(0);
+    $workplaceInput = $xpath->query('.//input[@name="isyeri_talebi"]', $form)->item(0);
+
+    expect($sourceInput?->getAttribute('value'))->toBe($sourcePage);
+    expect($workplaceInput?->hasAttribute('checked'))->toBe($expectsWorkplaceSelected);
+})->with([
+    'home security' => ['ev-guvenligi.index', 'ev-guvenligi', false],
+    'workplace security' => ['is-yeri-guvenligi.index', 'is-yeri-guvenligi', true],
+]);
+
+it('renders every discovery field in the security components page form', function (
+    string $routeName,
+    string $sourcePage,
+    bool $expectsWorkplaceSelected,
+) {
+    $response = $this->get(route($routeName));
+
+    $document = new DOMDocument;
+    libxml_use_internal_errors(true);
+    $document->loadHTML($response->getContent());
+    libxml_clear_errors();
+
+    $xpath = new DOMXPath($document);
+    $form = $xpath->query('//form[@data-discovery-section-form]')->item(0);
+
+    expect($form)->toBeInstanceOf(DOMElement::class);
+    expect($form->getAttribute('action'))->toBe(route('discovery.store'));
+
+    $fieldNames = [];
+
+    foreach ($xpath->query('.//input[@name] | .//select[@name]', $form) as $field) {
+        $fieldNames[] = $field->getAttribute('name');
+    }
+
+    expect($fieldNames)
+        ->toContain('_token')
+        ->toContain('source_page')
+        ->toContain('ad')
+        ->toContain('soyad')
+        ->toContain('telefon')
+        ->toContain('email')
+        ->toContain('urun_grubu')
+        ->toContain('il')
+        ->toContain('isyeri_talebi')
+        ->toContain('sube_sayisi')
+        ->toContain('kampanya_izni')
+        ->toContain('kvkk_onayi');
+
+    $sourceInput = $xpath->query('.//input[@name="source_page"]', $form)->item(0);
+    $workplaceInput = $xpath->query('.//input[@name="isyeri_talebi"]', $form)->item(0);
+
+    expect($sourceInput?->getAttribute('value'))->toBe($sourcePage);
+    expect($workplaceInput?->hasAttribute('checked'))->toBe($expectsWorkplaceSelected);
+})->with([
+    'home security components' => [
+        'ev-guvenligi.nelerden-olusur',
+        'ev-guvenligi-nelerden-olusur',
+        false,
+    ],
+    'workplace security components' => [
+        'is-yeri-guvenligi.nelerden-olusur',
+        'is-yeri-guvenligi-nelerden-olusur',
+        true,
+    ],
+]);
+
+it('renders the corporate discovery form with all corporate fields', function () {
+    $response = $this->get(route('kurumsal-cozumler.index'));
+
+    $document = new DOMDocument;
+    libxml_use_internal_errors(true);
+    $document->loadHTML($response->getContent());
+    libxml_clear_errors();
+
+    $xpath = new DOMXPath($document);
+    $form = $xpath->query('//form[@data-corporate-discovery-form]')->item(0);
+
+    expect($form)->toBeInstanceOf(DOMElement::class);
+    expect($form->getAttribute('action'))->toBe(route('discovery.store'));
+    expect(strtolower($form->getAttribute('method')))->toBe('post');
+
+    $fieldNames = [];
+
+    foreach ($xpath->query('.//input[@name] | .//select[@name]', $form) as $field) {
+        $fieldNames[] = $field->getAttribute('name');
+    }
+
+    expect($fieldNames)
+        ->toContain('_token')
+        ->toContain('source_page')
+        ->toContain('ad')
+        ->toContain('soyad')
+        ->toContain('telefon')
+        ->toContain('email')
+        ->toContain('firma_adi')
+        ->toContain('kurum_turu')
+        ->toContain('sube_sayisi')
+        ->toContain('kampanya_izni')
+        ->toContain('kvkk_onayi');
+
+    $sourceInput = $xpath->query('.//input[@name="source_page"]', $form)->item(0);
+    $renderedCities = [];
+
+    foreach ($xpath->query('.//select[@name="il"]/option[@value != ""]', $form) as $option) {
+        $renderedCities[$option->getAttribute('value')] = trim($option->textContent);
+    }
+
+    expect($sourceInput?->getAttribute('value'))->toBe('kurumsal-cozumler');
+    expect($renderedCities)
+        ->toHaveCount(81)
+        ->toBe(Config::array('iller'));
 });
 
 it('sends a valid discovery request to the configured recipient', function () {
@@ -56,6 +223,71 @@ it('sends a valid discovery request to the configured recipient', function () {
             && $mail->campaignConsent;
     });
 });
+
+it('sends every corporate discovery field to the configured recipient', function () {
+    config()->set('mail.discovery.to', 'info@tepenetguvenlik.com');
+    Mail::fake();
+
+    $response = $this->post(route('discovery.store'), validCorporateDiscoveryRequestPayload());
+
+    $response
+        ->assertRedirect(route('kurumsal-cozumler.index').'#ucretsiz-kesif')
+        ->assertSessionHas('discovery_success');
+    Mail::assertSent(DiscoveryRequestMail::class, function (DiscoveryRequestMail $mail): bool {
+        return $mail->hasTo('info@tepenetguvenlik.com')
+            && $mail->firstName === 'Ayşe'
+            && $mail->lastName === 'Yılmaz'
+            && $mail->phone === '0532 123 45 67'
+            && $mail->email === 'ayse@example.com'
+            && $mail->productGroup === 'diger'
+            && $mail->city === 'izmir'
+            && $mail->isWorkplace
+            && $mail->branchCount === 12
+            && $mail->campaignConsent
+            && $mail->companyName === 'Tepenet Test AŞ'
+            && $mail->organizationType === 'fabrika';
+    });
+});
+
+it('returns a request submitted from a security page to the same form', function (
+    string $sourcePage,
+    string $routeName,
+    string $isWorkplace,
+    string $fragment,
+) {
+    Mail::fake();
+
+    $payload = validDiscoveryRequestPayload([
+        'source_page' => $sourcePage,
+        'isyeri_talebi' => $isWorkplace,
+    ]);
+
+    if ($isWorkplace === '0') {
+        unset($payload['sube_sayisi']);
+    }
+
+    $response = $this->post(route('discovery.store'), $payload);
+
+    $response
+        ->assertRedirect(route($routeName).$fragment)
+        ->assertSessionHas('discovery_success');
+    Mail::assertSent(DiscoveryRequestMail::class);
+})->with([
+    'home security' => ['ev-guvenligi', 'ev-guvenligi.index', '0', '#ucretsiz-kesif-hero'],
+    'home security components' => [
+        'ev-guvenligi-nelerden-olusur',
+        'ev-guvenligi.nelerden-olusur',
+        '0',
+        '#ucretsiz-kesif',
+    ],
+    'workplace security' => ['is-yeri-guvenligi', 'is-yeri-guvenligi.index', '1', '#ucretsiz-kesif-hero'],
+    'workplace security components' => [
+        'is-yeri-guvenligi-nelerden-olusur',
+        'is-yeri-guvenligi.nelerden-olusur',
+        '1',
+        '#ucretsiz-kesif',
+    ],
+]);
 
 it('rejects an empty discovery request without sending mail', function () {
     Mail::fake();
@@ -96,9 +328,39 @@ it('rejects invalid discovery request values without sending mail', function (
     'invalid phone' => ['telefon', 'telefon-degil', 'Lütfen geçerli bir telefon numarası girin.'],
     'long phone' => ['telefon', str_repeat('5', 21), 'Telefon numarası en fazla 20 karakter olabilir.'],
     'invalid email' => ['email', 'gecersiz-adres', 'Lütfen geçerli bir e-posta adresi girin.'],
+    'unknown source page' => ['source_page', 'harici-site', 'Kaynak sayfa bilgisi geçersiz.'],
     'unknown product group' => ['urun_grubu', 'bilinmeyen', 'Lütfen geçerli bir ürün grubu seçin.'],
-    'unknown city' => ['il', 'izmir', 'Lütfen geçerli bir il seçin.'],
+    'unknown city' => ['il', 'yurt-disi', 'Lütfen geçerli bir il seçin.'],
     'declined privacy notice' => ['kvkk_onayi', '0', 'Devam etmek için aydınlatma metnini onaylayın.'],
+]);
+
+it('rejects incomplete or invalid corporate details without sending mail', function (
+    string $field,
+    mixed $value,
+    string $message,
+) {
+    Mail::fake();
+    $payload = validCorporateDiscoveryRequestPayload();
+
+    if ($value === null) {
+        unset($payload[$field]);
+    } else {
+        $payload[$field] = $value;
+    }
+
+    $response = $this
+        ->from(route('kurumsal-cozumler.index'))
+        ->post(route('discovery.store'), $payload);
+
+    $response
+        ->assertRedirect(route('kurumsal-cozumler.index'))
+        ->assertSessionHasErrors([$field => $message]);
+    Mail::assertNothingOutgoing();
+})->with([
+    'missing company name' => ['firma_adi', null, 'Lütfen firma adını girin.'],
+    'long company name' => ['firma_adi', str_repeat('a', 151), 'Firma adı en fazla 150 karakter olabilir.'],
+    'missing organization type' => ['kurum_turu', null, 'Lütfen kurum türünü seçin.'],
+    'unknown organization type' => ['kurum_turu', 'bilinmeyen', 'Lütfen geçerli bir kurum türü seçin.'],
 ]);
 
 it('requires a valid branch count for workplace requests', function (mixed $branchCount, string $message) {

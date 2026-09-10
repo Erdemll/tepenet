@@ -26,4 +26,5 @@ it('renders each public page from its named route', function (string $routeName,
     'online operations' => ['online-islemler', 'online_islemler'],
     'contact' => ['iletisim', 'iletisim'],
     'job listings' => ['is-ilanlari', 'is_ilanlari'],
+    'blogs' => ['bloglar.index', 'bloglar.index'],
 ]);

@@ -34,6 +34,7 @@ it('renders every public navigation destination inside the mobile menu', functio
         ->toContain(route('urunler-ve-hizmetler.kamera-sistemleri'))
         ->toContain(route('urunler-ve-hizmetler.alarm-sistemleri'))
         ->toContain(route('online-islemler'))
+        ->toContain(route('bloglar.index'))
         ->toContain(route('iletisim'));
 });
 

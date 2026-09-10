@@ -10,9 +10,16 @@ TALEP BİLGİLERİ
 Ad Soyad: {{ $firstName }} {{ $lastName }}
 Telefon: {{ $phone }}
 E-posta: {{ $email ?? 'Belirtilmedi' }}
+@if ($companyName !== null)
+Firma Adı: {{ $companyName }}
+Kurum Türü: {{ $organizationTypeLabel }}
+@else
 Ürün Grubu: {{ $productGroupLabel }}
+@endif
 İl: {{ $cityLabel }}
+@if ($companyName === null)
 Talep Türü: {{ $isWorkplace ? 'İş yeri' : 'Ev' }}
+@endif
 @if ($isWorkplace)
 Şube Sayısı: {{ $branchCount }}
 @endif

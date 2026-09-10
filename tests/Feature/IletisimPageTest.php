@@ -6,6 +6,9 @@ it('renders contact details and the complete contact form without a map', functi
     $response
         ->assertOk()
         ->assertViewIs('iletisim')
+        ->assertSee('class="catalog-hero"', false)
+        ->assertSee(asset('resimler/iletisim_banner.png'), false)
+        ->assertSee('<h1 id="page-title">İletişim</h1>', false)
         ->assertSeeText('İletişim Bilgilerimiz')
         ->assertSeeText('0224 322 03 70')
         ->assertSeeText('0850 532 96 70')
@@ -24,7 +27,9 @@ it('renders contact details and the complete contact form without a map', functi
         ->assertSee('name="tercih_email"', false)
         ->assertSee('name="tercih_sms"', false)
         ->assertSee('name="kvkk_onayi"', false)
-        ->assertSee('class="contact-submit btn" type="button"', false)
+        ->assertSee('action="'.route('iletisim.store').'"', false)
+        ->assertSee('name="_token"', false)
+        ->assertSee('class="contact-submit btn" type="submit"', false)
         ->assertDontSee('<iframe', false);
 });
 

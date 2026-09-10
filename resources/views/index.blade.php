@@ -361,7 +361,7 @@
         <div class="container">
           <div class="blog-section__header">
             <h2 id="blog-title">Tepenet Blog</h2>
-            <a class="blog-section__all" href="#"
+            <a class="blog-section__all" href="{{ route('bloglar.index') }}"
               >Tüm yazıları görüntüleyin →</a
             >
           </div>

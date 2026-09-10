@@ -197,73 +197,11 @@
                     üzere bilgilerinizi bırakın.
                   </p>
 
-                  <form action="#" method="post">
-                    <div class="row g-3">
-                      <div class="col-12 col-md-6">
-                        <label class="visually-hidden" for="kesif-ad">Adınız</label>
-                        <input class="form-control" id="kesif-ad" name="ad" type="text" placeholder="Adınız" autocomplete="given-name" required />
-                      </div>
-                      <div class="col-12 col-md-6">
-                        <label class="visually-hidden" for="kesif-soyad">Soyadınız</label>
-                        <input class="form-control" id="kesif-soyad" name="soyad" type="text" placeholder="Soyadınız" autocomplete="family-name" required />
-                      </div>
-                      <div class="col-12 col-md-6">
-                        <label class="visually-hidden" for="kesif-telefon">Telefon numaranız</label>
-                        <input class="form-control" id="kesif-telefon" name="telefon" type="tel" placeholder="Telefon Numaranız" autocomplete="tel" required />
-                      </div>
-                      <div class="col-12 col-md-6">
-                        <label class="visually-hidden" for="kesif-email">E-posta adresiniz</label>
-                        <input class="form-control" id="kesif-email" name="email" type="email" placeholder="E-Posta" autocomplete="email" />
-                      </div>
-                      <div class="col-12 col-md-6">
-                        <label class="visually-hidden" for="urun-grubu">Ürün grubu</label>
-                        <select class="form-select" id="urun-grubu" name="urun_grubu" required>
-                          <option value="" selected disabled>Ürün Grubu Seçiniz</option>
-                          <option value="alarm">Alarm Sistemleri</option>
-                          <option value="kamera">Kamera Sistemleri</option>
-                          <option value="diger">Diğer</option>
-                        </select>
-                      </div>
-                      <div class="col-12 col-md-6">
-                        <label class="visually-hidden" for="kesif-il">İl seçiniz</label>
-                        <select class="form-select" id="kesif-il" name="il" required>
-                          <option value="" selected disabled>İl Seçiniz</option>
-                          <option value="bursa">Bursa</option>
-                          <option value="istanbul">İstanbul</option>
-                          <option value="ankara">Ankara</option>
-                        </select>
-                      </div>
-                      <div class="col-12">
-                        <div class="form-check mt-2">
-                          <input class="form-check-input" id="isyeri-talebi" name="isyeri_talebi" type="checkbox" />
-                          <label class="form-check-label" for="isyeri-talebi">Keşif talebiniz iş yeri için mi?</label>
-                        </div>
-                      </div>
-                      <div class="col-12" id="sube-sayisi-wrapper" hidden>
-                        <label class="visually-hidden" for="sube-sayisi">Şube sayısı</label>
-                        <input class="form-control" id="sube-sayisi" name="sube_sayisi" type="number" min="1" placeholder="Şube Sayısı" />
-                      </div>
-                      <div class="col-12">
-                        <div class="form-check mt-2">
-                          <input class="form-check-input" id="kampanya-izni" name="kampanya_izni" type="checkbox" />
-                          <label class="form-check-label" for="kampanya-izni">
-                            Tepenet Güvenlik’in kampanya ve duyurular için benimle iletişime geçmesine izin veriyorum. <a href="#">Detay</a>
-                          </label>
-                        </div>
-                      </div>
-                      <div class="col-12">
-                        <div class="form-check">
-                          <input class="form-check-input" id="kvkk-onayi" name="kvkk_onayi" type="checkbox" required />
-                          <label class="form-check-label" for="kvkk-onayi">
-                            Kişisel verilerin korunmasına ilişkin <a href="#">aydınlatma metnini</a> okudum ve anladım. <span class="text-danger">*</span>
-                          </label>
-                        </div>
-                      </div>
-                      <div class="col-12 mt-4">
-                        <button class="submit-button btn" type="submit">Gönder →</button>
-                      </div>
-                    </div>
-                  </form>
+                  @include('partials.discovery-section-form', [
+                    'idPrefix' => 'ev-nelerden-kesif',
+                    'sourcePage' => 'ev-guvenligi-nelerden-olusur',
+                    'workplaceDefault' => false,
+                  ])
                 </div>
               </div>
             </div>
@@ -277,22 +215,24 @@
     @include('partials.footer')
 
     <script>
-      const isYeriTalebi = document.getElementById("isyeri-talebi");
-      const subeSayisiWrapper = document.getElementById("sube-sayisi-wrapper");
-      const subeSayisi = document.getElementById("sube-sayisi");
+      document.querySelectorAll("[data-discovery-section-form]").forEach((form) => {
+        const workplaceToggle = form.querySelector("[data-workplace-toggle]");
+        const branchCountWrapper = form.querySelector("[data-branch-count-wrapper]");
+        const branchCount = form.querySelector("[data-branch-count]");
 
-      function updateSubeSayisi() {
-        const isVisible = isYeriTalebi.checked;
-        subeSayisiWrapper.hidden = !isVisible;
-        subeSayisi.required = isVisible;
+        function updateBranchCount() {
+          const isVisible = workplaceToggle.checked;
+          branchCountWrapper.hidden = !isVisible;
+          branchCount.required = isVisible;
 
-        if (!isVisible) {
-          subeSayisi.value = "";
+          if (!isVisible) {
+            branchCount.value = "";
+          }
         }
-      }
 
-      isYeriTalebi.addEventListener("change", updateSubeSayisi);
-      updateSubeSayisi();
+        workplaceToggle.addEventListener("change", updateBranchCount);
+        updateBranchCount();
+      });
     </script>
 
     <script

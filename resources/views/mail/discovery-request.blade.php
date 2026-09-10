@@ -224,18 +224,31 @@
                                 <td class="details-label">E-posta</td>
                                 <td class="details-value">{{ $email ?? 'Belirtilmedi' }}</td>
                             </tr>
-                            <tr>
-                                <td class="details-label">Ürün Grubu</td>
-                                <td class="details-value">{{ $productGroupLabel }}</td>
-                            </tr>
+                            @if ($companyName !== null)
+                                <tr>
+                                    <td class="details-label">Firma Adı</td>
+                                    <td class="details-value">{{ $companyName }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="details-label">Kurum Türü</td>
+                                    <td class="details-value">{{ $organizationTypeLabel }}</td>
+                                </tr>
+                            @else
+                                <tr>
+                                    <td class="details-label">Ürün Grubu</td>
+                                    <td class="details-value">{{ $productGroupLabel }}</td>
+                                </tr>
+                            @endif
                             <tr>
                                 <td class="details-label">İl</td>
                                 <td class="details-value">{{ $cityLabel }}</td>
                             </tr>
-                            <tr>
-                                <td class="details-label">Talep Türü</td>
-                                <td class="details-value">{{ $isWorkplace ? 'İş yeri' : 'Ev' }}</td>
-                            </tr>
+                            @if ($companyName === null)
+                                <tr>
+                                    <td class="details-label">Talep Türü</td>
+                                    <td class="details-value">{{ $isWorkplace ? 'İş yeri' : 'Ev' }}</td>
+                                </tr>
+                            @endif
                             @if ($isWorkplace)
                                 <tr>
                                     <td class="details-label">Şube Sayısı</td>

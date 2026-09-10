@@ -72,6 +72,20 @@
               </svg>
               Ürünler
             </a>
+
+            <a
+              href="{{ route('admin.bloglar.index') }}"
+              @if ($active === 'bloglar') aria-current="page" @endif
+              @class([
+                'flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition',
+                'bg-red-700 text-white shadow-lg shadow-red-950/25' => $active === 'bloglar',
+                'text-slate-300 hover:bg-white/10 hover:text-white' => $active !== 'bloglar',
+              ])>
+              <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 4.75h14A1.75 1.75 0 0 1 20.75 6.5v11A1.75 1.75 0 0 1 19 19.25H5A1.75 1.75 0 0 1 3.25 17.5v-11A1.75 1.75 0 0 1 5 4.75ZM7 8h10M7 12h7M7 16h4" />
+              </svg>
+              Bloglar
+            </a>
           </div>
         </nav>
 

@@ -9,6 +9,7 @@ use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Config;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Mime\Part\DataPart;
 
@@ -28,6 +29,8 @@ class DiscoveryRequestMail extends Mailable
         public bool $isWorkplace,
         public ?int $branchCount,
         public bool $campaignConsent,
+        public ?string $companyName = null,
+        public ?string $organizationType = null,
     ) {
         $this->withSymfonyMessage(function (Email $message): void {
             $message->addPart(
@@ -47,7 +50,9 @@ class DiscoveryRequestMail extends Mailable
             replyTo: $this->email === null
                 ? []
                 : [new Address($this->email, $this->firstName.' '.$this->lastName)],
-            subject: 'Yeni Ücretsiz Keşif Talebi',
+            subject: $this->companyName === null
+                ? 'Yeni Ücretsiz Keşif Talebi'
+                : 'Yeni Kurumsal Ücretsiz Keşif Talebi',
         );
     }
 
@@ -62,6 +67,7 @@ class DiscoveryRequestMail extends Mailable
             with: [
                 'productGroupLabel' => $this->productGroupLabel(),
                 'cityLabel' => $this->cityLabel(),
+                'organizationTypeLabel' => $this->organizationTypeLabel(),
             ],
         );
     }
@@ -87,10 +93,18 @@ class DiscoveryRequestMail extends Mailable
 
     private function cityLabel(): string
     {
-        return match ($this->city) {
-            'bursa' => 'Bursa',
-            'istanbul' => 'İstanbul',
-            'ankara' => 'Ankara',
+        return Config::array('iller')[$this->city] ?? $this->city;
+    }
+
+    private function organizationTypeLabel(): ?string
+    {
+        return match ($this->organizationType) {
+            'magaza' => 'Mağaza / Perakende',
+            'ofis' => 'Ofis',
+            'fabrika' => 'Fabrika / Üretim',
+            'otel' => 'Otel / Konaklama',
+            'diger' => 'Diğer',
+            default => $this->organizationType,
         };
     }
 }

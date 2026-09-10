@@ -26,7 +26,7 @@
     @include('partials.navbar')
 
     <main>
-      <section class="hero" aria-labelledby="page-title">
+      <section class="hero" id="ucretsiz-kesif-hero" aria-labelledby="page-title">
         <div class="hero__image">
           <img
             src="{{ asset('resimler/ev_guvenligi/banner.png') }}"
@@ -48,55 +48,17 @@
         
         -->
 
-        <aside class="hero-request" aria-labelledby="quick-request-title">
+        <aside id="kesif" class="hero-request" aria-labelledby="quick-request-title">
           <h2 id="quick-request-title">Ücretsiz Keşif</h2>
           <p>
             Evinize uygun sistemi belirlemek için iletişim bilgilerinizi
             bırakın.
           </p>
-          <form action="#" method="post">
-            <div class="mb-3">
-              <label class="visually-hidden" for="hizli-ad">Adınız</label>
-              <input
-                class="form-control"
-                id="hizli-ad"
-                name="ad"
-                type="text"
-                placeholder="Adınız"
-                autocomplete="given-name"
-                required
-              />
-            </div>
-            <div class="mb-3">
-              <label class="visually-hidden" for="hizli-telefon"
-                >Telefon numaranız</label
-              >
-              <input
-                class="form-control"
-                id="hizli-telefon"
-                name="telefon"
-                type="tel"
-                placeholder="Telefon Numaranız"
-                autocomplete="tel"
-                required
-              />
-            </div>
-            <div class="form-check mb-3">
-              <input
-                class="form-check-input"
-                id="hizli-kvkk"
-                name="kvkk_onayi"
-                type="checkbox"
-                required
-              />
-              <label class="form-check-label" for="hizli-kvkk">
-                <a href="#">Aydınlatma metnini</a> okudum ve anladım.
-              </label>
-            </div>
-            <button class="submit-button btn" type="submit">
-              Talep Oluştur →
-            </button>
-          </form>
+          @include('partials.hero-discovery-form', [
+            'idPrefix' => 'ev-hero-kesif',
+            'sourcePage' => 'ev-guvenligi',
+            'workplaceDefault' => false,
+          ])
         </aside>
       </section>
 
@@ -420,7 +382,7 @@
                 Güvenilir teknoloji, profesyonel destek ve ihtiyaca göre
                 şekillenen çözümlerle ev güvenliğini tek noktadan yönetin.
               </p>
-              <a class="reference-cta" href="#ucretsiz-kesif"
+              <a class="reference-cta" href="{{ route('kendi-sistemini-olustur.index') }}"
                 >Hemen Teklif Al →</a
               >
             </div>
@@ -447,203 +409,35 @@
         </div>
       </section>
 
-      <section
-        class="discovery-section section-space"
-        id="ucretsiz-kesif"
-        aria-labelledby="discovery-title"
-      >
-        <div class="container">
-          <div class="discovery-shell">
-            <div class="row g-0">
-              <div class="col-12 col-lg-4">
-                <div class="discovery-visual">
-                  <img
-                    src="{{ asset('resimler/ev_guvenligi/genel-teklif-form_0.png') }}"
-                    alt="Tepenet müşteri hizmetleri temsilcisi"
-                  />
-                </div>
-              </div>
-              <div class="col-12 col-lg-8">
-                <div class="discovery-content">
-                  <p class="discovery-kicker">Ücretsiz Keşfe</p>
-                  <h2 class="discovery-title" id="discovery-title">
-                    Hazır mısınız?
-                  </h2>
-                  <p class="discovery-intro">
-                    Eviniz için en uygun alarm sistemini birlikte belirlemek
-                    üzere bilgilerinizi bırakın.
-                  </p>
 
-                  <form action="#" method="post">
-                    <div class="row g-3">
-                      <div class="col-12 col-md-6">
-                        <label class="visually-hidden" for="kesif-ad"
-                          >Adınız</label
-                        >
-                        <input
-                          class="form-control"
-                          id="kesif-ad"
-                          name="ad"
-                          type="text"
-                          placeholder="Adınız"
-                          autocomplete="given-name"
-                          required
-                        />
-                      </div>
-                      <div class="col-12 col-md-6">
-                        <label class="visually-hidden" for="kesif-soyad"
-                          >Soyadınız</label
-                        >
-                        <input
-                          class="form-control"
-                          id="kesif-soyad"
-                          name="soyad"
-                          type="text"
-                          placeholder="Soyadınız"
-                          autocomplete="family-name"
-                          required
-                        />
-                      </div>
-                      <div class="col-12 col-md-6">
-                        <label class="visually-hidden" for="kesif-telefon"
-                          >Telefon numaranız</label
-                        >
-                        <input
-                          class="form-control"
-                          id="kesif-telefon"
-                          name="telefon"
-                          type="tel"
-                          placeholder="Telefon Numaranız"
-                          autocomplete="tel"
-                          required
-                        />
-                      </div>
-                      <div class="col-12 col-md-6">
-                        <label class="visually-hidden" for="kesif-email"
-                          >E-posta adresiniz</label
-                        >
-                        <input
-                          class="form-control"
-                          id="kesif-email"
-                          name="email"
-                          type="email"
-                          placeholder="E-Posta"
-                          autocomplete="email"
-                        />
-                      </div>
-                      <div class="col-12 col-md-6">
-                        <label class="visually-hidden" for="urun-grubu"
-                          >Ürün grubu</label
-                        >
-                        <select
-                          class="form-select"
-                          id="urun-grubu"
-                          name="urun_grubu"
-                          required
-                        >
-                          <option value="" selected disabled>
-                            Ürün Grubu Seçiniz
-                          </option>
-                          <option value="alarm">Alarm Sistemleri</option>
-                          <option value="kamera">Kamera Sistemleri</option>
-                          <option value="diger">Diğer</option>
-                        </select>
-                      </div>
-                      <div class="col-12 col-md-6">
-                        <label class="visually-hidden" for="kesif-il"
-                          >İl seçiniz</label
-                        >
-                        <select
-                          class="form-select"
-                          id="kesif-il"
-                          name="il"
-                          required
-                        >
-                          <option value="" selected disabled>İl Seçiniz</option>
-                          <option value="bursa">Bursa</option>
-                          <option value="istanbul">İstanbul</option>
-                          <option value="ankara">Ankara</option>
-                        </select>
-                      </div>
-                      <div class="col-12">
-                        <div class="form-check mt-2">
-                          <input
-                            class="form-check-input"
-                            id="isyeri-talebi"
-                            name="isyeri_talebi"
-                            type="checkbox"
-                          />
-                          <label class="form-check-label" for="isyeri-talebi"
-                            >Keşif talebiniz iş yeri için mi?</label
-                          >
-                        </div>
-                      </div>
-                      <div class="col-12" id="sube-sayisi-wrapper" hidden>
-                        <label class="visually-hidden" for="sube-sayisi"
-                          >Şube sayısı</label
-                        >
-                        <input
-                          class="form-control"
-                          id="sube-sayisi"
-                          name="sube_sayisi"
-                          type="number"
-                          min="1"
-                          placeholder="Şube Sayısı"
-                        />
-                      </div>
-                      <div class="col-12">
-                        <div class="form-check mt-2">
-                          <input
-                            class="form-check-input"
-                            id="kampanya-izni"
-                            name="kampanya_izni"
-                            type="checkbox"
-                          />
-                          <label class="form-check-label" for="kampanya-izni">
-                            Tepenet Güvenlik’in kampanya ve duyurular için
-                            benimle iletişime geçmesine izin veriyorum.
-                            <a href="#">Detay</a>
-                          </label>
-                        </div>
-                      </div>
-                      <div class="col-12">
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            id="kvkk-onayi"
-                            name="kvkk_onayi"
-                            type="checkbox"
-                            required
-                          />
-                          <label class="form-check-label" for="kvkk-onayi">
-                            Kişisel verilerin korunmasına ilişkin
-                            <a href="#">aydınlatma metnini</a> okudum ve
-                            anladım. <span class="text-danger">*</span>
-                          </label>
-                        </div>
-                      </div>
-                      <div class="col-12 mt-4">
-                        <button class="submit-button btn" type="submit">
-                          Gönder →
-                        </button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
     </main>
 
-    <a class="floating-discovery" href="#ucretsiz-kesif"
+    <a class="floating-discovery" href="#kesif"
       ><span aria-hidden="true">✓</span> Ücretsiz Keşif</a
     >
 
     @include('partials.footer')
 
     <script>
+      document.querySelectorAll("[data-hero-discovery-form]").forEach((form) => {
+        const workplaceToggle = form.querySelector("[data-workplace-toggle]");
+        const branchCountWrapper = form.querySelector("[data-branch-count-wrapper]");
+        const branchCount = form.querySelector("[data-branch-count]");
+
+        function updateHeroBranchCount() {
+          const isVisible = workplaceToggle.checked;
+          branchCountWrapper.hidden = !isVisible;
+          branchCount.required = isVisible;
+
+          if (!isVisible) {
+            branchCount.value = "";
+          }
+        }
+
+        workplaceToggle.addEventListener("change", updateHeroBranchCount);
+        updateHeroBranchCount();
+      });
+
       const isYeriTalebi = document.getElementById("isyeri-talebi");
       const subeSayisiWrapper = document.getElementById("sube-sayisi-wrapper");
       const subeSayisi = document.getElementById("sube-sayisi");
