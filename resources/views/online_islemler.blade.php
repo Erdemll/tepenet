@@ -21,11 +21,12 @@
   @include('partials.navbar')
 
   <main class="online-page">
-    <section class="online-hero" aria-labelledby="online-page-title">
+    <section class="catalog-hero" aria-labelledby="page-title">
+      <div class="catalog-hero__image">
+        <img src="{{ asset('resimler/online_islemler_banner.png') }}" alt="Tepenet Güvenlik iletişim hizmetleri" />
+      </div>
       <div class="container">
-        <p class="online-hero__eyebrow">Müşteri İşlem Merkezi</p>
-        <h1 id="online-page-title">Online İşlemler</h1>
-        <p>Hesabınıza giriş yapın veya ilk kullanım için kaydınızı kolayca oluşturun.</p>
+        <h1 id="page-title">Online İşlemler</h1>
       </div>
     </section>
 
@@ -72,8 +73,7 @@
                 type="button"
                 class="online-button online-button--wide"
                 aria-controls="kart_1 kart_2"
-                aria-expanded="false"
-              >
+                aria-expanded="false">
                 Yeni Kayıt
               </button>
             </section>
@@ -86,8 +86,7 @@
               <p><strong>Online İşlemler</strong> ile aşağıdaki işlemlerinizin tümünü kolaylıkla ve güvenle yapabilirsiniz.</p>
               <img
                 src="{{ asset('resimler/online_islemler/detay.png') }}"
-                alt="Online İşlemler üzerinden yapılabilen işlemler"
-              />
+                alt="Online İşlemler üzerinden yapılabilen işlemler" />
               <div class="online-intro-notes">
                 <p><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Sisteme giriş yapmak için giriş bölümündeki alanları doldurmanız yeterlidir.</p>
                 <p><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Daha önce kayıt olmadıysanız Yeni Kayıt formuyla hızlıca kaydınızı oluşturabilirsiniz.</p>
@@ -112,8 +111,7 @@
                     inputmode="numeric"
                     pattern="[0-9]+"
                     oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-                    required
-                  />
+                    required />
                 </div>
 
                 <div class="online-field">
@@ -128,8 +126,7 @@
                     minlength="10"
                     maxlength="11"
                     oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-                    required
-                  />
+                    required />
                 </div>
 
                 <div class="online-field">
@@ -151,8 +148,7 @@
                     maxlength="11"
                     autocomplete="tel"
                     oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-                    required
-                  />
+                    required />
                 </div>
 
                 <div class="online-field">
@@ -208,7 +204,10 @@
       registrationToggle.textContent = isOpeningRegistration ? 'Tanıtıma Dön' : 'Yeni Kayıt';
 
       if (isOpeningRegistration) {
-        registrationPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        registrationPanel.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
       }
     });
   </script>

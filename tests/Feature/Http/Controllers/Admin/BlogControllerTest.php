@@ -55,8 +55,10 @@ it('renders create and edit forms with the HTML editor', function () {
         ->get(route('admin.bloglar.create'))
         ->assertOk()
         ->assertViewIs('admin.bloglar.create')
-        ->assertSee('contenteditable="true"', false)
-        ->assertSee('data-editor-command="bold"', false);
+        ->assertSee('quill@2.0.3/dist/quill.snow.css', false)
+        ->assertSee('quill@2.0.3/dist/quill.js', false)
+        ->assertSee('id="blog-editor"', false)
+        ->assertDontSee('ql-image', false);
 
     $this->actingAs($admin)
         ->get(route('admin.bloglar.edit', $blog))
@@ -69,7 +71,7 @@ it('creates and sanitizes HTML blog content', function () {
     $admin = User::factory()->admin()->create();
 
     $response = $this->actingAs($admin)->post(route('admin.bloglar.store'), validBlogPayload([
-        'icerik' => '<h2>Başlık</h2><script>alert(1)</script><p onclick="bad()">Metin <strong>vurgulu</strong></p><a href="javascript:alert(1)">Kötü bağlantı</a>',
+        'icerik' => '<h2>Başlık</h2><script>alert(1)</script><p onclick="bad()">Metin <strong>vurgulu</strong></p><ol><li data-list="ordered">Sıralı</li><li data-list="bullet">Madde</li><li data-list="invalid">Geçersiz</li></ol><a href="javascript:alert(1)">Kötü bağlantı</a>',
     ]));
     $blog = Blog::query()->latest('id')->firstOrFail();
 
@@ -79,8 +81,11 @@ it('creates and sanitizes HTML blog content', function () {
     expect($blog->icerik)
         ->toContain('<h2>Başlık</h2>')
         ->toContain('<p>Metin <strong>vurgulu</strong></p>')
+        ->toContain('data-list="ordered"')
+        ->toContain('data-list="bullet"')
         ->not->toContain('<script')
         ->not->toContain('onclick')
+        ->not->toContain('data-list="invalid"')
         ->not->toContain('javascript:');
 });
 

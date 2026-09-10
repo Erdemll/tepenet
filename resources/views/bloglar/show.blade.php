@@ -12,21 +12,45 @@
   <body class="page-blog-detay">
     @include('partials.navbar')
 
-    <main class="blog-page-main">
+    <main class="blog-page-main blog-page-main--detail">
       <section class="blog-page-hero blog-page-hero--detail" aria-labelledby="page-title">
         <div class="container">
-          <a href="{{ route('bloglar.index') }}" class="blog-page-back">← Tüm blog yazıları</a>
-          <p class="blog-page-eyebrow">TEPENET BLOG</p>
+          <a href="{{ route('bloglar.index') }}" class="blog-page-back blog-page-back--detail">← Yazı arşivine dön</a>
+          <p class="blog-page-eyebrow">TEPENET / BİLGİ MERKEZİ</p>
           <h1 id="page-title">{{ $blog->baslik }}</h1>
-          <p>{{ $blog->created_at?->format('d.m.Y') }}</p>
+          <div class="blog-page-article-meta" aria-label="Yayın bilgisi">
+            <span>YAYIN TARİHİ</span>
+            <strong>{{ $blog->created_at?->format('d.m.Y') }}</strong>
+          </div>
         </div>
       </section>
 
-      <article class="container py-5">
-        <div class="blog-article">
-          <div class="blog-article__content">{!! $content !!}</div>
+      <section class="blog-article-section" aria-label="Blog yazısı">
+        <div class="container">
+          <div class="blog-article-layout">
+            <aside class="blog-article-rail" aria-label="Yazı bilgileri">
+              <p>YAYIN BİLGİSİ</p>
+              <dl>
+                <div>
+                  <dt>TARİH</dt>
+                  <dd>{{ $blog->created_at?->format('d.m.Y') }}</dd>
+                </div>
+                <div>
+                  <dt>KAYNAK</dt>
+                  <dd>TEPENET BLOG</dd>
+                </div>
+              </dl>
+            </aside>
+
+            <article class="blog-article">
+              <div class="blog-article__content">{!! $content !!}</div>
+              <footer class="blog-article__footer">
+                <a href="{{ route('bloglar.index') }}">← Tüm blog yazıları</a>
+              </footer>
+            </article>
+          </div>
         </div>
-      </article>
+      </section>
     </main>
 
     @include('partials.footer')

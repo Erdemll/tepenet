@@ -11,9 +11,20 @@ use App\Http\Controllers\IsIlaniController as PublicIsIlaniController;
 use App\Http\Controllers\SystemBuilderRequestController;
 use App\Http\Controllers\UrunController as PublicUrunController;
 use App\Http\Controllers\UrunKategoriController;
+use App\Models\Blog;
 use Illuminate\Support\Facades\Route;
+use Illuminate\View\View;
 
-Route::view('/', 'index')->name('home');
+Route::get('/', function (): View {
+    return view('index', [
+        'blogs' => Blog::query()
+            ->select(['id', 'baslik', 'icerik', 'created_at'])
+            ->latest()
+            ->orderByDesc('id')
+            ->limit(3)
+            ->get(),
+    ]);
+})->name('home');
 Route::post('/ucretsiz-kesif', DiscoveryRequestController::class)
     ->middleware('throttle:3,1')
     ->name('discovery.store');
@@ -58,8 +69,8 @@ Route::post('/iletisim', ContactRequestController::class)
     ->middleware('throttle:3,1')
     ->name('iletisim.store');
 Route::get('/is-ilanlari', [PublicIsIlaniController::class, 'index'])->name('is-ilanlari');
-//Route::get('/bloglar', [BlogController::class, 'index'])->name('bloglar.index');
-//Route::get('/bloglar/{blog}', [BlogController::class, 'show'])->name('bloglar.show');
+Route::get('/bloglar', [BlogController::class, 'index'])->name('bloglar.index');
+Route::get('/bloglar/{blog}', [BlogController::class, 'show'])->name('bloglar.show');
 
 Route::prefix('admin')->name('admin.')->group(function (): void {
     Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');

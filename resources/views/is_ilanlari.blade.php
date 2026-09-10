@@ -24,21 +24,19 @@
   @include('partials.navbar')
 
   <main>
-    <section class="jobs-hero" aria-labelledby="jobs-title">
+
+    <section class="catalog-hero" aria-labelledby="page-title">
+      <div class="catalog-hero__image">
+        <img src="{{ asset('resimler/is_ilani_banner.png') }}" alt="Tepenet Güvenlik iletişim hizmetleri" />
+      </div>
       <div class="container">
-        <nav class="jobs-breadcrumb" aria-label="İçerik yolu">
-          <a href="{{ route('e-basvuru') }}">E-Başvuru Portalı</a>
-          <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
-          <span>İş İlanları</span>
-        </nav>
         <div class="jobs-hero__heading">
-          <span class="jobs-hero__icon"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i></span>
           <div>
-            <span class="eyebrow">Tepenet Kariyer</span>
             <h1 id="jobs-title">İş İlanları</h1>
             <p><strong id="jobCount">{{ count($jobs) }}</strong> açık pozisyon arasından size uygun kariyer fırsatını bulun.</p>
           </div>
         </div>
+      </div>
       </div>
     </section>
 
@@ -70,7 +68,7 @@
                 <select id="positionFilter" class="form-select">
                   <option value="all">Tüm pozisyonlar</option>
                   @foreach ($jobTypes as $value => $label)
-                    <option value="{{ $value }}">{{ $label }}</option>
+                  <option value="{{ $value }}">{{ $label }}</option>
                   @endforeach
                 </select>
               </div>
@@ -140,43 +138,43 @@
 
             <div class="jobs-list is-list-view" id="jobsList">
               @foreach ($jobs as $job)
-                <article
-                  class="job-card"
-                  id="{{ $job->slug }}"
-                  data-job-card
-                  data-title="{{ $job->title }}"
-                  data-summary="{{ $job->summary }}"
-                  data-type="{{ $job->type }}"
-                  data-cities="{{ implode('|', $job->cities) }}">
-                  <div class="job-card__icon" aria-hidden="true"><i class="fa-solid fa-briefcase"></i></div>
-                  <div class="job-card__content">
-                    <div class="job-card__date job-card__date--mobile">
-                      <span>Son Başvuru</span>
-                      <strong>{{ $job->application_deadline?->format('d.m.Y') ?? 'Sürekli' }}</strong>
-                    </div>
-                    <h2>{{ $job->title }}</h2>
-                    <p>{{ $job->summary }}</p>
-                    <div class="job-card__meta">
-                      <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> {{ implode(', ', $job->cities) }}</span>
-                      <span><i class="fa-regular fa-clock" aria-hidden="true"></i> {{ $job->employment_type }}</span>
-                    </div>
-                  </div>
-                  <div class="job-card__date job-card__date--desktop">
+              <article
+                class="job-card"
+                id="{{ $job->slug }}"
+                data-job-card
+                data-title="{{ $job->title }}"
+                data-summary="{{ $job->summary }}"
+                data-type="{{ $job->type }}"
+                data-cities="{{ implode('|', $job->cities) }}">
+                <div class="job-card__icon" aria-hidden="true"><i class="fa-solid fa-briefcase"></i></div>
+                <div class="job-card__content">
+                  <div class="job-card__date job-card__date--mobile">
                     <span>Son Başvuru</span>
                     <strong>{{ $job->application_deadline?->format('d.m.Y') ?? 'Sürekli' }}</strong>
                   </div>
-                  <div class="job-card__actions">
-                    <a class="jobs-button jobs-button--apply" href="{{ route('e-basvuru') }}#ise-alim-sureci">Hemen Başvur</a>
-                    <button
-                      class="job-card__share"
-                      type="button"
-                      data-share-job="{{ $job->title }}"
-                      data-share-anchor="{{ $job->slug }}"
-                      aria-label="{{ $job->title }} ilanını paylaş">
-                      <i class="fa-solid fa-share-nodes" aria-hidden="true"></i>
-                    </button>
+                  <h2>{{ $job->title }}</h2>
+                  <p>{{ $job->summary }}</p>
+                  <div class="job-card__meta">
+                    <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> {{ implode(', ', $job->cities) }}</span>
+                    <span><i class="fa-regular fa-clock" aria-hidden="true"></i> {{ $job->employment_type }}</span>
                   </div>
-                </article>
+                </div>
+                <div class="job-card__date job-card__date--desktop">
+                  <span>Son Başvuru</span>
+                  <strong>{{ $job->application_deadline?->format('d.m.Y') ?? 'Sürekli' }}</strong>
+                </div>
+                <div class="job-card__actions">
+                  <a class="jobs-button jobs-button--apply" href="{{ route('e-basvuru') }}#ise-alim-sureci">Hemen Başvur</a>
+                  <button
+                    class="job-card__share"
+                    type="button"
+                    data-share-job="{{ $job->title }}"
+                    data-share-anchor="{{ $job->slug }}"
+                    aria-label="{{ $job->title }} ilanını paylaş">
+                    <i class="fa-solid fa-share-nodes" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </article>
               @endforeach
             </div>
 
@@ -431,7 +429,11 @@
 
           try {
             if (navigator.share) {
-              await navigator.share({ title, text: `${title} iş ilanını inceleyin.`, url });
+              await navigator.share({
+                title,
+                text: `${title} iş ilanını inceleyin.`,
+                url
+              });
               shareStatus.textContent = 'İlan paylaşım penceresi açıldı.';
               return;
             }

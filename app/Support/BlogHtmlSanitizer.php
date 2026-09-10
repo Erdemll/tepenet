@@ -12,6 +12,7 @@ final class BlogHtmlSanitizer
     /** @var array<string, list<string>> */
     private const ALLOWED_ATTRIBUTES = [
         'a' => ['href', 'target', 'rel'],
+        'li' => ['data-list'],
     ];
 
     /** @var list<string> */
@@ -101,6 +102,10 @@ final class BlogHtmlSanitizer
         }
 
         if ($tagName !== 'a' || ! $element->hasAttribute('href')) {
+            if ($tagName === 'li' && ! in_array($element->getAttribute('data-list'), ['bullet', 'ordered'], true)) {
+                $element->removeAttribute('data-list');
+            }
+
             return;
         }
 

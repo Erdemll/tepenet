@@ -58,7 +58,7 @@
           <li><a href="{{ route('is-yeri-guvenligi.index') }}">İş yeri için</a></li>
           <li><a href="{{ route('kurumsal-cozumler.index') }}">Kurumsal çözümler</a></li>
           <li><a href="{{ route('online-islemler') }}">Online İşlemler</a></li>
-          <!-- <li><a href="{{ route('bloglar.index') }}">Bloglar</a></li> -->
+          <li><a href="{{ route('bloglar.index') }}">Bloglar</a>
           <li><a href="{{ route('iletisim') }}">İletişim</a></li>
         </ul>
       </div>

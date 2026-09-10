@@ -13,6 +13,7 @@
     <meta name="robots" content="noindex, nofollow" />
     <title>{{ $title }} | Tepenet Güvenlik</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @stack('head')
   </head>
   <body class="min-h-screen bg-slate-100 font-sans text-slate-900 antialiased">
     <div class="min-h-screen lg:grid lg:grid-cols-[17rem_1fr]">
@@ -126,5 +127,6 @@
         </div>
       </main>
     </div>
+    @stack('scripts')
   </body>
 </html>

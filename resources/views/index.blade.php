@@ -357,71 +357,57 @@
         </div>
       </section>
 
-      <section class="blog-section" aria-labelledby="blog-title">
+      <section class="home-blog-section" aria-labelledby="blog-title">
         <div class="container">
-          <div class="blog-section__header">
-            <h2 id="blog-title">Tepenet Blog</h2>
-            <a class="blog-section__all" href="{{ route('bloglar.index') }}"
-              >Tüm yazıları görüntüleyin →</a
-            >
-          </div>
-          <div class="row row-cols-1 row-cols-md-2 row-cols-xl-5 g-4">
-            <div class="col">
-              <article class="blog-card card">
-                <div class="blog-card__visual">
-                  <img 
-                    src="{{ asset('resimler/anasayfa/urun1-removebg-preview.png') }}"
-                    alt="Alarm kontrol paneli"
-                  />
-                </div>
-                <div class="card-body">
-                  <h3 class="card-title">Alarm Sistemleri Nasıl Çalışır?</h3>
-                  <p class="card-text">
-                    Alarm sistemlerinin temel bileşenlerini ve çalışma mantığını
-                    keşfedin.
-                  </p>
-                  <a class="blog-card__link" href="#">Devamını okuyun →</a>
-                </div>
-              </article>
+          <header class="home-blog-section__header">
+            <div>
+              <p class="home-blog-section__eyebrow">TEPENET / BİLGİ MERKEZİ</p>
+              <h2 id="blog-title">Sahadan güvenlik rehberleri.</h2>
             </div>
-            <div class="col">
-              <article class="blog-card card">
-                <div class="blog-card__visual">
-                  <img
-                    src="{{ asset('resimler/anasayfa/urun2-removebg-preview.png') }}"
-                    alt="Dahili alarm sireni"
-                  />
+            <a class="home-blog-section__all" href="{{ route('bloglar.index') }}">Tüm yazılar <span aria-hidden="true">→</span></a>
+          </header>
+
+          @if ($blogs->isNotEmpty())
+            <div id="home-blog-carousel" class="home-blog-carousel carousel slide" aria-roledescription="carousel" aria-label="Son blog yazıları" data-bs-touch="true">
+              <div class="carousel-inner">
+                @foreach ($blogs as $blog)
+                  <div @class(['carousel-item', 'active' => $loop->first])>
+                    <article class="home-blog-card h-100">
+                      <div class="home-blog-card__meta">
+                        <span>0{{ $loop->iteration }}</span>
+                        <time datetime="{{ $blog->created_at?->toDateString() }}">{{ $blog->created_at?->format('d.m.Y') }}</time>
+                      </div>
+                      <h3>{{ $blog->baslik }}</h3>
+                      <p>{{ \Illuminate\Support\Str::limit(trim(strip_tags($blog->icerik)), 160) }}</p>
+                      <a href="{{ route('bloglar.show', $blog) }}">Yazıyı incele <span aria-hidden="true">→</span></a>
+                    </article>
+                  </div>
+                @endforeach
+              </div>
+
+              @if ($blogs->count() > 1)
+                <div class="home-blog-carousel__controls">
+                  <button class="home-blog-carousel__button" type="button" data-bs-target="#home-blog-carousel" data-bs-slide="prev" aria-label="Önceki blog yazısı">
+                    <span aria-hidden="true">←</span>
+                  </button>
+                  <div class="home-blog-carousel__indicators" aria-label="Blog yazısı seçimi">
+                    @foreach ($blogs as $blog)
+                      <button type="button" data-bs-target="#home-blog-carousel" data-bs-slide-to="{{ $loop->index }}" @class(['active' => $loop->first]) @if ($loop->first) aria-current="true" @endif aria-label="{{ $loop->iteration }}. blog yazısı: {{ $blog->baslik }}"></button>
+                    @endforeach
+                  </div>
+                  <button class="home-blog-carousel__button" type="button" data-bs-target="#home-blog-carousel" data-bs-slide="next" aria-label="Sonraki blog yazısı">
+                    <span aria-hidden="true">→</span>
+                  </button>
                 </div>
-                <div class="card-body">
-                  <h3 class="card-title">Dahili Siren Neden Önemlidir?</h3>
-                  <p class="card-text">
-                    Evinizde ve iş yerinizde sesli uyarının güvenliğe katkısını
-                    öğrenin.
-                  </p>
-                  <a class="blog-card__link" href="#">Devamını okuyun →</a>
-                </div>
-              </article>
+              @endif
             </div>
-            <div class="col">
-              <article class="blog-card card">
-                <div class="blog-card__visual">
-                  <img
-                    src="{{ asset('resimler/anasayfa/urun3-removebg-preview.png') }}"
-                    alt="Dış ortam alarm sireni"
-                  />
-                </div>
-                <div class="card-body">
-                  <h3 class="card-title">Dış Ortam Sireni Ne İşe Yarar?</h3>
-                  <p class="card-text">
-                    Dış ortam sirenlerinin caydırıcılık ve hızlı bildirim
-                    avantajlarını inceleyin.
-                  </p>
-                  <a class="blog-card__link" href="#">Devamını okuyun →</a>
-                </div>
-              </article>
+          @else
+            <div class="home-blog-empty-state">
+              <p>YAKINDA</p>
+              <h3>Yeni güvenlik notları hazırlanıyor.</h3>
+              <span>Yayınlanan rehberler burada yer alacak.</span>
             </div>
-            
-          </div>
+          @endif
         </div>
       </section>
 
